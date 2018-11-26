@@ -18,7 +18,7 @@
 
 * cd to `guezzer.Client` folder in cmd line
 
-* type `npm run dev`
+* type `npm run dev` while in the `guezzer.Client` folder to run the frontend application
 
 * Open your browser and go to the localhost adress specified in the cmd line - usually it is [localhost:8080](http://localhost:8080)
 
