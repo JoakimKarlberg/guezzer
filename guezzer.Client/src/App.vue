@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <router-view/> 
+        <br>
+    <hr>
+    <a href="#/"> Go to Main page | </a><a href="#/YoutubePage">Try the Youtube Page</a>
   </div>
 </template>
 
