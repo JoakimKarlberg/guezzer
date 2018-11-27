@@ -1,6 +1,6 @@
 <template>
      <div class="HomeButton">
-        <button v-on:click="HomeButton">Home</button>
+        <button class="btn btn-primary" v-on:click="HomeButton">Home</button>
     </div>
 </template>
 

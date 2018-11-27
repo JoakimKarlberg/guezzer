@@ -1,6 +1,7 @@
 <template>
      <div class="Result">
         <img src="../assets/guezzerlogo.png">
+
         <h1>{{msg}}</h1>
     </div>
 </template>
@@ -17,5 +18,7 @@ export default {
 </script>
 
 <style scoped>
-
+.Result {
+  padding: 20px;
+}
 </style>

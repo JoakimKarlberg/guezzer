@@ -1,8 +1,10 @@
 <template>
      <div class="SubmitScore">
-        {{msg}}
-        <input type="text" value="enter name here...">
-        <button v-on:click="submitScoreButton">Submit Score</button>
+        <h1>{{saveScoreMsg}} </h1><br/>
+        <div class="enterName">{{enterNameMsg}}
+        <input type="text" value="enter name here..."> <br/>
+        </div>
+        <button class="btn btn-success" v-on:click="submitScoreButton">Submit Score</button>
     </div>
 </template>
 
@@ -11,7 +13,8 @@ export default {
   name: 'SubmitScore',
   data() {
     return {
-      msg: "Enter your name:"
+      enterNameMsg: "Enter your name:",
+      saveScoreMsg: "Save score?"
     }
   },
   methods: {
@@ -23,5 +26,10 @@ export default {
 </script>
 
 <style scoped>
-
+.SubmitScore{
+  paddingp: 10px;
+}
+.enterName{
+  padding-bottom: 15px;
+}
 </style>

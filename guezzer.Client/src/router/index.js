@@ -4,7 +4,9 @@ import Router from 'vue-router'
 import MainPage from '@/views/MainPage'
 import YoutubePage from '@/views/YoutubePage'
 import ResultPage from '@/views/ResultPage'
+import BootstrapVue from 'bootstrap-vue'
 
+Vue.use(BootstrapVue)
 Vue.use(Router)
 Vue.use(VueYoutube)
 

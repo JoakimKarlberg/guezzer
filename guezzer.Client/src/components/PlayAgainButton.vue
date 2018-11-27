@@ -1,6 +1,6 @@
 <template>
      <div class="PlayAgainButton">
-        <button v-on:click="PlayAgainButton">Play Again</button>
+        <button class="btn btn-primary" v-on:click="PlayAgainButton">Play Again</button>
     </div>
 </template>
 
