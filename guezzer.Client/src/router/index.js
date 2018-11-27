@@ -3,6 +3,7 @@ import VueYoutube from 'vue-youtube'
 import Router from 'vue-router'
 import MainPage from '@/views/MainPage'
 import YoutubePage from '@/views/YoutubePage'
+import ResultPage from '@/views/ResultPage'
 
 Vue.use(Router)
 Vue.use(VueYoutube)
@@ -20,6 +21,11 @@ export default new Router({
       path: '/YoutubePage',
       name: 'YoutubePage',
       component: YoutubePage
+    },
+    {
+      path: '/ResultPage',
+      name: 'ResultPage',
+      component: ResultPage
     }
   ]
 })
