@@ -12,6 +12,7 @@
 
 <script>
 import Search from './Search.js'
+import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 
 export default {
     data () {
@@ -43,7 +44,7 @@ export default {
       // Here the Search.js-function is called when the component is created.
       // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
       Search({
-            apiKey: 'AIzaSyCB_0o3EEfZcY4l76Zc-Y82R2yl1LiOQmg', // This is the API key that is currently bound to my google account. I will secure this one later
+            apiKey: YoutubeApiKey, 
             searchWord: 'cats' // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
         }, response => this.fetchedVideoId = response[0].id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
     }
