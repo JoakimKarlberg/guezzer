@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueYoutube from 'vue-youtube'
 import Router from 'vue-router'
-import MainPage from '@/components/MainPage'
-import YoutubePage from '@/components/Youtube/YoutubePage'
+import MainPage from '@/views/MainPage'
+import YoutubePage from '@/views/YoutubePage'
 
 Vue.use(Router)
 Vue.use(VueYoutube)

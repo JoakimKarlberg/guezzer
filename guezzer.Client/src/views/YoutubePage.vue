@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import VideoItem from './VideoItem.vue'
+import VideoItem from '@/components/Youtube/VideoItem.vue'
 
 export default {
     components: {

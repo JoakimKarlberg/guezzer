@@ -2,6 +2,7 @@
     <div class="VideoItem">
         <h1>Video!</h1>
         <h5>id: {{fetchedVideoId}}</h5>
+        <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
         <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing"></youtube>
         <br>
         <button @click="playVideo"> Play </button>
@@ -18,6 +19,9 @@ export default {
             fetchedVideoId: null
         }
     },
+    //These methods are a part of the vue-youtube package that allows youtube-play functionality. It's really good!
+    //Here's the documentation: https://www.npmjs.com/package/vue-youtube 
+    //Supports stuff like autoplay and things. 
     methods: {
       async playVideo(){
         await this.player.playVideo();
@@ -35,10 +39,13 @@ export default {
       }
     },
     created () {
+      
+      // Here the Search.js-function is called when the component is created.
+      // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
       Search({
-            apiKey: 'AIzaSyCB_0o3EEfZcY4l76Zc-Y82R2yl1LiOQmg', // this little bad boy needs to be hidden in some way
-            searchWord: 'cats' // this little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
-        }, response => this.fetchedVideoId = response[0].id.videoId); // should not return only Id. Needs to return the whole response
+            apiKey: 'AIzaSyCB_0o3EEfZcY4l76Zc-Y82R2yl1LiOQmg', // This is the API key that is currently bound to my google account. I will secure this one later
+            searchWord: 'cats' // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
+        }, response => this.fetchedVideoId = response[0].id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
     }
 }
 </script>

@@ -1,3 +1,8 @@
+//Yo! 
+//This is a javascript function i wrote to ask the youtube api for videos. 
+//Here you decide what parameters to get from a youtube video. 
+//This function is used in "VideoItem.vue" under created to instantiate the function
+
 let axios = require('axios');
 let Base_URL = "https://www.googleapis.com/youtube/v3/search";
 
