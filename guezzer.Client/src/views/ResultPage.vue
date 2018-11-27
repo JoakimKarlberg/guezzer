@@ -2,8 +2,10 @@
     <div>
         <Result></Result>
         <SubmitScore></SubmitScore>
-        <PlayAgainButton></PlayAgainButton>
-        <HomeButton></HomeButton>
+        <div class="container">
+            <PlayAgainButton></PlayAgainButton>
+            <HomeButton></HomeButton>
+        </div>
     </div>
 </template>
 
@@ -24,5 +26,9 @@
 </script>
 
 <style scoped>
+
+.container {
+  display: flex;
+}
 
 </style>

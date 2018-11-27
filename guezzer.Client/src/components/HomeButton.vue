@@ -7,10 +7,10 @@
 <script>
 export default {
   name: 'HomeButton',
-  data() {
-    return {
-      msg: ""
-    }
+  methods: {
+    HomeButton(){
+    console.log('Home button works')
+   }
   }
 };
 </script>

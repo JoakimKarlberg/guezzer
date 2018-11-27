@@ -13,6 +13,11 @@ export default {
     return {
       msg: "Enter your name:"
     }
+  },
+  methods: {
+    submitScoreButton(){
+    console.log('is work')
+   }
   }
 };
 </script>

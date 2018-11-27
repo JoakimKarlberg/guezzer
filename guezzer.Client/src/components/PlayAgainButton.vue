@@ -7,10 +7,10 @@
 <script>
 export default {
   name: 'PlayAgainButton',
-  data() {
-    return {
-      msg: ""
-    }
+  methods: {
+    PlayAgainButton(){
+    console.log('Play again button works')
+   }
   }
 };
 </script>
