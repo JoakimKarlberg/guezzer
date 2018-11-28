@@ -20,15 +20,10 @@ export default {
         border-radius: 6px;
         display: inline-block;
         font-size: 30px;
-        -webkit-transition-duration: 0.4s; /* Safari */
+        -webkit-transition-duration: 0.4s; 
         transition-duration: 0.4s;
     }
     .startButton:hover {
     background-color :#d01313;
     }
 </style>
-
-d01313
-#4CAF50
-
-
