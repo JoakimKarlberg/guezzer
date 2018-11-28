@@ -1,14 +1,19 @@
 <template>
-    <div>
+    <div class="wrapper">
+        <div class="container">
         <Result></Result>
         <SubmitScore></SubmitScore>
-        <div class="container">
-            <div class="item1">
+        <div class="wrapper">
+            <div class="container">
             <PlayAgainButton></PlayAgainButton>
             </div>
-            <div class="item2">
+            <div class="container">
             <HomeButton></HomeButton>
             </div>
+        </div>
+        </div>
+        <div class="container">
+        HiscoreList top 10 component for played category is to be inserted here
         </div>
     </div>
 </template>
@@ -32,13 +37,10 @@
 </script>
 
 <style scoped>
-.container {
+.wrapper {
     display: flex;
 }
-.item1 { 
+.container { 
     padding: 5px;   
-}
-.item2 {
-    padding: 5px;  
 }
 </style>

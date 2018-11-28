@@ -1,8 +1,8 @@
 <template>
      <div class="Result">
-        <img src="../assets/guezzerlogo.png">
-
         <h1>{{msg}}</h1>
+
+        <div class="score-box">{{score}}</div>
     </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
   name: 'Result',
   data() {
     return {
-      msg: "Your result: 5/10"
+      msg: "Your result: ",
+      score: "5/10"
     }
   }
 };
@@ -20,5 +21,12 @@ export default {
 <style scoped>
 .Result {
   padding: 20px;
+}
+.score-box{
+  font-size: 5rem;
+  padding: 0.4rem;
+  border-style: solid;
+  width: fit-content;
+  margin: auto;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-     <div class="HomeButton">
-        <button class="btn btn-primary" v-on:click="HomeButton">Home</button>
+     <div class="button-container">
+        <button class="btn btn-primary" v-on:click="HomeButton">Home Page</button>
     </div>
 </template>
 
@@ -9,12 +9,16 @@ export default {
   name: 'HomeButton',
   methods: {
     HomeButton(){
-    console.log('Home button works')
+    console.log('WOW! Home button is clickable')
    }
   }
 };
 </script>
 
 <style scoped>
-
+.button-container{
+  margin-top: 50px;
+  position:relative;
+  float:left;
+}
 </style>

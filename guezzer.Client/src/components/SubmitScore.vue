@@ -1,8 +1,9 @@
 <template>
-     <div class="SubmitScore">
-        <h1>{{saveScoreMsg}} </h1><br/>
-        <div class="enterName">{{enterNameMsg}}
-        <input type="text" value="enter name here..."> <br/>
+     <div class="score-container">
+        <h2>{{saveScoreMsg}} </h2>
+        <div class="enter-name-field">
+          {{enterNameMsg}}
+        <input type="text" value="">
         </div>
         <button class="btn btn-success" v-on:click="submitScoreButton">Submit Score</button>
     </div>
@@ -19,17 +20,17 @@ export default {
   },
   methods: {
     submitScoreButton(){
-    console.log('is work')
+    console.log('subtmitScoreButton works fine')
    }
   }
 };
 </script>
 
 <style scoped>
-.SubmitScore{
-  paddingp: 10px;
+.score-container{
+  padding: 10px;
 }
-.enterName{
+.enter-name-field{
   padding-bottom: 15px;
 }
 </style>
