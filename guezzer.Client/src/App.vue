@@ -3,7 +3,7 @@
     <router-view/> 
         <br>
     <hr>
-    <a href="#/"> Go to Main page | </a><a href="#/YoutubePage">Try the Youtube Page</a>
+   <a href="#/QuestionPage"> QuestionPage</a> | <a href="#/"> Go to Main page | </a><a href="#/YoutubePage">Try the Youtube Page</a>
   </div>
 </template>
 

@@ -1,11 +1,13 @@
 <template>
     <div class="QuestionPage">
        <question-title></question-title>
-       <video-item></video-item>
-       </br>
-       <answer-buttons></answer-buttons>
-       </br>
-        <countdown-timer></countdown-timer>
+       <video-item class=video></video-item>
+       <div class="container">
+       <answer-buttons class="answerButtons"></answer-buttons>
+       <countdown-timer class="countdownTimer"></countdown-timer>
+       </div>
+
+
     </div>
 
 </template>
@@ -27,3 +29,23 @@ export default {
 };
 
 </script>
+
+<style scoped>
+
+.container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.answerButtons {
+    width: 50%;
+}
+
+.countdownTimer {
+    margin-top: 55px;
+
+}
+
+</style>
