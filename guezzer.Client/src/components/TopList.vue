@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="list">
         <h3> Name of category</h3>
         <ul>
             <li>Hello</li>
@@ -24,6 +24,9 @@ export default {
         display:inline-block;
         border:3px solid #000;
         padding:20px;
+    }
+    .list{
+        padding: 1%;
     }
 </style>
 
