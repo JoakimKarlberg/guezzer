@@ -6,7 +6,8 @@ import YoutubePage from '@/views/YoutubePage'
 import ResultPage from '@/views/ResultPage'
 import BootstrapVue from 'bootstrap-vue'
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
+
 Vue.use(Router)
 Vue.use(VueYoutube)
 
