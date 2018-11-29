@@ -14,10 +14,10 @@ module.exports = function(options, callback) {
     let params = {
         part: 'snippet',
         key: options.apiKey,
+        order: options.order,
         q: options.searchWord,
         maxResults: (options.maxResults) ? options.maxResults : 1,
-        type: 'video',
-        sortOrder: options.sortOrder
+        type: 'video', 
     };
 
     axios.get(Base_URL, {params})
