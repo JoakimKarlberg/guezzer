@@ -13,6 +13,9 @@ namespace guezzer.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
+        public int TimesPlayed { get; set; }
+
         public IList<Result> Results { get; set; }
     }
 }
