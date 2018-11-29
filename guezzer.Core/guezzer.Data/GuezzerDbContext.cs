@@ -1,8 +1,6 @@
 ﻿using guezzer.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace guezzer.Data
 {
