@@ -7,9 +7,9 @@ namespace guezzer.Entities
     public class Category
     {
         [Key]
-        public Guid Id{ get; set; }
+        public Guid Id { get; set; }
         public string Type { get; set; }
 
-        public IList<Score> Scores { get; set; }
+        public IList<Result> Results { get; set; }
     }
 }
