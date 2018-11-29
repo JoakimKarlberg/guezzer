@@ -14,6 +14,11 @@ export default {
       msg: "Your result: ",
       score: "5/10"
     }
+  },
+  methods: {
+    Result(score){
+      return this.score;
+    }
   }
 };
 </script>
