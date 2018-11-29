@@ -16,7 +16,9 @@ module.exports = function(options, callback) {
         key: options.apiKey,
         q: options.searchWord,
         maxResults: (options.maxResults) ? options.maxResults : 1,
-        type: 'video'
+        type: 'video',
+        sortOrder: options.sortOrder,
+        pageToken: options.pageToken
     };
 
     axios.get(Base_URL, {params})
