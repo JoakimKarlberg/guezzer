@@ -10,7 +10,9 @@ namespace guezzer.Entities
         [Required]
         public int Score { get; set; }
 
-	    public Player Player { get; set; }
+        public DateTime Updated { get; set; }
+
+        public Player Player { get; set; }
         public Category Category { get; set; }
     }
 }
