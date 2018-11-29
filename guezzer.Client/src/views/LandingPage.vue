@@ -1,6 +1,6 @@
 <template>
-  <div class="LandingPage">
-    <img src="../assets/guezzerlogo.png">
+  <div class="landing-page">
+    <img src="../assets/guezzerlogo.png" >
     <h1>{{msg}}</h1>
     <start-button></start-button>
     <div class="container">
@@ -51,5 +51,8 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+  }
+  .landing-page{
+    padding: 10px;
   }
 </style>

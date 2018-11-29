@@ -41,6 +41,6 @@
     display: flex;
 }
 .container {
-    padding: 5px;
+    padding: 10px;
 }
 </style>
