@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .button-container{
   margin-top: 50px;
-  position:relative;
-  float:right;
+  position :relative;
+  float: right;
 }
 </style>
