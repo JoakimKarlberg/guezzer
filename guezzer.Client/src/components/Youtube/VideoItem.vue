@@ -1,12 +1,7 @@
 <template>
     <div class="VideoItem">
-        <h1>Video!</h1>
-        <h5>id: {{fetchedVideoId}}</h5>
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
         <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing"></youtube>
-        <br>
-        <button @click="playVideo"> Play </button>
-        <button @click="pauseVideo"> Pause </button>
     </div>
 </template>
 
@@ -24,12 +19,6 @@ export default {
     //Here's the documentation: https://www.npmjs.com/package/vue-youtube 
     //Supports stuff like autoplay and things. 
     methods: {
-      async playVideo(){
-        await this.player.playVideo();
-      },
-      async pauseVideo(){
-        await this.player.pauseVideo();  
-      },
       playing(){
         console.log('We are watching!'); 
       }

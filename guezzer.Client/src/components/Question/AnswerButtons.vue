@@ -1,8 +1,6 @@
 <template>
      <div class="AnswerButtons">
-         <button class="btn btn-primary"  v-for="answer in answersFirstRow" @click="checkAnswer">{{ answer }}</button>
-         <div style='clear:both'></div>
-         <button class="btn btn-primary"  v-for="answer in answersSecondRow" @click="checkAnswer">{{ answer }}</button>
+         <button class="btn btn-primary" v-for="(answer,index) in answers" :key="index" @click="checkAnswer">{{ answer }}</button>
     </div>
 </template>
 
@@ -16,8 +14,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
     data() {
         return  {
-             answersFirstRow: ['0-1000', '1001-10000', ],
-             answersSecondRow: ['10001-100000', 'More than 100000']
+             answers: ['0-1000', '1001-10000','10001-100000', 'More than 100000']
         }
     },
 
