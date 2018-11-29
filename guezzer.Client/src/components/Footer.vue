@@ -1,6 +1,13 @@
 <template>
      <div class="footer">
-       Copyright grej blabla. Vanlig info som brukar stå
+       Copyright grej blabla. Vanlig info som brukar stå <br/>
+      <p>
+      <a href="#/">Landing page</a> |
+      <a href="#/Resultpage">Result Page</a> |
+      <a href="#/Categorypage">Category Page</a> |
+      <a href="#/YoutubePage">Try the Youtube Test Page</a> |
+      <a href="#/QuestionPage">Check out the question page</a>
+      </p>
     </div>
 </template>
 
