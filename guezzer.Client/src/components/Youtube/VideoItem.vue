@@ -50,7 +50,7 @@ export default {
             apiKey: YoutubeApiKey, 
             searchWord: YoutubeRandomizer.methods.GetRandomValue(YoutubeRandomizer.data.categoryList), // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
             sortOrder: YoutubeRandomizer.methods.GetRandomValue(YoutubeRandomizer.data.orderList)
-        }, response => this.fetchedVideoId = response[0].id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
+        }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
     }
 }
 </script>

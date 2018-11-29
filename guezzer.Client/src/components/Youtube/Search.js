@@ -6,6 +6,7 @@
 let axios = require('axios');
 let Base_URL = "https://www.googleapis.com/youtube/v3/search";
 
+
 module.exports = function(options, callback) {
     if (!options.apiKey) {
         throw new Error('Youtube search would require a key');
@@ -14,15 +15,19 @@ module.exports = function(options, callback) {
     let params = {
         part: 'snippet',
         key: options.apiKey,
+        order: options.sortOrder,
         q: options.searchWord,
-        maxResults: (options.maxResults) ? options.maxResults : 1,
-        type: 'video',
-        sortOrder: options.sortOrder
+        maxResults: 50,
+        type: 'video'    
     };
 
     axios.get(Base_URL, {params})
         .then(response => {
-            if(callback) { callback(response.data.items) }
+            if(callback) { callback(GetRandomVideo(response.data.items)) }
         })
         .catch(error => console.error(error));
+}
+
+function GetRandomVideo(array){
+    return array[Math.floor(Math.random() * array.length)]
 }
