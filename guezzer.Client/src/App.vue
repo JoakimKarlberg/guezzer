@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <Header></Header>
     <router-view/>
-    <div class="tempFooter">
+    <!-- <div class="tempFooter">
       <hr>
       <p>
       <a href="#/">Landing page</a> |
@@ -9,12 +10,21 @@
       <a href="#/Categorypage">Category Page</a>
       <a href="#/YoutubePage">Try the Youtube Test Page</a>
       </p>
-    </div>
+    </div> -->
+
+  <Footer>Footer</Footer>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
+
 export default {
+  components: {
+        Footer,
+        Header
+        },
   name: "App"
 };
 </script>
@@ -28,12 +38,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.tempFooter{
+/* .tempFooter{
     position: absolute;
     left: 0;
     bottom: 0;
     height: 100px;
     width: 100%;
     overflow: hidden;
-}
+} */
 </style>
