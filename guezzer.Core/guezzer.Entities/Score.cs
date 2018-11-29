@@ -1,13 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace guezzer.Entities
 {
-    public class Score
+    public class Result
     {
         [Key]
-        public int Guid { get; set; }
+        public Guid Id { get; set; }
         [Required]
-        public int Value { get; set; }
+        public int Score { get; set; }
 
 	    public Player Player { get; set; }
         public Category Category { get; set; }

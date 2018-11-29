@@ -13,6 +13,6 @@ namespace guezzer.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        public IList<Score> Scores { get; set; }
+        public IList<Result> Results { get; set; }
     }
 }
