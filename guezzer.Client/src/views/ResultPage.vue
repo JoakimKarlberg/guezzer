@@ -1,35 +1,37 @@
 <template>
     <div class="wrapper">
         <div class="container">
-        <Result></Result>
-        <SubmitScore></SubmitScore>
+        <display-result></display-result>
+        <submit-score></submit-score>
         <div class="wrapper">
             <div class="container">
-            <PlayAgainButton></PlayAgainButton>
+            <play-again-button></play-again-button>
             </div>
             <div class="container">
-            <HomeButton></HomeButton>
+            <home-button></home-button>
             </div>
         </div>
         </div>
         <div class="container">
-        HiscoreList top 10 component for played category is to be inserted here
+            <top-list></top-list> 
         </div>
     </div>
 </template>
 
 <script>
-    import Result from '@/components/Result.vue'
+    import DisplayResult from '@/components/DisplayResult.vue'
     import SubmitScore from '@/components/SubmitScore.vue'
     import PlayAgainButton from '@/components/PlayAgainButton.vue'
     import HomeButton from '@/components/HomeButton.vue'
+    import TopList from '@/components/TopList.vue'
 
     export default {
     components: {
-        Result,
+        DisplayResult,
         SubmitScore,
         PlayAgainButton,
-        HomeButton
+        HomeButton,
+        TopList
         }
     }
 </script>

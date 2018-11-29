@@ -1,24 +1,19 @@
 <template>
      <div class="button-container">
-        <button class="btn btn-primary" v-on:click="HomeButton">Home Page</button>
+       <router-link to="/" tag="button" class="btn btn-primary">Home Page</router-link>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeButton',
-  methods: {
-    HomeButton(){
-    console.log('WOW! Home button is clickable')
-   }
-  }
+  name: 'HomeButton'
 };
 </script>
 
 <style scoped>
 .button-container{
   margin-top: 50px;
-  position:relative;
-  float:left;
+  position: relative;
+  float: left;
 }
 </style>

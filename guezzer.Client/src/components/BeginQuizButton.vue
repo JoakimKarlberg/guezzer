@@ -1,6 +1,7 @@
 <template>
      <div class="button-container">
-        <button class="btn btn-primary" v-on:click="BeginQuizButton">Begin</button>
+        <!-- <button class="btn btn-primary" v-on:click="BeginQuizButton">Begin</button> -->
+        <router-link to="/QuestionPage" tag="button" class="btn btn-primary">Begin</router-link>
         <i class="fas fa-arrow-right"></i>
     </div>
 </template>

@@ -1,13 +1,14 @@
 <template>
     <div>
-        <button class="startButton"> Start </button>
+        <router-link to="/CategoryPage" tag="button" class="startButton">start</router-link>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'StartButton',
-}
+    name: 'StartButton'
+ }
+
 </script>
 
 <style scoped>
