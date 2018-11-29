@@ -23,8 +23,6 @@
     import SubmitScore from '@/components/SubmitScore.vue'
     import PlayAgainButton from '@/components/PlayAgainButton.vue'
     import HomeButton from '@/components/HomeButton.vue'
-    import 'bootstrap/dist/css/bootstrap.css'
-    import 'bootstrap-vue/dist/bootstrap-vue.css'
 
     export default {
     components: {
@@ -40,7 +38,7 @@
 .wrapper {
     display: flex;
 }
-.container { 
-    padding: 5px;   
+.container {
+    padding: 5px;
 }
 </style>
