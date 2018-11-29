@@ -1,3 +1,4 @@
+<!-- Temporary page for testing the video functionality -->
 <template>
     <div class="YoutubePage">
        <h1>{{msg}}</h1>
