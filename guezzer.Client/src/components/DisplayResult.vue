@@ -1,5 +1,5 @@
 <template>
-     <div class="Result">
+     <div class="display-result">
         <h1>{{msg}}</h1>
 
         <div class="score-box">{{score}}</div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Result',
+  name: 'DisplayResult',
   data() {
     return {
       msg: "Your result: ",
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.Result {
+.display-result {
   padding: 20px;
 }
 .score-box{

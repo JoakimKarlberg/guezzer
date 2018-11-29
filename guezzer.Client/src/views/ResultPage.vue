@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <div class="container">
-        <result></result>
+        <display-result></display-result>
         <submit-score></submit-score>
         <div class="wrapper">
             <div class="container">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import Result from '@/components/Result.vue'
+    import DisplayResult from '@/components/DisplayResult.vue'
     import SubmitScore from '@/components/SubmitScore.vue'
     import PlayAgainButton from '@/components/PlayAgainButton.vue'
     import HomeButton from '@/components/HomeButton.vue'
@@ -27,7 +27,7 @@
 
     export default {
     components: {
-        Result,
+        DisplayResult,
         SubmitScore,
         PlayAgainButton,
         HomeButton,
