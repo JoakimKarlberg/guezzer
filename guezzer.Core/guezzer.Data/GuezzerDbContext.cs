@@ -42,7 +42,18 @@ namespace guezzer.Data
                     Id = Guid.NewGuid(),
                     Type = "Random"
                 });
-               
+
+            modelBuilder.Entity<Player>()
+                .HasData(new Player
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "BestPlayer"
+                },
+                new Player
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "WorstPlayer"
+                });
         }
     }
 }

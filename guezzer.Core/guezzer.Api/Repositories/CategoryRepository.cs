@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using guezzer.Data;
 using guezzer.Entities;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace guezzer.Api.Repositories
 {
@@ -18,9 +15,9 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public Category Get(string type)
+        public async Task<Category> Get(string type)
         {
-            var category = _context.Categories.FirstOrDefault(c => c.Type == type);
+            var category = _context.Categories.FirstOrDefaultAsync(c => c.Type == type);
 
             if(category == null)
             {
@@ -28,12 +25,12 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            return category;
+            return await category;
         }
 
-        public IEnumerable GetAll()
+        public async Task<IEnumerable<Category>> GetAll()
         {
-            var categories = _context.Categories.ToList();
+            var categories = _context.Categories.ToListAsync();
 
             if (categories == null)
             {
@@ -41,7 +38,7 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            return categories;
+            return await categories;
         }
     }
 }

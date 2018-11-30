@@ -51,6 +51,11 @@ namespace guezzer.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Players");
+
+                    b.HasData(
+                        new { Id = new Guid("3f2d1ac4-89dc-402a-8c72-b390ff31482d"), Name = "BestPlayer", TimesPlayed = 0 },
+                        new { Id = new Guid("485f0d57-9868-4be9-ad39-f70bab785fac"), Name = "WorstPlayer", TimesPlayed = 0 }
+                    );
                 });
 
             modelBuilder.Entity("guezzer.Entities.Result", b =>
