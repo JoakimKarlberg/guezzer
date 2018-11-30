@@ -29,6 +29,12 @@ namespace guezzer.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new { Id = new Guid("b16552a4-c190-4408-9027-c7bf7999223b"), Type = "Music" },
+                        new { Id = new Guid("121849ea-b75c-4a35-9242-cb784baeb5d3"), Type = "Funny" },
+                        new { Id = new Guid("adf05187-a42c-405a-a084-d7db91a2ace6"), Type = "Random" }
+                    );
                 });
 
             modelBuilder.Entity("guezzer.Entities.Player", b =>
@@ -39,6 +45,8 @@ namespace guezzer.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
+
+                    b.Property<int>("TimesPlayed");
 
                     b.HasKey("Id");
 
@@ -55,6 +63,8 @@ namespace guezzer.Data.Migrations
                     b.Property<Guid?>("PlayerId");
 
                     b.Property<int>("Score");
+
+                    b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 
