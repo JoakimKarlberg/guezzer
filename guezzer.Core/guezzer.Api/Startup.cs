@@ -30,6 +30,7 @@ namespace guezzer.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddControllersAsServices();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IPlayerRepository, PlayerRepository>();
 
             services.AddDbContext<GuezzerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

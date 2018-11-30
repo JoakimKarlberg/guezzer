@@ -1,13 +1,14 @@
 ﻿using guezzer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace guezzer.Api.Repositories
 {
-    public interface ICategoryRepository
+    public interface IPlayerRepository
     {
-        Task<IEnumerable<Category>> GetAll();
+        Task<IEnumerable<Player>> GetAll();
 
-        Task<Category> Get(string type);
+        Task<Player> Get(Guid id);
     }
 }

@@ -10,8 +10,8 @@ using guezzer.Data;
 namespace guezzer.Data.Migrations
 {
     [DbContext(typeof(GuezzerDbContext))]
-    [Migration("20181123114351_Initial")]
-    partial class Initial
+    [Migration("20181130101647_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,12 @@ namespace guezzer.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new { Id = new Guid("e74bb2fd-3a6d-4499-8d90-1c1221253d46"), Type = "Music" },
+                        new { Id = new Guid("55f47ccf-20e1-45fa-9a8c-fa6c18fd9948"), Type = "Funny" },
+                        new { Id = new Guid("188d0eed-1ddf-4258-b029-05aba65a6081"), Type = "Random" }
+                    );
                 });
 
             modelBuilder.Entity("guezzer.Entities.Player", b =>
@@ -42,40 +48,48 @@ namespace guezzer.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int>("TimesPlayed");
+
                     b.HasKey("Id");
 
                     b.ToTable("Players");
+
+                    b.HasData(
+                        new { Id = new Guid("3f2d1ac4-89dc-402a-8c72-b390ff31482d"), Name = "BestPlayer", TimesPlayed = 0 },
+                        new { Id = new Guid("485f0d57-9868-4be9-ad39-f70bab785fac"), Name = "WorstPlayer", TimesPlayed = 0 }
+                    );
                 });
 
-            modelBuilder.Entity("guezzer.Entities.Score", b =>
+            modelBuilder.Entity("guezzer.Entities.Result", b =>
                 {
-                    b.Property<int>("Guid")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<Guid?>("CategoryId");
 
                     b.Property<Guid?>("PlayerId");
 
-                    b.Property<int>("Value");
+                    b.Property<int>("Score");
 
-                    b.HasKey("Guid");
+                    b.Property<DateTime>("Updated");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("Scores");
+                    b.ToTable("Results");
                 });
 
-            modelBuilder.Entity("guezzer.Entities.Score", b =>
+            modelBuilder.Entity("guezzer.Entities.Result", b =>
                 {
                     b.HasOne("guezzer.Entities.Category", "Category")
-                        .WithMany("Scores")
+                        .WithMany("Results")
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("guezzer.Entities.Player", "Player")
-                        .WithMany("Scores")
+                        .WithMany("Results")
                         .HasForeignKey("PlayerId");
                 });
 #pragma warning restore 612, 618
