@@ -54,6 +54,24 @@ namespace guezzer.Data
                     Id = Guid.NewGuid(),
                     Name = "WorstPlayer"
                 });
+
+            //modelBuilder.Entity<Result>()
+            //   .HasData(new Result
+            //   {
+            //       Id = Guid.NewGuid(),
+            //       Player = new Player
+            //       {
+            //           Id = Guid.NewGuid(),
+            //           Name = "Test Result player"
+            //       },
+            //       Category = new Category
+            //       {
+            //           Id = Guid.NewGuid(),
+            //           Type = "TEST CATEGORY"
+            //       },
+            //       Score = 12,
+            //       Updated = DateTime.Now
+            //   });
         }
     }
 }

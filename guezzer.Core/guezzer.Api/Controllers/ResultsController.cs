@@ -28,11 +28,11 @@ namespace guezzer.Api.Controllers
             return Ok(results);
         }
 
-        //PUT: api/Results/playerName+categoryType
-        [HttpPut("{playerName}+{categoryType}")]
-        public async Task<IActionResult> Add([FromRoute]string playerName, [FromRoute]string categoryType)
-        {
-            return Ok(await _repository.Add(playerName, categoryType));
-        }
+        ////PUT: api/Results/playerName+categoryType
+        //[HttpPut]
+        //public async Task<IActionResult> Add([FromRoute]string playerName, [FromRoute]string categoryType)
+        //{
+        //    return Ok(await _repository.Add(playerName, categoryType));
+        //}
     }
 }
