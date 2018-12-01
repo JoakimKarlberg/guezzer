@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using guezzer.Api.Helpers;
 using guezzer.Data;
 using guezzer.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -17,16 +17,28 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<Result> Add(string playerName, string categoryType)
+        public async Task<Result> Update(ResultDto resultDto)
         {
-            var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == playerName && r.Category.Type == categoryType);
+            var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == resultDto.PlayerName && r.Category.Type == resultDto.CategoryType);
 
             if (result == null)
             {
-                await _context.Results.AddAsync(result);
+                var newResult = new Result
+                {
+                    Id = Guid.NewGuid(),
+                    Category = await _context.Categories.FirstOrDefaultAsync(c => c.Type == resultDto.CategoryType),
+                    Player = await _context.Players.FirstOrDefaultAsync(p => p.Name == resultDto.PlayerName),
+                    Score = resultDto.Score,
+                    Updated = DateTime.Now
+                };
+
+                await _context.Results.AddAsync(newResult);
             }
             else
             {
+                result.Score = resultDto.Score; // Should not update score if the new score is lower than previous highscore
+                result.Updated = DateTime.Now;
+
                 _context.Results.Update(result);
             }
 
@@ -39,7 +51,7 @@ namespace guezzer.Api.Repositories
         {
             var results = await _context.Results.ToListAsync();
 
-            if(results == null)
+            if (results == null)
             {
                 // Implement null handler
                 return null;

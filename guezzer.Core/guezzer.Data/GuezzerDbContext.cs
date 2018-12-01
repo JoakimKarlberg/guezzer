@@ -53,6 +53,21 @@ namespace guezzer.Data
                 {
                     Id = Guid.NewGuid(),
                     Name = "WorstPlayer"
+                },
+                new Player
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "OkayPlayer"
+                },
+                new Player
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Jonas"
+                },
+                new Player
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Jenny"
                 });
 
             //modelBuilder.Entity<Result>()

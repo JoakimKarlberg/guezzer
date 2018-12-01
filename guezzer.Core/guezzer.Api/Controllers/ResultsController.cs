@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using guezzer.Api.Helpers;
 using guezzer.Api.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 
 namespace guezzer.Api.Controllers
 {
@@ -24,15 +23,16 @@ namespace guezzer.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var results = await _repository.GetAll();
-
             return Ok(results);
         }
 
-        ////PUT: api/Results/playerName+categoryType
-        //[HttpPut]
-        //public async Task<IActionResult> Add([FromRoute]string playerName, [FromRoute]string categoryType)
-        //{
-        //    return Ok(await _repository.Add(playerName, categoryType));
-        //}
+        //PUT: api/Results/{resultDto-object}
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] ResultDto resultDto)
+        {
+            var result = await _repository.Update(resultDto);
+
+            return NoContent();
+        }
     }
 }

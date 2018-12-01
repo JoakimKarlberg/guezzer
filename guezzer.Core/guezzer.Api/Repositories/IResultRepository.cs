@@ -1,7 +1,6 @@
-﻿using guezzer.Entities;
-using System;
+﻿using guezzer.Api.Helpers;
+using guezzer.Entities;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace guezzer.Api.Repositories
@@ -10,6 +9,6 @@ namespace guezzer.Api.Repositories
     {
         Task<IEnumerable<Result>> GetAll();
 
-        Task<Result> Add(string playerName, string categoryType);
+        Task<Result> Update(ResultDto resultDto);
     }
 }
