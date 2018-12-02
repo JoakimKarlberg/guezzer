@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using guezzer.Api.Helpers;
 using guezzer.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,15 @@ namespace guezzer.Api.Controllers
         {
             var result = await _repository.Get(id);
             return Ok(result);
+        }
+
+        //PUT: api/Players/{playerDto-object}
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] PlayerDto playerDto)
+        {
+            var result = await _repository.Update(playerDto);
+
+            return NoContent();
         }
     }
 }

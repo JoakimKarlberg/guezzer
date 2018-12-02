@@ -36,7 +36,10 @@ namespace guezzer.Api.Repositories
             }
             else
             {
-                result.Score = resultDto.Score; // Should not update score if the new score is lower than previous highscore
+                if (resultDto.Score > result.Score)
+                {
+                    result.Score = resultDto.Score;
+                }
                 result.Updated = DateTime.Now;
 
                 _context.Results.Update(result);
