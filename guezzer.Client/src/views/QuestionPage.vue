@@ -1,9 +1,9 @@
 <template>
     <div class="QuestionPage">
-       <question-title></question-title>
-       <video-item class="videoItem"></video-item>
+       <question-title :questionIndex="questionIndex"></question-title>
+       <video-item class="videoItem" ref="video"></video-item>
        <div class="container">
-       <answer-buttons class="answerButtons"></answer-buttons>
+       <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
        <countdown-timer class="countdownTimer"></countdown-timer>
        </div>
 
@@ -26,6 +26,19 @@ export default {
         VideoItem,
         CountdownTimer,
     },
+    
+    data() {
+        return {
+            questionIndex: 1
+        }
+    },
+
+    methods: {
+    checkAnswer(){
+        this.$refs.video.getVideo();
+        this.questionIndex++
+    }
+    }
 };
 
 </script>
