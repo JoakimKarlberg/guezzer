@@ -16,13 +16,7 @@ export default {
         return  {
              answers: ['0-1000', '1001-10000','10001-100000', 'More than 100000']
         }
-    },
-
-    methods: {
-    async checkAnswer(){
-        
-   }
-  }
+    }
 };
 </script>
 

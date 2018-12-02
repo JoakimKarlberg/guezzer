@@ -30,6 +30,7 @@ export default {
         this.totalTime--;
       } else{
         this.totalTime = 0;
+        this.$parent.checkAnswer();
       }
     },
 

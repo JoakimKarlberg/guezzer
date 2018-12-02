@@ -35,9 +35,15 @@ export default {
 
     methods: {
     checkAnswer(){
+        if (this.questionIndex <= 9)
+        {
         this.$refs.video.getVideo();
         this.$refs.timer.refreshTimer();
         this.questionIndex++
+        }
+        else {
+            this.$router.push({ name: 'ResultPage' })
+        }
     }
     }
 };
