@@ -4,7 +4,7 @@
        <video-item class="videoItem" ref="video"></video-item>
        <div class="container">
        <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
-       <countdown-timer class="countdownTimer"></countdown-timer>
+       <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
        </div>
 
 
@@ -36,6 +36,7 @@ export default {
     methods: {
     checkAnswer(){
         this.$refs.video.getVideo();
+        this.$refs.timer.refreshTimer();
         this.questionIndex++
     }
     }

@@ -17,8 +17,12 @@ export default {
   },
 
   methods: {
-    startTime() {
+    startTimer() {
       this.timer = setInterval(() => this.countdown(), 1000);
+    },
+
+    refreshTimer() {
+      this.totalTime = 20;
     },
 
     countdown() {
@@ -46,7 +50,7 @@ export default {
   },
 
   created () {
-      this.startTime();
+      this.startTimer();
   }
 }
 </script>
