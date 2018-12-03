@@ -7,8 +7,8 @@ namespace guezzer.Api.Helpers
 {
     public class ResultDto
     {
-        public string PlayerName { get; set; }
-        public string CategoryType { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
         public int Score { get; set; }
     }
 }

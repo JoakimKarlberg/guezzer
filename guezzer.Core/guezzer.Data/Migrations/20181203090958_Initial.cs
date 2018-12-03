@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace guezzer.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,8 +39,8 @@ namespace guezzer.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Score = table.Column<int>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: false),
-                    PlayerId = table.Column<Guid>(nullable: true),
-                    CategoryId = table.Column<Guid>(nullable: true)
+                    PlayerId = table.Column<Guid>(nullable: false),
+                    CategoryId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,13 +50,13 @@ namespace guezzer.Data.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Results_Players_PlayerId",
                         column: x => x.PlayerId,
                         principalTable: "Players",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -64,9 +64,9 @@ namespace guezzer.Data.Migrations
                 columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
-                    { new Guid("22661c8e-a8be-48ac-8ec6-d414ee475d26"), "Music" },
-                    { new Guid("f7f6dae5-4ecf-4845-847b-85867d93bd49"), "Funny" },
-                    { new Guid("ecf12e4b-aa6b-4cf9-816b-83922a5912ab"), "Random" }
+                    { new Guid("d59535d4-eae0-4e08-84d6-429c723c78be"), "Music" },
+                    { new Guid("b3d660bc-1e6f-4b59-9e28-0ff2f8f22396"), "Funny" },
+                    { new Guid("5e7032de-fad3-491b-a42e-b5b4b00f88d0"), "Random" }
                 });
 
             migrationBuilder.InsertData(
@@ -74,8 +74,11 @@ namespace guezzer.Data.Migrations
                 columns: new[] { "Id", "Name", "TimesPlayed" },
                 values: new object[,]
                 {
-                    { new Guid("25ada5e4-2cf7-4102-93a7-77ae4be5f24d"), "BestPlayer", 0 },
-                    { new Guid("ddc17a0d-08a9-4ef2-89d5-6f2603cfeec2"), "WorstPlayer", 0 }
+                    { new Guid("910b9553-a81a-4e12-b208-7c9d82cb9300"), "BestPlayer", 0 },
+                    { new Guid("219e82d7-7ccc-44a8-b9d5-eb7b676f4458"), "WorstPlayer", 0 },
+                    { new Guid("4966a363-1f15-479f-a971-77fe0a56fd70"), "OkayPlayer", 0 },
+                    { new Guid("e562218a-5b41-4331-87e1-f79804b65c0b"), "Jonas", 0 },
+                    { new Guid("781784e4-fd63-45b6-b1d8-0a624e4fab45"), "Jenny", 0 }
                 });
 
             migrationBuilder.CreateIndex(

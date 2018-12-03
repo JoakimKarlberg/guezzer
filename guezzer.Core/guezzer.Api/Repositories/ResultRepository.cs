@@ -19,15 +19,15 @@ namespace guezzer.Api.Repositories
 
         public async Task<Result> Update(ResultDto resultDto)
         {
-            var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == resultDto.PlayerName && r.Category.Type == resultDto.CategoryType);
+            var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == resultDto.Name && r.Category.Type == resultDto.Category);
 
             if (result == null)
             {
                 var newResult = new Result
                 {
                     Id = Guid.NewGuid(),
-                    Category = await _context.Categories.FirstOrDefaultAsync(c => c.Type == resultDto.CategoryType),
-                    Player = await _context.Players.FirstOrDefaultAsync(p => p.Name == resultDto.PlayerName),
+                    Category = await _context.Categories.FirstOrDefaultAsync(c => c.Type == resultDto.Category),
+                    Player = await _context.Players.FirstOrDefaultAsync(p => p.Name == resultDto.Name),
                     Score = resultDto.Score,
                     Updated = DateTime.Now
                 };
