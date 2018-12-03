@@ -17,9 +17,9 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<Player> Get(Guid id)
+        public async Task<Player> Get(string name)
         {
-            var player = _context.Players.FirstOrDefaultAsync(p => p.Id == id);
+            var player = _context.Players.FirstOrDefaultAsync(p => p.Name == name);
 
             if(player == null)
             {

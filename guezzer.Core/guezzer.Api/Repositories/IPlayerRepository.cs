@@ -10,7 +10,7 @@ namespace guezzer.Api.Repositories
     {
         Task<IEnumerable<Player>> GetAll();
 
-        Task<Player> Get(Guid id);
+        Task<Player> Get(string name);
 
         Task<Player> Update(PlayerDto playerDto);
     }
