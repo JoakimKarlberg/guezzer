@@ -1,12 +1,13 @@
 ﻿using guezzer.Entities;
-using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace guezzer.Api.Repositories
 {
     public interface ICategoryRepository
     {
-        IEnumerable GetAll();
+        Task<IEnumerable<Category>> GetAll();
 
-        Category Get(string type);
+        Task<Category> Get(string type);
     }
 }
