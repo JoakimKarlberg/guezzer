@@ -3,13 +3,14 @@
         <h2>{{saveScoreMsg}} </h2>
         <div class="enter-name-field">
           {{enterNameMsg}}
-        <input id="name" @keyup.enter="submitScoreButton" v-model="nameInput"  type="text">
+        <input id="name" v-model="nameInput"  type="text">
         </div>
-        <button class="btn btn-success" v-on:click="submitScoreButton">Submit Score</button>
+        <button class="btn btn-success" v-on:click="submitPlayer">Submit Score</button>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'SubmitScore',
   data() {
@@ -20,10 +21,21 @@ export default {
     }
   },
   methods: {
-    submitScoreButton(name, score){
-    console.log('Well done ' + this.nameInput + '! You have submitted your score: ' + score)
-    return name = this.nameInput;
-   }
+    submitPlayer: function (){
+
+      axios({
+        method: 'put',
+        url: 'http://localhost:53268/api/Players',
+        data:{
+          Name: this.nameInput
+        }
+      });
+
+      // axios.put('http://localhost:53268/api/Players', {Name: this.nameInput})
+      // .then((response => {console.log(response)
+      // })
+      // .catch(error => console.log("hello" + error)));
+    }
   }
 };
 </script>
