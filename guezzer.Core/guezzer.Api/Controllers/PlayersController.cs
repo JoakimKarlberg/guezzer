@@ -18,6 +18,7 @@ namespace guezzer.Api.Controllers
         }
 
         // GET: api/Players/
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var result = await _repository.GetAll();
@@ -25,11 +26,11 @@ namespace guezzer.Api.Controllers
             return Ok(result);
         }
 
-        // GET: api/Players/348yt9fhoin34iugbvnwekf
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        // GET: api/Players/{name}
+        [HttpGet("{name}")]
+        public async Task<IActionResult> Get(string name)
         {
-            var result = await _repository.Get(id);
+            var result = await _repository.Get(name);
             return Ok(result);
         }
 
