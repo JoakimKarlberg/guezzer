@@ -1,6 +1,6 @@
-﻿using System;
-using guezzer.Api.Repositories;
+﻿using guezzer.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace guezzer.Api.Controllers
 {
@@ -16,18 +16,19 @@ namespace guezzer.Api.Controllers
         }
 
         // GET: api/Categories/
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var result = _repository.GetAll();
+            var result = await _repository.GetAll();
 
             return Ok(result);
         }
 
         // GET: api/Categories/Music
         [HttpGet("{type}")]
-        public ActionResult Get(string type)
+        public async Task<IActionResult> Get(string type)
         {
-            return Ok(_repository.Get(type));
+            var result = await _repository.Get(type);
+           return Ok(result);
         }
     }
 }
