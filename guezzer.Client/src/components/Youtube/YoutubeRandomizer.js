@@ -1,8 +1,4 @@
 export default {
-     data:{
-          orderList : ["date","rating","relevance","title","videoCount","viewCount"]
-     },
-
      methods:{
           GetSelectedCategory: function(selectedCategory){
                switch (selectedCategory) {
@@ -17,6 +13,10 @@ export default {
                     default:
                          break;
                }
+          },
+          GetRandomOrder: function(){
+               let orderList = ["date","rating","relevance","title","videoCount","viewCount"];
+               return GetRandomValue(orderList);
           }      
      }
 }

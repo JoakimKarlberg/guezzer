@@ -15,7 +15,7 @@ module.exports = function(options, callback) {
     let params = {
         part: 'snippet',
         key: options.apiKey,
-        // order: options.sortOrder,
+        order: options.sortOrder,
         q: options.searchWord,
         maxResults: 50,
         type: 'video'    
