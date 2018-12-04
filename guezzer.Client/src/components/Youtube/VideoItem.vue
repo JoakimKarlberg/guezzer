@@ -10,12 +10,11 @@ import Search from './Search.js'
 import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 import YoutubeRandomizer from './YoutubeRandomizer.js'
 
-
-
 export default {
     data () {
         return {
-            fetchedVideoId: null
+            fetchedVideoId: null,
+            videoList: []
         }
     },
     //These methods are a part of the vue-youtube package that allows youtube-play functionality. It's really good!
@@ -23,7 +22,9 @@ export default {
     //Supports stuff like autoplay and things. 
     methods: {
       playing(){
-        console.log('We are watching!'); 
+        console.log('We are watching!' + this.fetchedVideoId); 
+        this.videoList.push(this.fetchedVideoId);
+        console.log(this.videoList[0]);
       }
     },
     computed: {
