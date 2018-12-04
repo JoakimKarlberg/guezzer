@@ -29,20 +29,25 @@ export default {
     
     data() {
         return {
-            questionIndex: 1
+            questionIndex: 1,
+            numberOfQuestions: 10
         }
     },
 
     methods: {
     checkAnswer(){
-        if (this.questionIndex <= 9)
+
+        if (this.questionIndex >= this.numberOfQuestions)
+        {
+            this.$refs.timer.stopTimer();
+            this.$router.push({ name: 'ResultPage' });
+        }
+
+        else
         {
         this.$refs.video.getVideo();
         this.$refs.timer.refreshTimer();
         this.questionIndex++
-        }
-        else {
-            this.$router.push({ name: 'ResultPage' })
         }
     }
     }
