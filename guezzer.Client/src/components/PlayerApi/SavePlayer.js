@@ -1,5 +1,5 @@
 const axios = require('axios');
-const url = 'http://localhost:53268/api/Players';
+const url = 'http://localhost:5000/api/Players';
 
 
 module.exports = function(playerName){
