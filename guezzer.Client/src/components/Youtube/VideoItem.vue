@@ -14,7 +14,7 @@ export default {
     data () {
         return {
             fetchedVideoId: null,
-            videoList: ['id1']
+            videoList: []
         }
     },
     //These methods are a part of the vue-youtube package that allows youtube-play functionality. It's really good!
@@ -26,11 +26,10 @@ export default {
         this.checkIfVideoAlreadyPlayed();
       },
       checkIfVideoAlreadyPlayed(){
-          this.fetchedVideoId = 'id1';
+       
         if(this.videoList.includes(this.fetchedVideoId))
         {
             console.log('This video already exists in the list.');
-            // add code to play a new video
             this.getVideo();
         }
         else
