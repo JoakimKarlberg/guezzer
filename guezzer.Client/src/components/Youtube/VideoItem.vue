@@ -9,8 +9,6 @@
 import Search from './Search.js'
 import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 import YoutubeRandomizer from './YoutubeRandomizer.js'
-
-
 export default {
     data () {
         return {
@@ -23,15 +21,8 @@ export default {
     methods: {
       playing(){
         console.log('We are watching!'); 
-      }
-    },
-    computed: {
-      player(){
-        return this.$refs.youtube.player;
-      }
-    },
-    created () {
-
+      },
+      getVideo() {
       
       // Here the Search.js-function is called when the component is created.
       // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
@@ -40,6 +31,15 @@ export default {
             searchWord: YoutubeRandomizer.methods.GetSelectedCategory(), // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
             sortOrder: YoutubeRandomizer.methods.GetRandomOrder()
         }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
+    }
+    },
+    computed: {
+      player(){
+        return this.$refs.youtube.player;
+      }
+    },
+    created () {
+        this.getVideo();
     }
 }
 </script>

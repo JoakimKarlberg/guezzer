@@ -12,21 +12,37 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 20
+      totalTime: 5
     }
   },
 
   methods: {
-    startTime() {
+    startTimer() {
       this.timer = setInterval(() => this.countdown(), 1000);
     },
 
-    countdown() {
-      if(this.totalTime >= 1){
+    stopTimer() {
+      clearInterval(this.timer);
+      this.timer = null;
+    },
+
+    refreshTimer() {
+      this.totalTime = 5;
+    },
+
+    countdown() 
+    {
+      if(this.totalTime >= 1)
+      {
         this.totalTime--;
-      } else{
-        this.totalTime = 0;
       }
+
+      else
+      {
+        this.totalTime = 0;
+        this.$parent.checkAnswer();
+      }
+     
     },
 
     formatTime(time) {
@@ -46,7 +62,7 @@ export default {
   },
 
   created () {
-      this.startTime();
+      this.startTimer();
   }
 }
 </script>

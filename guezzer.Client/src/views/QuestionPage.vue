@@ -1,10 +1,10 @@
 <template>
     <div class="QuestionPage">
-       <question-title></question-title>
-       <video-item class="videoItem"></video-item>
+       <question-title :questionIndex="questionIndex"></question-title>
+       <video-item class="videoItem" ref="video"></video-item>
        <div class="container">
-       <answer-buttons class="answerButtons"></answer-buttons>
-       <countdown-timer class="countdownTimer"></countdown-timer>
+       <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
+       <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
        </div>
 
 
@@ -26,6 +26,31 @@ export default {
         VideoItem,
         CountdownTimer,
     },
+    
+    data() {
+        return {
+            questionIndex: 1,
+            numberOfQuestions: 10
+        }
+    },
+
+    methods: {
+    checkAnswer(){
+
+        if (this.questionIndex >= this.numberOfQuestions)
+        {
+            this.$refs.timer.stopTimer();
+            this.$router.push({ name: 'ResultPage' });
+        }
+
+        else
+        {
+        this.$refs.video.getVideo();
+        this.$refs.timer.refreshTimer();
+        this.questionIndex++
+        }
+    }
+    }
 };
 
 </script>

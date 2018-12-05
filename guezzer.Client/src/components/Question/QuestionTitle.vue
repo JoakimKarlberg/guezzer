@@ -1,16 +1,14 @@
 <template>
      <div class="QuestionTitle">
-         <h1>{{ questionNumber }}</h1>
+         <h1>Question {{ questionIndex }}</h1>
     </div>
 </template>
 
 
 <script>
 export default {
-  data() {
-    return {
-      questionNumber: "Question 1"
-    }
-  }
+  
+  props:['questionIndex']
+
 };
 </script>
