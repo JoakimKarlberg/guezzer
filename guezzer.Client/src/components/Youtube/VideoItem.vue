@@ -14,7 +14,7 @@ export default {
     data () {
         return {
             fetchedVideoId: null,
-            videoList: []
+            videoList: ['id1']
         }
     },
     //These methods are a part of the vue-youtube package that allows youtube-play functionality. It's really good!
@@ -26,24 +26,20 @@ export default {
         this.checkIfVideoAlreadyPlayed();
       },
       checkIfVideoAlreadyPlayed(){
+          this.fetchedVideoId = 'id1';
         if(this.videoList.includes(this.fetchedVideoId))
         {
             console.log('This video already exists in the list.');
             // add code to play a new video
+            this.getVideo();
         }
         else
         {
             this.videoList.push(this.fetchedVideoId);
             console.log('this video is BRAND NEW! ' + this.fetchedVideoId);
         }
-      }
-    },
-    computed: {
-      player(){
-        return this.$refs.youtube.player;
-      }
-    },
-    created () {
+      },
+      getVideo() {
       
       // Here the Search.js-function is called when the component is created.
       // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
@@ -52,6 +48,15 @@ export default {
             searchWord: YoutubeRandomizer.methods.GetSelectedCategory("funny"), // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
             sortOrder: YoutubeRandomizer.methods.GetRandomOrder()
         }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
+    }
+    },
+    computed: {
+      player(){
+        return this.$refs.youtube.player;
+      }
+    },
+    created () {
+        this.getVideo();
     }
 }
 </script>
