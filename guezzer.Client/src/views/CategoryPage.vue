@@ -2,7 +2,6 @@
   <div class="categoryPage">
     <h1>{{quizTitle}}</h1>
     <SelectCategory style="margin-top: 100px;"></SelectCategory>
-
     <div class="card" style="width: 50%; margin-top: 60px;">
       <div class="card-body" >
         <h5 class="card-title">Special title if we want it</h5>
@@ -31,6 +30,7 @@ export default {
     QuizDescription
   }
 };
+
 </script>
 
 <style scoped>
