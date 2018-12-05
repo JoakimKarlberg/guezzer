@@ -16,14 +16,13 @@ export default {
   data() {
     return {
       enterNameMsg: "Enter your name:",
-      saveScoreMsg: "Save score?",
+      saveScoreMsg: "Do you want to save your score?",
       nameInput: ""
     };
   },
   methods: {
     submitResult: function() {
       SavePlayer(this.nameInput)
-      //SaveResult(this.resultScore) // Here the score is saved from the DisplayResult component. 
     }
   }
 };
