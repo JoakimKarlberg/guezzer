@@ -22,9 +22,17 @@ export default {
     //Supports stuff like autoplay and things. 
     methods: {
       playing(){
-        console.log('We are watching!' + this.fetchedVideoId); 
-        this.videoList.push(this.fetchedVideoId);
-        console.log(this.videoList[0]);
+        console.log('You are watching video with id: ' + this.fetchedVideoId);
+
+            if(this.videoList.includes(this.fetchedVideoId)){
+              console.log('This video already exists in the list.');
+              // add code to play new video
+            }
+             else
+            {
+             this.videoList.push(this.fetchedVideoId);
+             console.log('this video is BRAND NEW! ' + this.fetchedVideoId);
+            }
       }
     },
     computed: {
