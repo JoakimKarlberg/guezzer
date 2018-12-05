@@ -23,16 +23,19 @@ export default {
     methods: {
       playing(){
         console.log('You are watching video with id: ' + this.fetchedVideoId);
-
-            if(this.videoList.includes(this.fetchedVideoId)){
-              console.log('This video already exists in the list.');
-              // add code to play new video
-            }
-             else
-            {
-             this.videoList.push(this.fetchedVideoId);
-             console.log('this video is BRAND NEW! ' + this.fetchedVideoId);
-            }
+        this.checkIfVideoAlreadyPlayed();
+      },
+      checkIfVideoAlreadyPlayed(){
+        if(this.videoList.includes(this.fetchedVideoId))
+        {
+            console.log('This video already exists in the list.');
+            // add code to play a new video
+        }
+        else
+        {
+            this.videoList.push(this.fetchedVideoId);
+            console.log('this video is BRAND NEW! ' + this.fetchedVideoId);
+        }
       }
     },
     computed: {
