@@ -1,14 +1,18 @@
 import { EventBus } from "./event-bus.js";
 
+EventBus.$on('change', (selected) => {
+     console.log(`Oh, that's nice. It's gotten ${selected} clicks! :)`) 
+});
 
-EventBus.$on('change', selected => {
-     console.log(`Oh, that's nice. It's gotten ${selected} clicks! :)`)
-      
-     });
 
 export default {
+     data(){
+          return {
+               selectedCat : ''
+          }
+     },
      methods:{
-          GetSelectedCategory: function(){
+          GetSelectedCategory: function(selectedCategory){
 
                switch (selectedCategory) {
                     case "music":
