@@ -55,18 +55,17 @@ export default {
         this.category = this.$route.params.category;
     },
     methods: {
-        getViewCounts(viewCount) {
-            this.viewCount = viewCount;
-        },
+        checkAnswer(){
+            
+            this.$refs.timer.stopTimer();
 
         checkAnswer(answer){
 
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
 
             if (this.questionIndex >= this.numberOfQuestions)
-            {
-            this.$refs.timer.stopTimer();
-            this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
+            {    
+            this.$router.push({ name: 'ResultPage' });
             }
 
             else

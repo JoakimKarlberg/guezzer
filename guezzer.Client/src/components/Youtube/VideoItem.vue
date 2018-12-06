@@ -10,6 +10,7 @@ import Search from './Search.js'
 import GetStatistics from './GetStatistics.js'
 import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 import YoutubeRandomizer from './YoutubeRandomizer.js'
+import { EventBus } from '@/components/Youtube/event-bus.js';
 
 export default {
     data () {
@@ -25,9 +26,8 @@ export default {
     //Here's the documentation: https://www.npmjs.com/package/vue-youtube 
     //Supports stuff like autoplay and things. 
     methods: {
-    
-    playing(){
-        
+      playing(){
+        EventBus.$emit("playVideo"); 
       },
 
     getVideo() {
