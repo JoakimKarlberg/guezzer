@@ -22,11 +22,9 @@ export default {
     //Supports stuff like autoplay and things. 
     methods: {
       playing(){
-        console.log('You are watching video with id: ' + this.fetchedVideoId);
-        this.checkIfVideoAlreadyPlayed();
+        console.log('We are watching!');
       },
       checkIfVideoAlreadyPlayed(){
-       
         if(this.videoList.includes(this.fetchedVideoId))
         {
             console.log('This video already exists in the list.');
@@ -36,10 +34,11 @@ export default {
         {
             this.videoList.push(this.fetchedVideoId);
             console.log('this video is BRAND NEW! ' + this.fetchedVideoId);
+            console.log(this.videoList);
         }
       },
       getVideo() {
-      
+      this.checkIfVideoAlreadyPlayed();
       // Here the Search.js-function is called when the component is created.
       // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
       Search({
