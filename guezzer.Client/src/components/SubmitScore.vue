@@ -11,6 +11,7 @@
 
 <script>
 import SavePlayer from './PlayerApi/SavePlayer.js'
+import SaveResult from './ResultApi/SaveResult.js'
 export default {
   name: "SubmitScore",
   data() {
@@ -23,6 +24,7 @@ export default {
   methods: {
     submitResult: function() {
       SavePlayer(this.nameInput)
+      SaveResult(this.nameInput, "Random", 9001) // Is hardcoded wight now for testing
     }
   }
 };
