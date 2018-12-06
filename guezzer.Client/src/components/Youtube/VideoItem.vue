@@ -27,14 +27,11 @@ export default {
       checkIfVideoAlreadyPlayed(){
         if(this.videoList.includes(this.fetchedVideoId))
         {
-            console.log('This video already exists in the list.');
             this.getVideo();
         }
         else
         {
             this.videoList.push(this.fetchedVideoId);
-            console.log('this video is BRAND NEW! ' + this.fetchedVideoId);
-            console.log(this.videoList);
         }
       },
       getVideo() {
