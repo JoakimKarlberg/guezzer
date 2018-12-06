@@ -1,6 +1,10 @@
+
+
 export default {
+
      methods:{
           GetSelectedCategory: function(selectedCategory){
+
                switch (selectedCategory) {
                     case "music":
                          return GetRandomValue(musicCategoryList);    
@@ -36,3 +40,6 @@ let musicCategoryList = ["music metal","music classical","music reggae", "music 
 let funnyCategoryList = ["funny fails", "funny animals", "funny clowns", "funny pranks", "funny moments", "funny videos",
 "funny laugh", "funny songs", "funny babies", "funny languages", "funny drunk people", "funny people",
 "funny news fail"];
+
+
+

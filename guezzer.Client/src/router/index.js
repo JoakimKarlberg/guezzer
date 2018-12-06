@@ -42,7 +42,7 @@ export default new Router({
       component: CategoryPage
     },
     {
-      path: '/QuestionPage',
+      path: '/QuestionPage/:category',
       name: 'QuestionPage',
       component: QuestionPage
     },
