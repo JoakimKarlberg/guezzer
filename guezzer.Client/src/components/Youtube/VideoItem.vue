@@ -9,6 +9,7 @@
 import Search from './Search.js'
 import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 import YoutubeRandomizer from './YoutubeRandomizer.js'
+import { EventBus } from '@/components/Youtube/event-bus.js';
 
 export default {
     data () {
@@ -23,7 +24,7 @@ export default {
     //Supports stuff like autoplay and things. 
     methods: {
       playing(){
-        console.log('We are watching!'); 
+        EventBus.$emit("playVideo"); 
       },
       getVideo() {
       

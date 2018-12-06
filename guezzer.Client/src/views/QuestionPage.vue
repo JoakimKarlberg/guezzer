@@ -38,10 +38,11 @@ export default {
     },
     methods: {
         checkAnswer(){
+            
+            this.$refs.timer.stopTimer();
 
             if (this.questionIndex >= this.numberOfQuestions)
-            {
-            this.$refs.timer.stopTimer();
+            {    
             this.$router.push({ name: 'ResultPage' });
             }
 

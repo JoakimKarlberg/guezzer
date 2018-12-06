@@ -8,6 +8,8 @@
 
 <script>
 
+import { EventBus } from '@/components/Youtube/event-bus.js';
+
 export default {
   data() {
     return {
@@ -62,7 +64,10 @@ export default {
   },
 
   created () {
-      this.startTimer();
+    let self = this;
+    EventBus.$on('playVideo', function () {
+      self.startTimer()
+    })
   }
 }
 </script>
