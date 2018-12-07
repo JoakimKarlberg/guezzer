@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
 .header {
-    position: absolute;
+    position: relative;
     padding: 10px;
     left: 0;
     top: 0;
