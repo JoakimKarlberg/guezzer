@@ -1,7 +1,6 @@
 <template>
      <div class="button-container">
-        <!-- <button class="btn btn-primary" v-on:click="BeginQuizButton">Begin</button> -->
-        <router-link :to="{name: 'QuestionPage', params: {category: this.selectedCategory}}" tag="button" class="btn btn-primary">Begin</router-link>
+        <router-link :to="{name: 'QuestionPage', params: {category: this.selectedCategory}}" tag="button">Begin</router-link>
         <i class="fas fa-arrow-right"></i>
     </div>
 </template>

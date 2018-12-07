@@ -1,20 +1,20 @@
 <template>
   <div class="SelectCategory">
     <h5>Select Category</h5>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="categoryAll" name="customRadioButton" class="custom-control-input" 
-       v-on:change="emitToParent" value="random">
-      <label class="custom-control-label" for="categoryAll">All</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="categoryMusic" name="customRadioButton" class="custom-control-input"
-      v-on:change="emitToParent" value="music">
-      <label class="custom-control-label" for="categoryMusic">Music</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="categoryFunny" name="customRadioButton" class="custom-control-input"
+    <div>
+      <input type="radio" id="categoryFunny" name="customRadioButton"
       v-on:change="emitToParent" value="funny">
-      <label class="custom-control-label" for="categoryFunny">Funny</label>
+      <label for="categoryFunny">Funny</label>
+    </div>
+    <div>
+      <input type="radio" id="categoryMusic" name="customRadioButton"
+      v-on:change="emitToParent" value="music">
+      <label for="categoryMusic">Music</label>
+    </div>
+    <div>
+      <input type="radio" id="categoryAll" name="customRadioButton"
+       v-on:change="emitToParent" value="random">
+      <label for="categoryAll">Random</label>
     </div>
   </div>
 </template>
