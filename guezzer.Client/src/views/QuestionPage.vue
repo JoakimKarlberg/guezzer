@@ -33,6 +33,7 @@ import VideoItem from '@/components/Youtube/VideoItem.vue'
 import CountdownTimer from '@/components/Question/CountdownTimer.vue';
 import HandleAnswer from '@/components/HandleAnswer.js'
 import router from '../router'
+import { EventBus } from '@/components/Youtube/event-bus.js';
 
 export default {
     components: {
@@ -64,12 +65,14 @@ export default {
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
 
             if (this.questionIndex >= this.numberOfQuestions)
-            {    
+            {
+            EventBus.$off('playVideo');       
             this.$router.push({ name: 'ResultPage' });
             }
 
             else
             {
+
             this.$refs.video.getVideo();
             this.$refs.timer.refreshTimer();
             this.questionIndex++
