@@ -7,7 +7,7 @@ namespace guezzer.Api.Repositories
 {
     public interface IResultRepository
     {
-        Task<IEnumerable<Result>> GetAll();
+        Task<List<GetResultDto>> GetAll();
 
         Task<Result> Update(ResultDto resultDto);
     }

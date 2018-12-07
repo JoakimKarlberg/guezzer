@@ -8,9 +8,9 @@ namespace guezzer.Api.Repositories
 {
     public interface IPlayerRepository
     {
-        Task<IEnumerable<Player>> GetAll();
+        Task<List<PlayerDto>> GetAll();
 
-        Task<Player> Get(string name);
+        Task<PlayerDto> Get(string name);
 
         Task<Player> Update(PlayerDto playerDto);
     }

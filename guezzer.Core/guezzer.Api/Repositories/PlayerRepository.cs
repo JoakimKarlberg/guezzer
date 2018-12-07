@@ -17,21 +17,23 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<Player> Get(string name)
+        public async Task<PlayerDto> Get(string name)
         {
-            var player = _context.Players.FirstOrDefaultAsync(p => p.Name == name);
+            var player = await _context.Players.FirstOrDefaultAsync(p => p.Name == name);
 
-            if(player == null)
+            if (player == null)
             {
                 return null;
             }
 
-            return await player;
+            var playerDto = new PlayerDto { Name = player.Name, TimesPlayed = player.TimesPlayed };            
+
+            return playerDto;
         }
 
-        public async Task<IEnumerable<Player>> GetAll()
+        public async Task<List<PlayerDto>> GetAll()
         {
-            var players = _context.Players.ToListAsync();
+            var players = await _context.Players.ToListAsync();
 
             if (players == null)
             {
@@ -39,7 +41,14 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            return await players;
+            var playerDtos = new List<PlayerDto>();
+
+            foreach(var player in players)
+            {
+                playerDtos.Add(new PlayerDto { Name = player.Name, TimesPlayed = player.TimesPlayed });
+            }
+
+            return playerDtos;
         }
 
         public async Task<Player> Update(PlayerDto playerDto)
