@@ -49,12 +49,13 @@ export default {
             sortOrder: YoutubeRandomizer.methods.GetRandomOrder()
         }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
         
+        if(this.fetchedVideoId != null){
         GetStatistics ({
          apiKey: YoutubeApiKey, 
-         videoId: 'QqYBbw3jzts',
-        }, response => this.viewCounts = response.statistics.viewCount);
-
-        console.log(this.viewCounts);
+         videoId: this.fetchedVideoId,
+        }, response => this.viewCounts = null);
+        }
+        
     }
     },
     computed: {
