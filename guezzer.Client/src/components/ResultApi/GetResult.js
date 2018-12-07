@@ -5,7 +5,7 @@ module.exports = function(playerName, category, score){
        axios({
          method: 'get',
          url: url,
-         data:{
+         data: {
            Name: playerName,
            Category: category,
            Score: score

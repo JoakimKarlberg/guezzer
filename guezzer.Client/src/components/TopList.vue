@@ -1,11 +1,14 @@
 <template>
     <div class="list">
         <h3>{{ header }} {{ category }}</h3>
+        <label for="score">{{score}}</label>
         <ul>
+            <li>{{ score }}</li>
             <li>Hello</li>
             <li>Hello</li>
             <li>Hello</li>
             <li>Hello</li>
+            <GetResult></GetResult>
         </ul>
     </div>
 </template>
@@ -15,17 +18,23 @@ import GetResult from './ResultApi/GetResult.js'
 
 export default {
     name: 'TopList',
+    components: { //here comes the response from GetResult.js
+        GetResult
+    },
     data() {
     return {
+        //properties defined here
       header: "Top score for category: ",
       category: "",
       playerName: "",
-      score: null
+      score: "",
+      topList: [] // playerName + score 
       };
     },
-  methods: {
+    methods: {
     getResult: function() {
-      GetResult(playerName, category, score) // Is hardcoded wight now for testing
+        console.log('JALLLLAAA' + this.score);
+      GetResult(this.playerName, this.category, this.score)
     }
   }
 }
