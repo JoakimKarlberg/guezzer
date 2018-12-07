@@ -1,8 +1,12 @@
 <template>
   <div class="home">
-    <h1 class="red--text text--darken-4 display-3">{{msg}}</h1>     
-    <img src="../assets/guezzerlogo.png" >
-    <start-button></start-button>
+    <v-card-actions class="justify-center">
+      <!-- <h1 class="red--text text--darken-3 display-3">{{msg}}</h1>      -->
+    </v-card-actions>
+        <v-card-actions class="justify-center">
+          <img src="../assets/guezzerlogo.png">
+          </v-card-actions>
+    <start-button/>
     <div class="container">
         <top-list></top-list>
         <top-list></top-list>
@@ -31,22 +35,6 @@
 </script>
 
 <style scoped>
-  h1,
-  h2 {
-    font-weight: normal;
-    font-size: 300%;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #42b983;
-  }
   .container{
     display: flex;
     flex-direction: row;

@@ -1,9 +1,9 @@
 <template>
 <v-app class="grey lighten-3">
   <Header/>
-    <v-component>
+    <v-container pa-5>
       <router-view/>
-    </v-component>
+    </v-container>
   <Footer/>
 </v-app>
 </template>

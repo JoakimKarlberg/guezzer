@@ -1,8 +1,13 @@
 <template>
     <v-card-actions class="justify-center">
-        <v-btn depressed fab class="green white--text" large tag="button" router-link to="/CategoryPage">
-
+        <v-btn 
+            depressed 
+            class="green white--text" 
+            large 
+            tag="button" 
+            router-link to="/CategoryPage">
             <v-icon large>play_arrow</v-icon>
+            <span>Play</span>
         </v-btn>
     </v-card-actions>
 </template>
