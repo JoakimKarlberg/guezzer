@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <h3> Name of category</h3>
+        <h3>{{ header }} {{ category }}</h3>
         <ul>
             <li>Hello</li>
             <li>Hello</li>
@@ -11,8 +11,23 @@
 </template>
 
 <script>
+import GetResult from './ResultApi/GetResult.js'
+
 export default {
     name: 'TopList',
+    data() {
+    return {
+      header: "Top score for category: ",
+      category: "",
+      playerName: "",
+      score: null
+      };
+    },
+  methods: {
+    getResult: function() {
+      GetResult(playerName, category, score) // Is hardcoded wight now for testing
+    }
+  }
 }
 </script>
 
