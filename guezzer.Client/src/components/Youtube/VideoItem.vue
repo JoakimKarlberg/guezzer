@@ -7,6 +7,7 @@
 
 <script>
 import Search from './Search.js'
+import GetStatistics from './GetStatistics.js'
 import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 import YoutubeRandomizer from './YoutubeRandomizer.js'
 
@@ -14,6 +15,7 @@ export default {
     data () {
         return {
             fetchedVideoId: null,
+            viewCounts: null,
             videoList: []
         }
     }
@@ -46,6 +48,13 @@ export default {
             searchWord: YoutubeRandomizer.methods.GetSelectedCategory(this.category), // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
             sortOrder: YoutubeRandomizer.methods.GetRandomOrder()
         }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
+        
+        GetStatistics ({
+         apiKey: YoutubeApiKey, 
+         videoId: 'QqYBbw3jzts',
+        }, response => this.viewCounts = response.statistics.viewCount);
+
+        console.log(this.viewCounts);
     }
     },
     computed: {
