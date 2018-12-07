@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 5
+      totalTime: 10
     }
   },
 
@@ -25,11 +25,12 @@ export default {
 
     stopTimer() {
       clearInterval(this.timer);
+      console.log("timer stoppades");
       this.timer = null;
     },
 
     refreshTimer() {
-      this.totalTime = 5;
+      this.totalTime = 10;
     },
 
     countdown() 
@@ -66,7 +67,7 @@ export default {
   created () {
     let self = this;
     EventBus.$on('playVideo', function () {
-      self.startTimer()
+      self.startTimer();
     })
   }
 }

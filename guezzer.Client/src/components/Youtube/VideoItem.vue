@@ -16,8 +16,9 @@ export default {
         return {
             fetchedVideoId: null
         }
-    }
-    ,props:['category'],
+    },
+    
+    props:['category'],
     
     //These methods are a part of the vue-youtube package that allows youtube-play functionality. It's really good!
     //Here's the documentation: https://www.npmjs.com/package/vue-youtube 
@@ -26,6 +27,7 @@ export default {
       playing(){
         EventBus.$emit("playVideo"); 
       },
+      
       getVideo() {
       
       // Here the Search.js-function is called when the component is created.
