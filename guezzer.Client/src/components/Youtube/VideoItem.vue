@@ -2,6 +2,7 @@
     <div class="VideoItem">
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
         <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing"></youtube>
+        <h1>{{viewCount}}</h1>
     </div>
 </template>
 
@@ -15,7 +16,7 @@ export default {
     data () {
         return {
             fetchedVideoId: null,
-            viewCounts: null,
+            viewCount: null,
             videoList: []
         }
     }
@@ -36,7 +37,6 @@ export default {
         else
         {
             this.videoList.push(this.fetchedVideoId);
-            console.log(this.videoList);
         }
       },
       getVideo() {
@@ -53,7 +53,8 @@ export default {
         GetStatistics ({
          apiKey: YoutubeApiKey, 
          videoId: this.fetchedVideoId,
-        }, response => this.viewCounts = null);
+        }, response => this.viewCount = response);
+
         }
         
     }

@@ -16,7 +16,7 @@ module.exports = function(options, callback) {
 
     axios.get(Base_URL, {params})
         .then(response => {
-            if(callback) { callback(response.data.items) }
+            if(callback) { callback(response.data.items[0].statistics.viewCount) }
         })
         .catch(error => console.error(error));
 }
