@@ -1,7 +1,7 @@
 <template>
-  <div class="landing-page">
+  <div class="home">
+    <h1 class="red--text text--darken-4 display-3">{{msg}}</h1>     
     <img src="../assets/guezzerlogo.png" >
-    <h1>{{msg}}</h1>
     <start-button></start-button>
     <div class="container">
         <top-list></top-list>
@@ -24,7 +24,7 @@
     name: 'LandingPage',
     data() {
       return {
-        msg: "Welcome to Guezzer!"
+        msg: "Welcome to " 
       }
     }
   };
@@ -51,8 +51,5 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-  .landing-page{
-    padding: 10px;
   }
 </style>

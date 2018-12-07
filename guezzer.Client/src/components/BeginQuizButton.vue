@@ -1,8 +1,12 @@
 <template>
-     <div class="button-container">
-        <router-link :to="{name: 'QuestionPage', params: {category: this.selectedCategory}}" tag="button">Begin</router-link>
-        <i class="fas fa-arrow-right"></i>
-    </div>
+     <v-btn
+        flat
+        x-large
+        router-link :to="{name: 'QuestionPage', 
+        params: {category: this.selectedCategory}}" 
+        tag="button">
+        <v-icon x-large>forward</v-icon>
+     </v-btn>
 </template>
 
 <script>
@@ -29,11 +33,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.button-container{
-  position: absolute;
-    top: 70%;
-    right: 20%;
-}
-</style>
