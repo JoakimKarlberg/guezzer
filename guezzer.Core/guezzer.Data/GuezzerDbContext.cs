@@ -4,7 +4,7 @@ using System;
 
 namespace guezzer.Data
 {
-    public class GuezzerDbContext : DbContext
+    public class GuezzerDbContext : DbContext, IDisposable
     {
         public GuezzerDbContext(DbContextOptions options) : base(options)
         {
@@ -24,7 +24,7 @@ namespace guezzer.Data
             modelBuilder.Entity<Category>()
                 .HasMany(r => r.Results)
                 .WithOne(c => c.Category);
-
+            
             modelBuilder.Entity<Category>()
                 .HasData(new Category
                 {
@@ -69,24 +69,6 @@ namespace guezzer.Data
                     Id = Guid.NewGuid(),
                     Name = "Jenny"
                 });
-
-            //modelBuilder.Entity<Result>()
-            //   .HasData(new Result
-            //   {
-            //       Id = Guid.NewGuid(),
-            //       Player = new Player
-            //       {
-            //           Id = Guid.NewGuid(),
-            //           Name = "Test Result player"
-            //       },
-            //       Category = new Category
-            //       {
-            //           Id = Guid.NewGuid(),
-            //           Type = "TEST CATEGORY"
-            //       },
-            //       Score = 12,
-            //       Updated = DateTime.Now
-            //   });
         }
     }
 }
