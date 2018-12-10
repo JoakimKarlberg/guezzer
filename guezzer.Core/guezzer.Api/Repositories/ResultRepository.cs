@@ -23,6 +23,7 @@ namespace guezzer.Api.Repositories
 
             if (result == null)
             {
+                // Add function that creates instead of having it nested in an Update function - repository pattern
                 var newResult = new Result
                 {
                     Id = Guid.NewGuid(),
@@ -50,17 +51,33 @@ namespace guezzer.Api.Repositories
             return result;
         }
 
-        public async Task<IEnumerable<Result>> GetAll()
+        public async Task<List<GetResultDto>> GetAll()
         {
-            var results = await _context.Results.ToListAsync();
+            var results = await _context.Results
+                .Include(p => p.Player)
+                .Include(c => c.Category)
+                .ToListAsync();
 
-            if (results == null)
+            var getResultDtos = new List<GetResultDto>();
+
+            foreach (var result in results)
             {
-                // Implement null handler
+                getResultDtos.Add(new GetResultDto
+                {
+                    ResultId = result.Id,
+                    Name = result.Player.Name,
+                    Category = result.Category.Type,
+                    Score = result.Score
+                });
+            }
+
+            if(getResultDtos == null)
+            {
+                //handle exception
                 return null;
             }
 
-            return results;
+            return getResultDtos;
         }
     }
 }

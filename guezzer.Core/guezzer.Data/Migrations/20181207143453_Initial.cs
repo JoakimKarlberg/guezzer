@@ -12,7 +12,7 @@ namespace guezzer.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Type = table.Column<string>(nullable: true)
+                    Type = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,9 +64,9 @@ namespace guezzer.Data.Migrations
                 columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
-                    { new Guid("d59535d4-eae0-4e08-84d6-429c723c78be"), "Music" },
-                    { new Guid("b3d660bc-1e6f-4b59-9e28-0ff2f8f22396"), "Funny" },
-                    { new Guid("5e7032de-fad3-491b-a42e-b5b4b00f88d0"), "Random" }
+                    { new Guid("b886f08a-78f1-4bf8-8c47-6ad767c79bfd"), "Music" },
+                    { new Guid("06e99bee-9eb0-4987-a13f-b0fac67e854a"), "Funny" },
+                    { new Guid("0e832c20-d85a-422d-939b-a11632e099b6"), "Random" }
                 });
 
             migrationBuilder.InsertData(
@@ -74,11 +74,11 @@ namespace guezzer.Data.Migrations
                 columns: new[] { "Id", "Name", "TimesPlayed" },
                 values: new object[,]
                 {
-                    { new Guid("910b9553-a81a-4e12-b208-7c9d82cb9300"), "BestPlayer", 0 },
-                    { new Guid("219e82d7-7ccc-44a8-b9d5-eb7b676f4458"), "WorstPlayer", 0 },
-                    { new Guid("4966a363-1f15-479f-a971-77fe0a56fd70"), "OkayPlayer", 0 },
-                    { new Guid("e562218a-5b41-4331-87e1-f79804b65c0b"), "Jonas", 0 },
-                    { new Guid("781784e4-fd63-45b6-b1d8-0a624e4fab45"), "Jenny", 0 }
+                    { new Guid("87056949-fc5a-4388-b633-3681e5047e8a"), "BestPlayer", 0 },
+                    { new Guid("a8cb9c9c-7cac-4297-b8af-2ccf6c0d6247"), "WorstPlayer", 0 },
+                    { new Guid("88ca7ac5-107c-4490-8f07-92ad9cac465c"), "OkayPlayer", 0 },
+                    { new Guid("7e60c47e-9953-4882-8d6c-163775587661"), "Jonas", 0 },
+                    { new Guid("5e6bc080-9ea7-4e3c-aca0-4d9f69f30ecf"), "Jenny", 0 }
                 });
 
             migrationBuilder.CreateIndex(
