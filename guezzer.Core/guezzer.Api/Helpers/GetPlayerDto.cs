@@ -13,5 +13,7 @@ namespace guezzer.Api.Helpers
 
         [Required]
         public int TimesPlayed { get; set; }
+
+        //Insert more properties that we might want to return
     }
 }
