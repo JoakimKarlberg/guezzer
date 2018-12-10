@@ -39,6 +39,8 @@ Uses `EntityFrameWork Core` for database stuff.
 
 * **PUT**: `https://url.com/api/Players/{playerDto-object}` - updates or create a *Player* if it doesn't exist in the db based on the *Body* of the PUT request. Must match the structure of a *PlayerDto*-object.
 
+	* Request body example: `{"Name": "Stefan" }`
+
 ### Categories
 
 * **GET**: `https://url.com/api/categories/` - fetches all categories
@@ -52,3 +54,5 @@ Uses `EntityFrameWork Core` for database stuff.
 * **GET**: `https://url.com/api/results/{name}` - fetch all results for a specific player
 
 * **PUT**: `https://url.com/api/Results/{ResultDto-object}` - updates or create a *Result* if it doesn't exist in the db based on the *Body* of the PUT request. Input must match the structure of a *ResultDto*-object.
+
+	* Request body example: `{"Name": "Stefan", "Category": "Random", "Score": 666 }`

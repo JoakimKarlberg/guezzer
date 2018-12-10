@@ -104,6 +104,7 @@ namespace guezzer.Api.Repositories
                 {
                     result.Score = resultDto.Score;
                 }
+
                 result.Updated = DateTime.Now;
 
                 _context.Results.Update(result);
