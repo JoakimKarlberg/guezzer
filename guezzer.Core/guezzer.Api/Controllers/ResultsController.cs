@@ -23,6 +23,11 @@ namespace guezzer.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var results = await _repository.GetAll();
+
+            if(results == null)
+            {
+                return NotFound();
+            }
             return Ok(results);
         }
 

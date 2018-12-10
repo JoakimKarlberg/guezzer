@@ -9,6 +9,7 @@ namespace guezzer.Api.Helpers
     public class UpdatePlayerDto
     {
         [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
 
         [Required]
