@@ -1,5 +1,6 @@
 ﻿using guezzer.Api.Helpers;
 using guezzer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,6 +10,10 @@ namespace guezzer.Api.Repositories
     {
         Task<List<GetResultDto>> GetAll();
 
-        Task<Result> Update(ResultDto resultDto);
+        Task<Result> Update(UpdateResultDto resultDto);
+
+        Task<List<GetResultDto>> GetPlayerResults(string name);
+
+        Task<Guid> GetPlayerIdByName(string name);
     }
 }

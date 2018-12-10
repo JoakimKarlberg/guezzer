@@ -7,8 +7,8 @@ namespace guezzer.Api.Repositories
 {
     public interface ICategoryRepository
     {
-        Task<List<CategoryDto>> GetAll();
+        Task<List<GetCategoryDto>> GetAll();
 
-        Task<CategoryDto> Get(string type);
+        Task<GetCategoryDto> Get(string type);
     }
 }
