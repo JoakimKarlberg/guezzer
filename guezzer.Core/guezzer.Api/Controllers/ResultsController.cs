@@ -28,8 +28,18 @@ namespace guezzer.Api.Controllers
 
         //PUT: api/Results/{resultDto-object}
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] ResultDto resultDto)
+        public async Task<IActionResult> Update([FromBody] UpdateResultDto resultDto)
         {
+            if (resultDto == null)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return new UnprocessableEntityObjectResult(ModelState);
+            }
+
             var result = await _repository.Update(resultDto);
 
             return NoContent();

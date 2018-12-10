@@ -17,7 +17,7 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<Result> Update(ResultDto resultDto)
+        public async Task<Result> Update(UpdateResultDto resultDto)
         {
             var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == resultDto.Name && r.Category.Type == resultDto.Category);
 

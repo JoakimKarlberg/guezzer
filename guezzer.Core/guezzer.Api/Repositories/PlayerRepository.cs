@@ -17,7 +17,7 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<PlayerDto> Get(string name)
+        public async Task<GetPlayerDto> Get(string name)
         {
             var player = await _context.Players.FirstOrDefaultAsync(p => p.Name == name);
 
@@ -26,12 +26,12 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            var playerDto = new PlayerDto { Name = player.Name, TimesPlayed = player.TimesPlayed };            
+            var playerDto = new GetPlayerDto { Name = player.Name, TimesPlayed = player.TimesPlayed };            
 
             return playerDto;
         }
 
-        public async Task<List<PlayerDto>> GetAll()
+        public async Task<List<GetPlayerDto>> GetAll()
         {
             var players = await _context.Players.ToListAsync();
 
@@ -41,22 +41,23 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            var playerDtos = new List<PlayerDto>();
+            var playerDtos = new List<GetPlayerDto>();
 
             foreach(var player in players)
             {
-                playerDtos.Add(new PlayerDto { Name = player.Name, TimesPlayed = player.TimesPlayed });
+                playerDtos.Add(new GetPlayerDto { Name = player.Name, TimesPlayed = player.TimesPlayed });
             }
 
             return playerDtos;
         }
 
-        public async Task<Player> Update(PlayerDto playerDto)
+        public async Task<Player> Update(UpdatePlayerDto playerDto)
         {
             var player = await _context.Players.FirstOrDefaultAsync(p => p.Name == playerDto.Name);
 
             if(player == null)
             {
+                // Add function that creates instead of having it nested in an Update function - repository pattern
                 var newPlayer = new Player
                 {
                     Id = Guid.NewGuid(),
