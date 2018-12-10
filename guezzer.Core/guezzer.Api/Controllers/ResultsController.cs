@@ -28,7 +28,27 @@ namespace guezzer.Api.Controllers
             {
                 return NotFound();
             }
+
             return Ok(results);
+        }
+
+        //GET: api/Results/{name}
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetPlayerResults(string name)
+        {
+            if(name == null)
+            {
+                return BadRequest();
+            }
+
+            var result = await _repository.GetPlayerResults(name);
+
+            if(result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
         //PUT: api/Results/{resultDto-object}
