@@ -1,5 +1,5 @@
 <template>
-<v-app class="grey lighten-3">
+<v-app class="white">
   <Header/>
     <v-container pa-5>
       <router-view/>

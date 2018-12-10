@@ -1,10 +1,11 @@
 <template>
      <v-btn
-        flat
+        color="success"
         x-large
         router-link :to="{name: 'QuestionPage', 
         params: {category: this.selectedCategory}}" 
         tag="button">
+        <span>begin</span>
         <v-icon x-large>forward</v-icon>
      </v-btn>
 </template>

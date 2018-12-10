@@ -1,17 +1,28 @@
 <template>
   <div class="home">
-    <v-card-actions class="justify-center">
-      <!-- <h1 class="red--text text--darken-3 display-3">{{msg}}</h1>      -->
-    </v-card-actions>
-        <v-card-actions class="justify-center">
-          <img src="../assets/guezzerlogo.png">
-          </v-card-actions>
-    <start-button/>
-    <div class="container">
-        <top-list></top-list>
-        <top-list></top-list>
-        <top-list></top-list>
-    </div>
+    <v-container>
+      <v-layout align-center justify-center row fill-height>
+        <v-flex xs12 lg6>
+
+          <v-layout justify-center>
+            <img src="../assets/guezzerlogo.png" class="mt-4">
+          </v-layout>
+
+          <v-layout justify-center>
+            <start-button class="mt-5"/>
+          </v-layout>
+
+          <v-layout row wrap>
+            <v-flex xs12>
+              <top-list/>
+              <top-list/>
+              <top-list/>
+            </v-flex>
+          </v-layout>
+
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -28,16 +39,7 @@
     name: 'LandingPage',
     data() {
       return {
-        msg: "Welcome to " 
       }
     }
   };
 </script>
-
-<style scoped>
-  .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-</style>

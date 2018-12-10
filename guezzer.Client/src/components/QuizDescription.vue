@@ -1,8 +1,6 @@
 <template>
   <div class="QuizDescription">
-    <div class="container">
       <p>{{description}}</p>
-    </div>
   </div>
 </template>
 
@@ -16,9 +14,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.container{
-  padding: 20px;
-}
-</style>
