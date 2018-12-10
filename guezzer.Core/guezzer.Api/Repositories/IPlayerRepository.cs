@@ -8,10 +8,10 @@ namespace guezzer.Api.Repositories
 {
     public interface IPlayerRepository
     {
-        Task<List<PlayerDto>> GetAll();
+        Task<List<GetPlayerDto>> GetAll();
 
-        Task<PlayerDto> Get(string name);
+        Task<GetPlayerDto> Get(string name);
 
-        Task<Player> Update(PlayerDto playerDto);
+        Task<Player> Update(UpdatePlayerDto playerDto);
     }
 }

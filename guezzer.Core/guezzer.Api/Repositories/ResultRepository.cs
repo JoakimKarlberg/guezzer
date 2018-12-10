@@ -17,40 +17,6 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<Result> Update(ResultDto resultDto)
-        {
-            var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == resultDto.Name && r.Category.Type == resultDto.Category);
-
-            if (result == null)
-            {
-                // Add function that creates instead of having it nested in an Update function - repository pattern
-                var newResult = new Result
-                {
-                    Id = Guid.NewGuid(),
-                    Category = await _context.Categories.FirstOrDefaultAsync(c => c.Type == resultDto.Category),
-                    Player = await _context.Players.FirstOrDefaultAsync(p => p.Name == resultDto.Name),
-                    Score = resultDto.Score,
-                    Updated = DateTime.Now
-                };
-
-                await _context.Results.AddAsync(newResult);
-            }
-            else
-            {
-                if (resultDto.Score > result.Score)
-                {
-                    result.Score = resultDto.Score;
-                }
-                result.Updated = DateTime.Now;
-
-                _context.Results.Update(result);
-            }
-
-            await _context.SaveChangesAsync();
-
-            return result;
-        }
-
         public async Task<List<GetResultDto>> GetAll()
         {
             var results = await _context.Results
@@ -78,6 +44,41 @@ namespace guezzer.Api.Repositories
             }
 
             return getResultDtos;
+        }
+
+        public async Task<Result> Update(UpdateResultDto resultDto)
+        {
+            var result = await _context.Results.FirstOrDefaultAsync(r => r.Player.Name == resultDto.Name && r.Category.Type == resultDto.Category);
+
+            if (result == null)
+            {
+                // Add function that creates instead of having it nested in an Update function - repository pattern
+                var newResult = new Result
+                {
+                    Id = Guid.NewGuid(),
+                    Category = await _context.Categories.FirstOrDefaultAsync(c => c.Type == resultDto.Category),
+                    Player = await _context.Players.FirstOrDefaultAsync(p => p.Name == resultDto.Name),
+                    Score = resultDto.Score,
+                    Updated = DateTime.Now
+                };
+
+                result = newResult;
+                await _context.Results.AddAsync(result);
+            }
+            else
+            {
+                if (resultDto.Score > result.Score)
+                {
+                    result.Score = resultDto.Score;
+                }
+                result.Updated = DateTime.Now;
+
+                _context.Results.Update(result);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return result;
         }
     }
 }

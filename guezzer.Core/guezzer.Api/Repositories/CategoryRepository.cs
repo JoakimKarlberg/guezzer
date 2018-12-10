@@ -16,7 +16,7 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<CategoryDto> Get(string type)
+        public async Task<GetCategoryDto> Get(string type)
         {
             var category = await _context.Categories
                 .FirstOrDefaultAsync(c => c.Type == type);
@@ -27,12 +27,12 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            var categoryDto = new CategoryDto { Id = category.Id, Type = category.Type };
+            var categoryDto = new GetCategoryDto { Id = category.Id, Type = category.Type };
 
             return categoryDto;
         }
 
-        public async Task<List<CategoryDto>> GetAll()
+        public async Task<List<GetCategoryDto>> GetAll()
         {
             var categories = await _context.Categories
                 .ToListAsync();
@@ -43,11 +43,11 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            var categoryDtos = new List<CategoryDto>();
+            var categoryDtos = new List<GetCategoryDto>();
 
             foreach(var item in categories)
             {
-                categoryDtos.Add(new CategoryDto { Id = item.Id, Type = item.Type });
+                categoryDtos.Add(new GetCategoryDto { Id = item.Id, Type = item.Type });
             }
 
             return categoryDtos;
