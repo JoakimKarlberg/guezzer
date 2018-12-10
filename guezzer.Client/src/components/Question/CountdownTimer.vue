@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 5
+      totalTime: 100
     }
   },
 
@@ -27,7 +27,7 @@ export default {
     },
 
     refreshTimer() {
-      this.totalTime = 5;
+      this.totalTime = 100;
     },
 
     countdown() 

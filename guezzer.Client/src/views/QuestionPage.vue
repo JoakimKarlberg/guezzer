@@ -1,11 +1,29 @@
 <template>
     <div class="QuestionPage">
-       <question-title :questionIndex="questionIndex"></question-title>
-       <video-item class="videoItem" ref="video" :category="category"></video-item>
-       <div class="container">
-       <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
-       <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
-       </div>
+        <v-container>
+            <v-layout align-center justify-center row fill-height>
+                <v-flex xs12 md6> 
+                    
+                    <question-title :questionIndex="questionIndex"></question-title>
+
+                    <v-layout justify-center>
+                        <video-item class="videoItem" ref="video" :category="category"></video-item>
+                    </v-layout>
+
+                    <v-layout>
+                        <v-flex row xs12>
+                            <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
+                        </v-flex>
+                    </v-layout>
+                    
+                    <v-layout>
+                        <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
+                    </v-layout>
+
+                </v-flex>
+            </v-layout>            
+        </v-container>
+
     </div>
 
 </template>
@@ -57,26 +75,3 @@ export default {
 
 </script>
 
-<style scoped>
-
-.container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-}
-
-.answerButtons {
-    width: 50%;
-}
-
-.videoItem {
-    margin: 20px;
-}
-
-.countdownTimer {
-    margin-top: 55px;
-
-}
-
-</style>
