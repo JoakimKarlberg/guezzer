@@ -35,6 +35,11 @@ namespace guezzer.Api.Controllers
                 return BadRequest();
             }
 
+            if(!(resultDto.Score >= 0))
+            {
+                ModelState.AddModelError(nameof(UpdateResultDto), "Score needs to be a number of value 0 or higher.");
+            }
+
             if (!ModelState.IsValid)
             {
                 return new UnprocessableEntityObjectResult(ModelState);

@@ -14,7 +14,7 @@ namespace guezzer.Api.Helpers
         [Required]
         public string Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You need to fill in a valid Score")]
         public int Score { get; set; }
     }
 }
