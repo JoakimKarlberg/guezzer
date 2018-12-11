@@ -1,11 +1,12 @@
 <template>
     <div class="QuestionPage">
        <question-title :questionIndex="questionIndex"></question-title>
-       <video-item class="videoItem" ref="video" :category="category"></video-item>
+       <video-item class="videoItem" ref="video" :category="category" @passViewCount="getViewCounts"></video-item>
        <div class="container">
        <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
        <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
        <h1>{{answer}}</h1>
+       <p> {{viewCount}} </p>
        </div>
     </div>
 
@@ -32,13 +33,18 @@ export default {
             questionIndex: 1,
             numberOfQuestions: 10,
             category: '',
-            answer: ''
+            answer: '',
+            viewCount: null
         }
     },
     created(){
         this.category = this.$route.params.category;
     },
     methods: {
+        getViewCounts(viewCount) {
+            this.viewCount = viewCount;
+        },
+
         checkAnswer(answer){
 
             this.answer = answer

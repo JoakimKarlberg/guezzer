@@ -49,7 +49,14 @@ export default {
         GetStatistics ({
          apiKey: YoutubeApiKey, 
          videoId: this.fetchedVideoId,
-        }, response => this.viewCount = response);
+        }, response => this.handleViewCounts(response));
+    },
+
+    handleViewCounts(viewCountResponse) {
+        this.viewCount = viewCountResponse;
+
+
+        this.$emit('passViewCount', this.viewCount)
     },
 
     checkIfVideoAlreadyPlayed(){
