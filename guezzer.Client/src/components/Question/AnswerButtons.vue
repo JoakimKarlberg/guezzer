@@ -1,6 +1,6 @@
 <template>
      <div class="AnswerButtons">
-         <button class="btn btn-primary" v-for="(answer,index) in answers" :key="index" @click="$emit('answerButtonClicked')">{{ answer }}</button>
+         <button class="btn btn-primary" v-for="(answer,index) in answers" :key="index" @click="$emit('answerButtonClicked', answer)">{{ answer }}</button>
     </div>
 </template>
 

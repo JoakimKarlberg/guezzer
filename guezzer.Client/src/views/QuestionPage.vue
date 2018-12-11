@@ -5,6 +5,7 @@
        <div class="container">
        <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
        <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
+       <h1>{{answer}}</h1>
        </div>
     </div>
 
@@ -30,14 +31,17 @@ export default {
         return {
             questionIndex: 1,
             numberOfQuestions: 10,
-            category: ''
+            category: '',
+            answer: ''
         }
     },
     created(){
         this.category = this.$route.params.category;
     },
     methods: {
-        checkAnswer(){
+        checkAnswer(answer){
+
+            this.answer = answer
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
