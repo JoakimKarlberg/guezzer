@@ -1,31 +1,19 @@
 <template>
      <div class="AnswerButtons">
-        <v-flex>
-            <v-btn class="red darken-4 white--text btn-primary" v-for="(answer,index) in answers" :key="index" @click="$emit('answerButtonClicked')">{{ answer }}</v-btn>
-        </v-flex>
+        <v-btn class="red darken-3 white--text btn-primary btn-1 mt-4" @click="$emit('answerButtonClicked')">0-1000</v-btn>
+        <v-btn class="orange darken-2 white--text btn-primary btn-2 mt-4" @click="$emit('answerButtonClicked')">1001-10000</v-btn>
+        <v-btn class="blue darken-2 white--text btn-primary btn-3 mt-4" @click="$emit('answerButtonClicked')">10001-100 000</v-btn>
+        <v-btn class="green white--text btn-primary btn-4 mt-4" @click="$emit('answerButtonClicked')">More than 100 000</v-btn>
     </div>
 </template>
 
-
-
-
-<script>
-
-export default {
-    data() {
-        return  {
-             answers: ['0-1000', '1001-10000','10001-100 000', 'More than 100 000']
-        }
-    }
-};
-</script>
-
 <style scoped>
-
 .btn-primary {
-    width: 300px;
-    margin: 15px 30px;
-    
+    width: 305px;
 }
-
+@media screen and (max-width: 788px) {
+  .btn-primary {
+    width: 620px;
+  }
+}
 </style>

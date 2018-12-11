@@ -2,19 +2,11 @@
     <div class="QuestionPage">
         <v-container>
             <v-layout align-center justify-center row fill-height>
-                <v-flex xs12 md6> 
+                <v-flex xs12 md12 lg8 xl6> 
                     
-                    <question-title :questionIndex="questionIndex"></question-title>
-
-                    <v-layout justify-center>
-                        <video-item class="videoItem" ref="video" :category="category"></video-item>
-                    </v-layout>
-
-                    <v-layout>
-                        <v-flex row xs12>
-                            <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
-                        </v-flex>
-                    </v-layout>
+                    <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title>
+                    <video-item class="videoItem" ref="video" :category="category"></video-item>
+                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>  
                     
                     <v-layout>
                         <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
@@ -25,9 +17,7 @@
         </v-container>
 
     </div>
-
 </template>
-
 
 <script>
 import QuestionTitle from '@/components/Question/QuestionTitle.vue'
@@ -72,6 +62,5 @@ export default {
         }
     }
 };
-
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <div class="categoryPage">
+
     <v-container>
       <v-layout align-center justify-center row fill-height>
         <v-flex xs12 md6>
@@ -16,8 +17,7 @@
           <SelectCategory/>
         </v-layout>
 
-
-        <v-flex xs12>
+        <v-flex>
           <v-card color="indigo lighten-2" class="white--text mt-5">
             <v-card-title primary-title>
             <div>
@@ -28,9 +28,9 @@
           </v-card>
         </v-flex>
 
-          <v-layout align-end justify-end class="mt-5">
-            <BeginQuizButton/>
-          </v-layout>
+        <v-layout align-end justify-end class="mt-5">
+          <BeginQuizButton/>
+        </v-layout>
 
       </v-flex>
     </v-layout>
