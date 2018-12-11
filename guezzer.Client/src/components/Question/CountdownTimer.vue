@@ -29,7 +29,6 @@ export default {
 
     stopTimer() {
       clearInterval(this.timer);
-      console.log("timer stoppades");
       this.timer = null;
     },
 

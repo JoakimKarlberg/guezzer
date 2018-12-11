@@ -47,9 +47,7 @@ export default {
         return {
             questionIndex: 1,
             numberOfQuestions: 10,
-            category: ' ',
-            viewCount: '',
-            score: 0
+            category: ' '
         }
     },
     created(){
