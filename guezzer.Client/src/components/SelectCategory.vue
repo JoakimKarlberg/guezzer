@@ -28,7 +28,7 @@ export default {
   name: "SelectCategory",
   data() {
     return {
-      childMessage : ''
+      childMessage : ' '
     }
   }
   ,

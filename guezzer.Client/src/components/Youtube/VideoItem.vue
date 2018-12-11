@@ -36,7 +36,6 @@ export default {
         else
         {
             this.videoList.push(this.fetchedVideoId);
-            console.log(this.videoList);
         }
       },
       getVideo() {
