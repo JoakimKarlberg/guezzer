@@ -15,8 +15,8 @@ export default {
     data() {
         return  {
              objectAnswers: [{'startValue':'0','endValue':'1000'},
-             {'startValue':'1001','endValue':'10000'},{'startValue':'10001','endValue':'100000'},
-             {'startValue':'More than','endValue':'100000'}]
+             {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
+             {'startValue':'More than','endValue':'1000 000 '}]
         }
     }
 };
