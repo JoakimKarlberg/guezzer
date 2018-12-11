@@ -12,6 +12,8 @@ module.exports = function(options, callback) {
         throw new Error('Youtube search would require a key');
     }
 
+    let test = null;
+
     let params = {
         part: 'snippet',
         key: options.apiKey,

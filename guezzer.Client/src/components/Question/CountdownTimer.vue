@@ -62,7 +62,7 @@ export default {
   },
 
   created () {
-      this.startTimer();
+      //this.startTimer();
   }
 }
 </script>
