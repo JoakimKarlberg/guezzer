@@ -1,9 +1,8 @@
 <template>
-     <div class="display-result">
-        <h1>{{msg}}</h1>
+
 
         <div class="score-box">{{score}}</div>
-    </div>
+
 </template>
 
 <script>

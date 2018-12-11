@@ -6,7 +6,7 @@
         <v-flex xs12 md6>
 
         <v-layout justify-center>
-          <h1 class="mt-5 indigo--text">{{quizTitle}}</h1>
+          <h1 class="mt-5">{{quizTitle}}</h1>
         </v-layout>
 
         <v-layout justify-center>
@@ -48,7 +48,7 @@ export default {
   name: "CategoryPage",
   data() {
     return {
-      quizTitle: "Select your category"
+      quizTitle: "Select the category you want to play"
     };
   },
   components: {
