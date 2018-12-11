@@ -10,8 +10,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="result in results" :key="result.id">
-          <td>{{ result.name }}</td>
+        <tr v-for="result in orderedResults" :key="result.id">
+          <td>{{ result.player }}</td>
           <td>{{ result.score }}</td>
           <td>{{ result.category }}</td>
         </tr>
@@ -20,27 +20,8 @@
     </div>
 </template>
 
-// <script>
-// import axios from 'axios'
-// import GetResult from './ResultApi/GetResult.js'
-
-// export default {
-//     name: 'TopList',
-//     data() {
-//     return {
-//        header: "Top score for category: ",
-//        results: []
-//       }
-//     },
-//     methods: {
-//     getResult: function() {//getResult function should be called in template? make a list from this??
-//       GetResult()
-//     }
-//   }
-// }
-// </script>
-
 <script>
+import _ from 'lodash'
 import axios from 'axios'
 const url = 'http://localhost:5000/api/Results';
 
@@ -61,10 +42,14 @@ export default {
       .catch(err => {
         console.log(err)
       })
+  },
+  computed: {
+  orderedResults: function () {
+    return _.orderBy(this.results, 'score', 'desc').slice(0, 10)
+    }
   }
 }
 </script>
-
 
 <style scoped>
 
