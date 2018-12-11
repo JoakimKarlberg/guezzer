@@ -5,7 +5,7 @@
        <div class="container">
        <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
        <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
-       <h1>{{answer}}</h1>
+       <h1>{{answer.endValue}}</h1>
        <p> {{viewCount}} </p>
        </div>
     </div>
