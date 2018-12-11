@@ -20,6 +20,11 @@ namespace guezzer.Api.Controllers
         {
             var result = await _repository.GetAll();
 
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
 
@@ -28,7 +33,13 @@ namespace guezzer.Api.Controllers
         public async Task<IActionResult> Get(string type)
         {
             var result = await _repository.Get(type);
-           return Ok(result);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using guezzer.Entities;
+﻿using guezzer.Api.Helpers;
+using guezzer.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,8 +7,8 @@ namespace guezzer.Api.Repositories
 {
     public interface ICategoryRepository
     {
-        Task<IEnumerable<Category>> GetAll();
+        Task<List<GetCategoryDto>> GetAll();
 
-        Task<Category> Get(string type);
+        Task<GetCategoryDto> Get(string type);
     }
 }

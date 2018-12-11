@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .footer {
-    position: absolute;
+    position: relative;
     padding: 10px;
     left: 0;
     bottom: 0;

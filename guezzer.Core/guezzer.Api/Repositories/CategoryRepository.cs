@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using guezzer.Api.Helpers;
 using guezzer.Data;
 using guezzer.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,10 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<Category> Get(string type)
+        public async Task<GetCategoryDto> Get(string type)
         {
-            var category = _context.Categories.FirstOrDefaultAsync(c => c.Type == type);
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(c => c.Type == type);
 
             if(category == null)
             {
@@ -25,12 +27,15 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            return await category;
+            var categoryDto = new GetCategoryDto { Id = category.Id, Type = category.Type };
+
+            return categoryDto;
         }
 
-        public async Task<IEnumerable<Category>> GetAll()
+        public async Task<List<GetCategoryDto>> GetAll()
         {
-            var categories = _context.Categories.ToListAsync();
+            var categories = await _context.Categories
+                .ToListAsync();
 
             if (categories == null)
             {
@@ -38,7 +43,14 @@ namespace guezzer.Api.Repositories
                 return null;
             }
 
-            return await categories;
+            var categoryDtos = new List<GetCategoryDto>();
+
+            foreach(var item in categories)
+            {
+                categoryDtos.Add(new GetCategoryDto { Id = item.Id, Type = item.Type });
+            }
+
+            return categoryDtos;
         }
     }
 }
