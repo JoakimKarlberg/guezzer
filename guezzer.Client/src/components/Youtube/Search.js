@@ -24,6 +24,7 @@ module.exports = function(options, callback) {
     axios.get(Base_URL, {params})
         .then(response => {
             if(callback) { callback(GetRandomVideoId(response.data.items)) }
+            console.log((GetRandomVideoId(response.data.items).id.videoId));
         })
         .catch(error => console.error(error));
 }

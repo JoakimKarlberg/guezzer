@@ -2,7 +2,8 @@
     <div class="VideoItem">
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
         <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing"></youtube>
-        <h1>{{viewCount}}</h1>
+        <h1>{{this.fetchedVideoId}}</h1>
+        <h1>{{this.viewCount}}</h1>
     </div>
 </template>
 
@@ -49,15 +50,13 @@ export default {
             sortOrder: YoutubeRandomizer.methods.GetRandomOrder()
         }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
         
-        if(this.fetchedVideoId != null){
-        GetStatistics ({
-         apiKey: YoutubeApiKey, 
-         videoId: this.fetchedVideoId,
-        }, response => this.viewCount = response);
+        // GetStatistics ({
+        //  apiKey: YoutubeApiKey, 
+        //  videoId: this.fetchedVideoId,
+        // }, response => this.viewCount = response);
 
         }
         
-    }
     },
     computed: {
       player(){
