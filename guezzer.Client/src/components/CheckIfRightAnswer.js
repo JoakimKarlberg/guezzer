@@ -3,14 +3,16 @@ let maxValue = 1000000;
 export default {
 
     methods:{
+        
          
          CheckAnswer: function(rightAnswer,answer){
 
             let trimmedStartValue = parseInt(Trim(answer.startValue));
             let trimmedEndValue = parseInt(Trim(answer.endValue));
+            
 
             if(trimmedStartValue <=rightAnswer &&
-             trimmedEndValue >= rightAnswer) {
+             trimmedEndValue >= rightAnswer || (answer.startValue == "More than" && rightAnswer > maxValue)) {
                 return 'Du hade rätt';
             }
             else
