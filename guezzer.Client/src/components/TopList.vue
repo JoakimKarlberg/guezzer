@@ -6,11 +6,11 @@
         <tr>
           <th>Name</th>
           <th>Score</th>
-          <th>category</th>
+          <th>Category</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="result in orderedResults" :key="result.id">
+        <tr v-for="result in topTenResults" :key="result.id">
           <td>{{ result.player }}</td>
           <td>{{ result.score }}</td>
           <td>{{ result.category }}</td>
@@ -30,13 +30,12 @@ export default {
   data () {
     return {
       results: {},
-      header: 'Toplist for category'
+      header: 'Toplist'
     }
   },
   created () {
     axios.get(url)
       .then(response => {
-        console.log(response.data)
         this.results = response.data
       })
       .catch(err => {
@@ -44,7 +43,7 @@ export default {
       })
   },
   computed: {
-  orderedResults: function () {
+  topTenResults: function () {
     return _.orderBy(this.results, 'score', 'desc').slice(0, 10)
     }
   }
