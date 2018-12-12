@@ -13,8 +13,7 @@
         </div>
         </div>
         <div class="container">
-            <top-list></top-list> 
-            <top-list2></top-list2>
+            <top-list></top-list>
         </div>
     </div>
 </template>
@@ -25,7 +24,6 @@
     import PlayAgainButton from '@/components/PlayAgainButton.vue'
     import HomeButton from '@/components/HomeButton.vue'
     import TopList from '@/components/TopList.vue'
-    import TopList2 from '@/components/TopList2.vue'
 
     export default {
     components: {
@@ -33,8 +31,7 @@
         SubmitScore,
         PlayAgainButton,
         HomeButton,
-        TopList,
-        TopList2
+        TopList
         }
     }
 </script>
