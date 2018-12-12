@@ -6,8 +6,6 @@
         <span>Submit Result</span>
         <v-icon right>send</v-icon>
       </v-btn>
-      <p>{{this.score}}</p>
-      <p>{{this.category}}</p>
     </form>
   </v-flex>
 </template>

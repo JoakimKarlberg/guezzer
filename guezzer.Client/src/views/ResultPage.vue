@@ -9,7 +9,7 @@
           </v-layout>
 
           <v-layout justify-center class="mt-5">
-            <display-result/>
+            <display-result :score="score"/>
           </v-layout>
 
             <v-layout justify-center class="mt-5">
