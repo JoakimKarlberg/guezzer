@@ -9,7 +9,6 @@ export default {
 
             let trimmedStartValue = parseInt(Trim(answer.startValue));
             let trimmedEndValue = parseInt(Trim(answer.endValue));
-            
 
             if(trimmedStartValue <=rightAnswer &&
              trimmedEndValue >= rightAnswer || (answer.startValue == "More than" && rightAnswer > maxValue)) {
