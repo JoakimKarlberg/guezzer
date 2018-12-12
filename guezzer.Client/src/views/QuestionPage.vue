@@ -24,7 +24,7 @@ import QuestionTitle from '@/components/Question/QuestionTitle.vue'
 import AnswerButtons from '@/components/Question/AnswerButtons.vue'
 import VideoItem from '@/components/Youtube/VideoItem.vue'
 import CountdownTimer from '@/components/Question/CountdownTimer.vue';
-import CheckIfRightAnswer from '@/components/CheckIfRightAnswer.js'
+import HandleAnswer from '@/components/HandleAnswer.js'
 import router from '../router'
 
 export default {
@@ -40,8 +40,8 @@ export default {
             questionIndex: 1,
             numberOfQuestions: 10,
             category: '',
-            answer: '',
-            viewCount: ''
+            viewCount: '',
+            score: 0
         }
     },
     created(){
@@ -54,9 +54,8 @@ export default {
 
         checkAnswer(answer){
 
-            this.answer = answer
+            this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
 
-            console.log(CheckIfRightAnswer.methods.CheckAnswer(this.viewCount,this.answer));
 
             if (this.questionIndex >= this.numberOfQuestions)
             {

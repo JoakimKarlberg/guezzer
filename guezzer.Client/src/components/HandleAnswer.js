@@ -1,4 +1,5 @@
 let maxValue = 1000000;
+let scoreCounter = 0;
 
 export default {
 
@@ -7,21 +8,22 @@ export default {
          
          CheckAnswer: function(rightAnswer,answer){
 
-            let trimmedStartValue = parseInt(Trim(answer.startValue));
-            let trimmedEndValue = parseInt(Trim(answer.endValue));
+            let trimmedStartValue = Trim(answer.startValue);
+            let trimmedEndValue = Trim(answer.endValue);
 
             if(trimmedStartValue <=rightAnswer &&
              trimmedEndValue >= rightAnswer || (answer.startValue == "More than" && rightAnswer > maxValue)) {
-                return 'Du hade rätt';
+                scoreCounter++; 
+                return scoreCounter;
             }
             else
             {
-              return 'Du hade fel';
+              return scoreCounter;
             }
          }      
     }
 }
 
 function Trim (string){
-    return string.replace(/\s+/g, '');
+    return parseInt(string.replace(/\s+/g, ''));
 }

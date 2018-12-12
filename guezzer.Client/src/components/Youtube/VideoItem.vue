@@ -54,8 +54,6 @@ export default {
 
     handleViewCounts(viewCountResponse) {
         this.viewCount = viewCountResponse;
-
-
         this.$emit('passViewCount', this.viewCount)
     },
 

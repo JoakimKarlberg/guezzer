@@ -12,7 +12,8 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 100
+      totalTime: 5,
+      noAnswerObject: {'startValue':'','endValue':''}
     }
   },
 
@@ -27,7 +28,7 @@ export default {
     },
 
     refreshTimer() {
-      this.totalTime = 100;
+      this.totalTime = 5;
     },
 
     countdown() 
@@ -40,7 +41,7 @@ export default {
       else
       {
         this.totalTime = 0;
-        this.$parent.checkAnswer();
+        this.$parent.checkAnswer(this.noAnswerObject);
       }
      
     },
@@ -62,7 +63,7 @@ export default {
   },
 
   created () {
-      //this.startTimer();
+      this.startTimer();
   }
 }
 </script>
