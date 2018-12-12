@@ -8,8 +8,6 @@
 
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
     data() {
@@ -23,11 +21,12 @@ export default {
 </script>
 
 <style scoped>
-
 .btn-primary {
-    width: 30%;
-    margin: 15px 30px;
-    
+    width: 305px;
 }
-
+@media screen and (max-width: 788px) {
+  .btn-primary {
+    width: 620px;
+  }
+}
 </style>

@@ -1,14 +1,41 @@
 <template>
   <div class="categoryPage">
-    <h1>{{quizTitle}}</h1>
-    <SelectCategory style="margin-top: 100px;"></SelectCategory>
-    <div class="card" style="width: 50%; margin-top: 60px;">
-      <div class="card-body" >
-        <h5 class="card-title">Special title if we want it</h5>
-        <QuizDescription></QuizDescription>
-      </div>
-    </div>
-    <BeginQuizButton></BeginQuizButton>
+
+    <v-container>
+      <v-layout align-center justify-center row fill-height>
+        <v-flex xs12 md6>
+
+        <v-layout justify-center>
+          <h1 class="mt-5">{{quizTitle}}</h1>
+        </v-layout>
+
+        <v-layout justify-center>
+          <v-icon>arrow_downward</v-icon>
+        </v-layout>
+
+        <v-layout justify-center>
+          <SelectCategory/>
+        </v-layout>
+
+        <v-flex>
+          <v-card color="blue-grey lighten-1" class="white--text mt-5">
+            <v-card-title primary-title>
+            <div>
+            <div class="headline">Instructions</div>
+            <QuizDescription/>
+            </div>
+            </v-card-title>
+          </v-card>
+        </v-flex>
+
+        <v-layout align-end justify-end class="mt-5">
+          <BeginQuizButton/>
+        </v-layout>
+
+      </v-flex>
+    </v-layout>
+  </v-container>
+
   </div>
 </template>
 
@@ -21,7 +48,7 @@ export default {
   name: "CategoryPage",
   data() {
     return {
-      quizTitle: "Youtube Randomizer"
+      quizTitle: "Select the category you want to play"
     };
   },
   components: {

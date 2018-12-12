@@ -1,9 +1,13 @@
 <template>
-     <div class="button-container">
-        <!-- <button class="btn btn-primary" v-on:click="BeginQuizButton">Begin</button> -->
-        <router-link :to="{name: 'QuestionPage', params: {category: this.selectedCategory}}" tag="button" class="btn btn-primary">Begin</router-link>
-        <i class="fas fa-arrow-right"></i>
-    </div>
+     <v-btn
+        color="success"
+        x-large
+        router-link :to="{name: 'QuestionPage', 
+        params: {category: this.selectedCategory}}" 
+        tag="button">
+        <span>begin</span>
+        <v-icon x-large>forward</v-icon>
+     </v-btn>
 </template>
 
 <script>
@@ -30,11 +34,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.button-container{
-  position: absolute;
-    top: 70%;
-    right: 20%;
-}
-</style>

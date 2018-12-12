@@ -1,17 +1,23 @@
 <template>
     <div class="QuestionPage">
-       <question-title :questionIndex="questionIndex"></question-title>
-       <video-item class="videoItem" ref="video" :category="category" @passViewCount="getViewCounts"></video-item>
-       <div class="container">
-       <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>
-       <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
-       <h1>{{answer.endValue}}</h1>
-       <p> {{viewCount}} </p>
-       </div>
+        <v-container>
+            <v-layout align-center justify-center row fill-height>
+                <v-flex xs12 md12 lg8 xl6> 
+                    
+                    <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title>
+                    <video-item class="videoItem" ref="video" :category="category"></video-item>
+                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>  
+                    
+                    <v-layout>
+                        <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
+                    </v-layout>
+
+                </v-flex>
+            </v-layout>            
+        </v-container>
+
     </div>
-
 </template>
-
 
 <script>
 import QuestionTitle from '@/components/Question/QuestionTitle.vue'
@@ -68,29 +74,4 @@ export default {
         }
     }
 };
-
 </script>
-
-<style scoped>
-
-.container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-}
-
-.answerButtons {
-    width: 50%;
-}
-
-.videoItem {
-    margin: 20px;
-}
-
-.countdownTimer {
-    margin-top: 55px;
-
-}
-
-</style>
