@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr v-for="result in topTenResults" :key="result.id">
-          <td>{{ result.player }}</td>
+          <td>{{ result.name }}</td>
           <td>{{ result.score }}</td>
           <td>{{ result.category }}</td>
         </tr>
