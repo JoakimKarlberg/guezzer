@@ -32,6 +32,25 @@ namespace guezzer.Api.Controllers
             return Ok(results);
         }
 
+        //GET: api/Results/{id}
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetResultById(Guid id)
+        //{
+        //    if(id == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    var result = await _repository.GetById(id);
+
+        //    if(result == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(result);
+        //}
+
         //GET: api/Results/{name}
         [HttpGet("{name}")]
         public async Task<IActionResult> GetPlayerResults(string name)
