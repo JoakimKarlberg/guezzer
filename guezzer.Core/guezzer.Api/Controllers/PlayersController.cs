@@ -23,6 +23,11 @@ namespace guezzer.Api.Controllers
         {
             var result = await _repository.GetAll();
 
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
 
@@ -31,13 +36,29 @@ namespace guezzer.Api.Controllers
         public async Task<IActionResult> Get(string name)
         {
             var result = await _repository.Get(name);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
 
         //PUT: api/Players/{playerDto-object}
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] PlayerDto playerDto)
+        public async Task<IActionResult> Update([FromBody] UpdatePlayerDto playerDto)
         {
+            if(playerDto == null)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return new UnprocessableEntityObjectResult(ModelState);
+            }
+
             var result = await _repository.Update(playerDto);
 
             return NoContent();

@@ -1,29 +1,13 @@
 <template>
-  <div class="SelectCategory">
-    <h5>Select Category</h5>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="categoryAll" name="customRadioButton" class="custom-control-input" 
-       v-on:change="emitToParent" value="random">
-      <label class="custom-control-label" for="categoryAll">All</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="categoryMusic" name="customRadioButton" class="custom-control-input"
-      v-on:change="emitToParent" value="music">
-      <label class="custom-control-label" for="categoryMusic">Music</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="categoryFunny" name="customRadioButton" class="custom-control-input"
-      v-on:change="emitToParent" value="funny">
-      <label class="custom-control-label" for="categoryFunny">Funny</label>
-    </div>
-  </div>
+  <v-radio-group row>
+    <v-radio color="red darken-3" label="Funny" value="funny" v-on:change="emitToParent"></v-radio>
+    <v-radio color="orange darken-3" label="Music" value="music" v-on:change="emitToParent"></v-radio>
+    <v-radio color="yellow darken-1" label="Random" value="random" v-on:change="emitToParent"></v-radio>
+  </v-radio-group>
 </template>
 
-
 <script>
-
 import { EventBus } from './Youtube/event-bus.js';
-
 export default {
   name: "SelectCategory",
   data() {
@@ -39,7 +23,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

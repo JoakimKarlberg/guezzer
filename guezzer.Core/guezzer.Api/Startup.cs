@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace guezzer.Api
 {
@@ -24,7 +25,13 @@ namespace guezzer.Api
             services.AddCors();
 
             services.AddDbContext<GuezzerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddControllersAsServices();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddControllersAsServices()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
+
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
             services.AddScoped<IResultRepository, ResultRepository>();

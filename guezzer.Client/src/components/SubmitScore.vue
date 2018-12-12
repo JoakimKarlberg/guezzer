@@ -1,12 +1,13 @@
 <template>
-  <div class="score-container">
-    <h2>{{saveScoreMsg}}</h2>
-    <div class="enter-name-field">
-      {{enterNameMsg}}
-      <input id="name" v-model="nameInput" type="text">
-    </div>
-    <button class="btn btn-success" v-on:click="submitResult">Submit Result</button>
-  </div>
+  <v-flex xs12 md12 lg8 xl6>
+    <form>
+      <v-text-field required v-model="nameInput" :counter="50" :error-messages="nameErrors" label="Enter your name:"></v-text-field>
+      <v-btn class="red darken-3 white--text" depressed v-on:click="submitResult">
+        <span>Submit Result</span>
+        <v-icon right>send</v-icon>
+      </v-btn>
+    </form>
+  </v-flex>
 </template>
 
 <script>
@@ -16,8 +17,6 @@ export default {
   name: "SubmitScore",
   data() {
     return {
-      enterNameMsg: "Enter your name:",
-      saveScoreMsg: "Do you want to save your score?",
       nameInput: ""
     };
   },
@@ -29,12 +28,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.score-container {
-  padding: 10px;
-}
-.enter-name-field {
-  padding-bottom: 15px;
-}
-</style>
