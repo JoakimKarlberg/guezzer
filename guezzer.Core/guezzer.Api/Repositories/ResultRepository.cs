@@ -44,7 +44,12 @@ namespace guezzer.Api.Repositories
 
         public async Task<GetResultDto> Get(string id)
         {
-            var result = await _context.Results.FirstOrDefaultAsync(r => r.Id.Equals(id));
+            Guid idAsGuid = new Guid(id);
+
+            var result = await _context.Results
+                .Include(p => p.Player)
+                .Include(c => c.Category)
+                .FirstOrDefaultAsync(r => r.Id == idAsGuid);
 
             if (result == null)
             {
@@ -59,6 +64,11 @@ namespace guezzer.Api.Repositories
         public async Task<List<GetResultDto>> GetPlayerResults(string name)
         {
             var player = GetPlayerIdByName(name).Result;
+
+            if(player == null)
+            {
+                return null;
+            }
 
             var result = await _context.Results
                 .Where(p => p.Player.Id == player)

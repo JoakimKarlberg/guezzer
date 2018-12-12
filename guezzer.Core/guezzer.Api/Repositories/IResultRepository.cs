@@ -8,8 +8,6 @@ namespace guezzer.Api.Repositories
 {
     public interface IResultRepository : IRepository<GetResultDto>
     {
-        //Task<GetResultDto> GetById(Guid id);
-
         Task<Result> Update(UpdateResultDto resultDto);
 
         Task<List<GetResultDto>> GetPlayerResults(string name);
