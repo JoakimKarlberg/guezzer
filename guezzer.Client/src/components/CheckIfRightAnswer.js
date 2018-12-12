@@ -6,10 +6,13 @@ export default {
          
          CheckAnswer: function(rightAnswer,answer){
 
-            console.log(answer.startValue)
+            console.log('rightAnswer' +rightAnswer);
+            console.log('startValue' + (answer.startValue).replace(/\s+/g, ''));
+            console.log('endvalue' + (answer.endValue).replace(/\s+/g, ''));
 
-            if(parseInt(answer.startValue)<=parseInt(rightAnswer) &&
-             parseInt(answer.endValue)>= parseInt(rightAnswer)){
+
+            if(parseInt((answer.startValue).replace(/\s+/g, '')) <=parseInt(rightAnswer) &&
+             parseInt((answer.endValue).replace(/\s+/g, '')) >= parseInt(rightAnswer)){
                 return 'Du hade rätt';
             }
             else

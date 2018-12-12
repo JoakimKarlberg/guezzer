@@ -49,7 +49,6 @@ export default {
         checkAnswer(answer){
 
             this.answer = answer
-
            
 
             console.log(CheckIfRightAnswer.methods.CheckAnswer(this.viewCount,this.answer));
