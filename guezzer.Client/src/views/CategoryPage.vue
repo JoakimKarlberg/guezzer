@@ -18,7 +18,7 @@
         </v-layout>
 
         <v-flex>
-          <v-card color="indigo lighten-2" class="white--text mt-5">
+          <v-card color="blue-grey lighten-1" class="white--text mt-5">
             <v-card-title primary-title>
             <div>
             <div class="headline">Instructions</div>

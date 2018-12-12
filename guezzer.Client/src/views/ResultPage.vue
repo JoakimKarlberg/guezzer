@@ -5,7 +5,7 @@
         <v-flex xs12 md6>
 
           <v-layout justify-center class="mt-3">
-            <h1 class="display-3">Your result</h1>
+            <h1 class="display-3">Your result:</h1>
           </v-layout>
 
           <v-layout justify-center class="mt-5">
