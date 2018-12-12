@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace guezzer.Api.Repositories
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IRepository<GetCategoryDto>
     {
-        Task<List<GetCategoryDto>> GetAll();
 
-        Task<GetCategoryDto> Get(string type);
     }
 }

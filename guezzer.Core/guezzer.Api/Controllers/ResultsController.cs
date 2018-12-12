@@ -32,8 +32,27 @@ namespace guezzer.Api.Controllers
             return Ok(results);
         }
 
-        //GET: api/Results/{name}
-        [HttpGet("{name}")]
+        //GET: api/results/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetResultById(string id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            var result = await _repository.Get(id);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
+        //GET: api/results/player/{name}
+        [HttpGet("player/{name}")]
         public async Task<IActionResult> GetPlayerResults(string name)
         {
             if(name == null)
@@ -51,7 +70,7 @@ namespace guezzer.Api.Controllers
             return Ok(result);
         }
 
-        //PUT: api/Results/{resultDto-object}
+        //PUT: api/results/{resultDto-object}
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateResultDto resultDto)
         {
