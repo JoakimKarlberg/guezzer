@@ -1,6 +1,6 @@
 <template>
      <div class="AnswerButtons">
-         <button class="btn btn-primary" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="$emit('answerButtonClicked', objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</button>
+         <v-btn class="red darken-3 white--text btn-primary btn-1 mt-4" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="$emit('answerButtonClicked', objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</v-btn>
     </div>
 </template>
 
