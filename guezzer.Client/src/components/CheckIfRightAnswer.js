@@ -6,13 +6,11 @@ export default {
          
          CheckAnswer: function(rightAnswer,answer){
 
-            console.log('rightAnswer' +rightAnswer);
-            console.log('startValue' + (answer.startValue).replace(/\s+/g, ''));
-            console.log('endvalue' + (answer.endValue).replace(/\s+/g, ''));
+            let trimmedStartValue = parseInt(Trim(answer.startValue));
+            let trimmedEndValue = parseInt(Trim(answer.endValue));
 
-
-            if(parseInt((answer.startValue).replace(/\s+/g, '')) <=parseInt(rightAnswer) &&
-             parseInt((answer.endValue).replace(/\s+/g, '')) >= parseInt(rightAnswer)){
+            if(trimmedStartValue <=rightAnswer &&
+             trimmedEndValue >= rightAnswer) {
                 return 'Du hade rätt';
             }
             else
@@ -21,4 +19,8 @@ export default {
             }
          }      
     }
+}
+
+function Trim (string){
+    return string.replace(/\s+/g, '');
 }
