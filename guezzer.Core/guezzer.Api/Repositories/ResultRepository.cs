@@ -18,37 +18,6 @@ namespace guezzer.Api.Repositories
             _context = context;
         }
 
-        public async Task<List<GetResultDto>> GetPlayerResults(string name)
-        {
-            var player = GetPlayerIdByName(name).Result;
-
-            var result = await _context.Results
-                .Where(p => p.Player.Id == player)
-                .Include(c => c.Category)
-                .ToListAsync();
-
-            if(result == null)
-            {
-                return null;
-            }
-
-            var getResultDto = new List<GetResultDto>();
-            
-            foreach(var item in result)
-            {
-                getResultDto.Add(new GetResultDto
-                {
-                    ResultId = item.Id,
-                    Name = item.Player.Name,
-                    Category = item.Category.Type,
-                    Score = item.Score,
-                    Date = item.Updated
-                });
-            }
-
-            return getResultDto;
-        }
-
         public async Task<List<GetResultDto>> GetAll()
         {
             var results = await _context.Results
@@ -70,13 +39,62 @@ namespace guezzer.Api.Repositories
                 });
             }
 
-            if(getResultDtos == null)
+            return getResultDtos;
+        }
+
+        public async Task<GetResultDto> Get(string id)
+        {
+            Guid idAsGuid = new Guid(id);
+
+            var result = await _context.Results
+                .Include(p => p.Player)
+                .Include(c => c.Category)
+                .FirstOrDefaultAsync(r => r.Id == idAsGuid);
+
+            if (result == null)
             {
-                //handle exception
                 return null;
             }
 
-            return getResultDtos;
+            var resultDto = new GetResultDto { ResultId = result.Id, Name = result.Player.Name, Category = result.Category.Type, Score = result.Score, Date = result.Updated };
+
+            return resultDto;
+        }
+
+        public async Task<List<GetResultDto>> GetPlayerResults(string name)
+        {
+            var player = GetPlayerIdByName(name).Result;
+
+            if(player == null)
+            {
+                return null;
+            }
+
+            var result = await _context.Results
+                .Where(p => p.Player.Id == player)
+                .Include(c => c.Category)
+                .ToListAsync();
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            var getResultDto = new List<GetResultDto>();
+
+            foreach (var item in result)
+            {
+                getResultDto.Add(new GetResultDto
+                {
+                    ResultId = item.Id,
+                    Name = item.Player.Name,
+                    Category = item.Category.Type,
+                    Score = item.Score,
+                    Date = item.Updated
+                });
+            }
+
+            return getResultDto;
         }
 
         public async Task<Result> Update(UpdateResultDto resultDto)
@@ -121,5 +139,7 @@ namespace guezzer.Api.Repositories
 
             return player.Id;
         }
+
+        
     }
 }

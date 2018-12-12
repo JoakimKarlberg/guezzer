@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace guezzer.Api.Repositories
 {
-    public interface IPlayerRepository
+    public interface IPlayerRepository : IRepository<GetPlayerDto>
     {
-        Task<List<GetPlayerDto>> GetAll();
-
-        Task<GetPlayerDto> Get(string name);
-
         Task<Player> Update(UpdatePlayerDto playerDto);
     }
 }

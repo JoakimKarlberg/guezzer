@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace guezzer.Api.Repositories
 {
-    public interface IResultRepository
+    public interface IResultRepository : IRepository<GetResultDto>
     {
-        Task<List<GetResultDto>> GetAll();
-
         Task<Result> Update(UpdateResultDto resultDto);
 
         Task<List<GetResultDto>> GetPlayerResults(string name);
