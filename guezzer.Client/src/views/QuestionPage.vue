@@ -39,7 +39,7 @@ export default {
         return {
             questionIndex: 1,
             numberOfQuestions: 10,
-            category: '',
+            category: 'test',
             viewCount: '',
             score: 0
         }
@@ -55,12 +55,11 @@ export default {
         checkAnswer(answer){
 
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
-            console.log(this.score);
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
             this.$refs.timer.stopTimer();
-            this.$router.push({ name: 'ResultPage' });
+            this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
             else

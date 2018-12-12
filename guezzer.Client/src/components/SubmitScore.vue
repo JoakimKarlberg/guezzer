@@ -6,6 +6,8 @@
         <span>Submit Result</span>
         <v-icon right>send</v-icon>
       </v-btn>
+      <p>{{this.score}}</p>
+      <p>{{this.category}}</p>
     </form>
   </v-flex>
 </template>
@@ -20,10 +22,13 @@ export default {
       nameInput: ""
     };
   },
+  
+  props:['category','score'],
+  
   methods: {
     submitResult: function() {
       SavePlayer(this.nameInput)
-      SaveResult(this.nameInput, "Random", 9001) // Is hardcoded wight now for testing
+      SaveResult(this.nameInput, this.category, this.score) // Is hardcoded wight now for testing
     }
   }
 };
