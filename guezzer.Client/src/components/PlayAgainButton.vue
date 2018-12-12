@@ -1,19 +1,14 @@
 <template>
-     <div class="button-container">
-       <router-link to="/CategoryPage" tag="button" class="btn btn-primary">Play again?</router-link>
-    </div>
+  <v-btn depressed class="green white--text" large tag="button" router-link to="/CategoryPage">
+    <v-icon left large>play_arrow</v-icon>
+    <span>Play again?</span>
+  </v-btn>  
+
 </template>
+    
 
 <script>
-export default {
-  name: 'PlayAgainButton'
-};
+  export default {
+    name: 'PlayAgainButton'
+  };
 </script>
-
-<style scoped>
-.button-container{
-  margin-top: 50px;
-  position :relative;
-  float: right;
-}
-</style>

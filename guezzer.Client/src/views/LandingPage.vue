@@ -1,13 +1,28 @@
 <template>
-  <div class="landing-page">
-    <img src="../assets/guezzerlogo.png" >
-    <h1>{{msg}}</h1>
-    <start-button></start-button>
-    <div class="container">
-        <top-list></top-list>
-        <top-list></top-list>
-        <top-list></top-list>
-    </div>
+  <div class="home">
+    <v-container>
+      <v-layout align-center justify-center row fill-height>
+        <v-flex xs12 lg6>
+
+          <v-layout justify-center>
+            <img src="../assets/guezzerlogo.png" class="mt-4">
+          </v-layout>
+
+          <v-layout justify-center>
+            <start-button class="mt-5"/>
+          </v-layout>
+
+          <v-layout row wrap>
+            <v-flex xs12>
+              <top-list/>
+              <top-list/>
+              <top-list/>
+            </v-flex>
+          </v-layout>
+
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -24,35 +39,7 @@
     name: 'LandingPage',
     data() {
       return {
-        msg: "Welcome to Guezzer!"
       }
     }
   };
 </script>
-
-<style scoped>
-  h1,
-  h2 {
-    font-weight: normal;
-    font-size: 300%;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #42b983;
-  }
-  .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .landing-page{
-    padding: 10px;
-  }
-</style>
