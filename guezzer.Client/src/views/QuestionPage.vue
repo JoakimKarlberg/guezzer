@@ -55,7 +55,7 @@ export default {
         checkAnswer(answer){
 
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
-
+            console.log(this.score);
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
