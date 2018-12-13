@@ -9,7 +9,7 @@
           </v-layout>
 
           <v-layout justify-center class="mt-5">
-            <display-result :score="score"/>
+            <display-result/>
           </v-layout>
 
             <v-layout justify-center class="mt-5">
@@ -17,7 +17,7 @@
           </v-layout>
 
           <v-layout justify-center class="mt-3">
-            <submit-score :score="score" :category="category"/>
+            <submit-score/>
           </v-layout>
 
           <v-layout justify-center class="mt-5">
@@ -25,7 +25,7 @@
             <home-button/>
           </v-layout>          
 
-          <top-list :category="category"/>
+          <top-list/>
 
         </v-flex>
       </v-layout>
@@ -40,7 +40,6 @@
     import PlayAgainButton from '@/components/PlayAgainButton.vue'
     import HomeButton from '@/components/HomeButton.vue'
     import TopList from '@/components/TopList.vue'
-    import router from '../router'
 
     export default {
     components: {
@@ -49,17 +48,6 @@
         PlayAgainButton,
         HomeButton,
         TopList
-    },
-    data() {
-      return {
-        category: ' ',
-        score: 0
-      }
-    },
-    created(){
-        this.score = this.$route.params.score;
-        this.category = this.$route.params.category;
-    },
-
+        }
     }
 </script>
