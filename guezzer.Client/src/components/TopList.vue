@@ -1,7 +1,6 @@
 <template>
     <div class="TopList">
-        <h3>{{ header }}</h3>
-        <!-- <h3>{{ playedCategory }}</h3> -->
+        <h3>{{ header }} {{ category }}</h3>
      <table class="table table-striped">
       <thead>
         <tr>
@@ -22,14 +21,17 @@
 </template>
 
 <script>
+import _ from 'lodash'
+import axios from 'axios'
+const url = 'http://localhost:5000/api/Results';
+
 export default {
   name: 'TopList',
   props:['category'],
   data () {
     return {
-      results: {},
-      header: 'Toplist'
-      //,playedCategory: this.category
+      results: null,
+      header: 'Toplist for category: '
     }
   },
   created () {
@@ -43,12 +45,15 @@ export default {
   },
   computed: {
     getTopTenResults: function () {
-      console.log('SELECTED CATEGORY IS: ' + this.category);
+      this.category = 'Funny';
 
-      // ta ut scores från den kategorin som spelats
-      if(this.getTopTenResults.includes(this.category))
+      if(!this.results) 
       {
-        return _.orderBy(this.results, 'score', 'desc').slice(0, 10)
+        return [];
+      } 
+      else 
+      {
+        return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
       }
     }
   }
