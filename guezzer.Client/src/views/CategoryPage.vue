@@ -10,7 +10,7 @@
         </v-layout>
 
         <v-layout justify-center>
-          <v-icon>arrow_downward</v-icon>
+          <v-icon class="mb-5">arrow_downward</v-icon>
         </v-layout>
 
         <v-layout justify-center>
