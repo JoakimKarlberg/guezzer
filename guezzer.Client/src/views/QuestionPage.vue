@@ -4,7 +4,8 @@
             <v-layout align-center justify-center row fill-height>
                 <v-flex xs12 md12 lg8 xl6> 
                     
-                    <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title>
+                    <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title> 
+                    <h1>{{category}}</h1>
                     <video-item class="videoItem" ref="video" :category="category" @passViewCount="getViewCounts"></video-item>
 
                     <v-layout justify-center>
