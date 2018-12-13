@@ -1,14 +1,14 @@
 <template>
-     <v-btn
-        color="success"
-        x-large
-        router-link :to="{name: 'QuestionPage', 
-        params: {category: this.selectedCategory}}" 
-        tag="button"
-        disabled="disabled">
-        <span>begin</span>
-        <v-icon x-large>forward</v-icon>
-     </v-btn>
+  <v-btn
+    color="success"
+    x-large
+    router-link :to="{name: 'QuestionPage', 
+    params: {category: this.selectedCategory}}" 
+    tag="button"
+    :disabled="radioButtonValue">
+    <span>begin</span>
+    <v-icon x-large>forward</v-icon>
+  </v-btn>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ import { EventBus } from "./Youtube/event-bus.js";
 export default {
   data(){
     return {
-      selectedCategory: ' '
+      selectedCategory: ''
     }
   },
   name: 'BeginQuizButton',
@@ -32,6 +32,14 @@ export default {
 
      this.selectedCategory = selected
     });
+  },
+  computed:{
+    radioButtonValue: function(){
+      if(this.selectedCategory === '')
+        return true;
+      else
+        return false;
+    }
   }
 };
 </script>
