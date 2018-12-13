@@ -54,7 +54,6 @@ export default {
         this.category = this.$route.params.category;
     },
     methods: {
-        checkAnswer(){
 
         checkAnswer(answer){
 
