@@ -29,7 +29,7 @@
         </v-flex>
 
         <v-layout align-end justify-end class="mt-5">
-          <BeginQuizButton disabled="disabled"/>
+          <BeginQuizButton/>
         </v-layout>
 
       </v-flex>
