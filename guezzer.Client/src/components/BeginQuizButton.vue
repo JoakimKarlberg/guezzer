@@ -17,7 +17,7 @@ import { EventBus } from "./Youtube/event-bus.js";
 export default {
   data(){
     return {
-      selectedCategory: ''
+      selectedCategory: ' '
     }
   },
   name: 'BeginQuizButton',
