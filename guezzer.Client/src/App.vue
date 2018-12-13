@@ -20,12 +20,3 @@ export default {
   name: "App"
 };
 </script>
-
-<!-- <style> 
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-  #app {
-  font-family: 'Open Sans', sans-serif;
-}
-</style> -->
-
