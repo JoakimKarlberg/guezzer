@@ -25,7 +25,7 @@
             <home-button/>
           </v-layout>          
 
-          <top-list/>
+          <top-list :category="category"/>
 
         </v-flex>
       </v-layout>
