@@ -6,14 +6,12 @@
         <tr>
           <th>Name</th>
           <th>Score</th>
-          <th>Category</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="result in getTopTenResults" :key="result.id">
           <td>{{ result.name }}</td>
           <td>{{ result.score }}</td>
-          <td>{{ result.category }}</td>
         </tr>
       </tbody>
     </table>
@@ -45,9 +43,6 @@ export default {
   },
   computed: {
     getTopTenResults: function () {
-      //this.category = 'Funny'; // ta bort denna sen
-      console.log(this.category)
-
       if(!this.results) 
       {
         return [];
