@@ -22,12 +22,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
-import axios from 'axios'
-import QuestionPage from '@/views/QuestionPage.vue';
-
-const url = 'http://localhost:5000/api/Results';
-
 export default {
   name: 'TopList',
   props:['category'],

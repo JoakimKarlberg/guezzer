@@ -1,15 +1,12 @@
 <template>
-  <div class="score-box">{{score}}</div>
+  <div class="score-box">{{this.score}}</div>
 </template>
 
 <script>
 export default {
   name: 'DisplayResult',
-  data() {
-    return {
-      score: "130"
-    }
-  },
+  props: ['score'],
+  
   methods: {
     Result(score){
       return this.score;

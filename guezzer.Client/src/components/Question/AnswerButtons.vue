@@ -1,11 +1,24 @@
 <template>
      <div class="AnswerButtons">
-        <v-btn class="red darken-3 white--text btn-primary btn-1 mt-4" @click="$emit('answerButtonClicked')">0-1000</v-btn>
-        <v-btn class="light-green darken-3 white--text btn-primary btn-2 mt-4" @click="$emit('answerButtonClicked')">1001-10000</v-btn>
-        <v-btn class="blue-grey darken-1 white--text btn-primary btn-3 mt-4" @click="$emit('answerButtonClicked')">10001-100 000</v-btn>
-        <v-btn class="teal white--text btn-primary btn-4 mt-4" @click="$emit('answerButtonClicked')">More than 100 000</v-btn>
+         <v-btn class="red darken-3 white--text btn-primary btn-1 mt-4" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="$emit('answerButtonClicked', objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</v-btn>
     </div>
 </template>
+
+
+
+
+<script>
+
+export default {
+    data() {
+        return  {
+             objectAnswers: [{'startValue':'0','endValue':'1000'},
+             {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
+             {'startValue':'More than','endValue':'1000 000 '}]
+        }
+    }
+};
+</script>
 
 <style scoped>
 .btn-primary {
