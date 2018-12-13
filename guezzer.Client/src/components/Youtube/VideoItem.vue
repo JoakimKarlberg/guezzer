@@ -2,8 +2,6 @@
     <div class="VideoItem">
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
         <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing"></youtube>
-        <h1>{{this.fetchedVideoId}}</h1>
-        <h1>{{this.viewCount}}</h1>
     </div>
 </template>
 
@@ -29,7 +27,7 @@ export default {
     methods: {
     
     playing(){
-        console.log('We are watching!'); 
+        
       },
 
     getVideo() {

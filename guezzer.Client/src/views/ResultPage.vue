@@ -52,7 +52,7 @@
     },
     data() {
       return {
-        category: '',
+        category: ' ',
         score: 0
       }
     },

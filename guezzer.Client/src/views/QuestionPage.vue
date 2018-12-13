@@ -43,7 +43,7 @@ export default {
         return {
             questionIndex: 1,
             numberOfQuestions: 10,
-            category: 'test',
+            category: ' ',
             viewCount: '',
             score: 0
         }
