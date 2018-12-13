@@ -45,7 +45,8 @@ export default {
   },
   computed: {
     getTopTenResults: function () {
-      this.category = 'Funny';
+      //this.category = 'Funny'; // ta bort denna sen
+      console.log(this.category)
 
       if(!this.results) 
       {

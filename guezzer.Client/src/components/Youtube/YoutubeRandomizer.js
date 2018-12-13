@@ -6,13 +6,13 @@ export default {
           GetSelectedCategory: function(selectedCategory){
 
                switch (selectedCategory) {
-                    case "music":
+                    case "Music":
                          return GetRandomValue(musicCategoryList);    
 
-                    case "random":
+                    case "Random":
                          return GetRandomValue(randomCategoryList);
 
-                    case "funny":
+                    case "Funny":
                          return GetRandomValue(funnyCategoryList);
                     default:
                          break;
