@@ -16,8 +16,9 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 100,
-      valueDeterminate: 20
+      totalTime: 15,
+      valueDeterminate: 20,
+      noAnswerObject: {'startValue':'','endValue':''}
     }
   },
 
@@ -32,7 +33,7 @@ export default {
     },
 
     refreshTimer() {
-      this.totalTime = 100;
+      this.totalTime = 15;
     },
 
     countdown() 
@@ -45,7 +46,7 @@ export default {
       else
       {
         this.totalTime = 0;
-        this.$parent.checkAnswer();
+        this.$parent.checkAnswer(this.noAnswerObject);
       }
      
     },

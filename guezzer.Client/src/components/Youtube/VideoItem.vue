@@ -7,6 +7,7 @@
 
 <script>
 import Search from './Search.js'
+import GetStatistics from './GetStatistics.js'
 import YoutubeApiKey from 'C:/GuezzerAppSecrets.js' // should not be stored locally eventually
 import YoutubeRandomizer from './YoutubeRandomizer.js'
 
@@ -14,6 +15,7 @@ export default {
     data () {
         return {
             fetchedVideoId: null,
+            viewCount: null,
             videoList: []
         }
     }
@@ -23,21 +25,12 @@ export default {
     //Here's the documentation: https://www.npmjs.com/package/vue-youtube 
     //Supports stuff like autoplay and things. 
     methods: {
-      playing(){
-        console.log('We are watching!'); 
+    
+    playing(){
+        
       },
-      checkIfVideoAlreadyPlayed(){
-        if(this.videoList.includes(this.fetchedVideoId))
-        {
-            this.getVideo();
-        }
-        else
-        {
-            this.videoList.push(this.fetchedVideoId);
-            console.log(this.videoList);
-        }
-      },
-      getVideo() {
+
+    getVideo() {
       this.checkIfVideoAlreadyPlayed();
       // Here the Search.js-function is called when the component is created.
       // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
@@ -45,8 +38,33 @@ export default {
             apiKey: YoutubeApiKey, 
             searchWord: YoutubeRandomizer.methods.GetSelectedCategory(this.category), // This little cutie simulates searching 'cats' on youtube and picking first video - should be randomized
             sortOrder: YoutubeRandomizer.methods.GetRandomOrder()
-        }, response => this.fetchedVideoId = response.id.videoId); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
-    }
+        }, response => this.getYoutubeViewCounts(response.id.videoId)); // should not return only Id. Should return the whole response instead so you can get the data you want from the youtube request.
+
+        },
+    getYoutubeViewCounts(videoId) {
+        this.fetchedVideoId = videoId;
+
+        GetStatistics ({
+         apiKey: YoutubeApiKey, 
+         videoId: this.fetchedVideoId,
+        }, response => this.handleViewCounts(response));
+    },
+
+    handleViewCounts(viewCountResponse) {
+        this.viewCount = viewCountResponse;
+        this.$emit('passViewCount', this.viewCount)
+    },
+
+    checkIfVideoAlreadyPlayed(){
+        if(this.videoList.includes(this.fetchedVideoId))
+        {
+            this.getVideo();
+        }
+        else
+        {
+            this.videoList.push(this.fetchedVideoId);
+        }
+      }
     },
     computed: {
       player(){
