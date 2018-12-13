@@ -54,9 +54,6 @@ export default {
         this.category = this.$route.params.category;
     },
     methods: {
-        checkAnswer(){
-            
-            this.$refs.timer.stopTimer();
 
         checkAnswer(answer){
 
