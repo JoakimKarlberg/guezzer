@@ -16,10 +16,9 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 5,
-      noAnswerObject: {'startValue':'','endValue':''}
       totalTime: 100,
-      valueDeterminate: 20
+      valueDeterminate: 20,
+      noAnswerObject: {'startValue':'','endValue':''}
     }
   },
 

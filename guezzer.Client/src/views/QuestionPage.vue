@@ -5,7 +5,7 @@
                 <v-flex xs12 md12 lg8 xl6> 
                     
                     <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title>
-                    <video-item class="videoItem" ref="video" :category="category"></video-item>
+                    <video-item class="videoItem" ref="video" :category="category" @passViewCount="getViewCounts"></video-item>
 
                     <v-layout justify-center>
                         <v-flex> 
