@@ -51,7 +51,9 @@ Uses `EntityFrameWork Core` for database stuff.
 
 * **GET**: `https://url.com/api/results/` - fetches all results
 
-* **GET**: `https://url.com/api/results/{name}` - fetch all results for a specific player
+* **GET**: `https://url.com/api/results/{id}` - fetches a specific result by id
+
+* **GET**: `https://url.com/api/results/player/{name}` - fetch all results for a specific player
 
 * **PUT**: `https://url.com/api/Results/{ResultDto-object}` - updates or create a *Result* if it doesn't exist in the db based on the *Body* of the PUT request. Input must match the structure of a *ResultDto*-object.
 

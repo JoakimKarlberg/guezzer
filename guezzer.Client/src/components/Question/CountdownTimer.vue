@@ -1,8 +1,12 @@
 <template>
     <div class="CountDownTimer">
-        <span id="minutes">{{ minutes }}</span>
-        <span id="middle">:</span>
-        <span id="seconds">{{ seconds }}</span>
+      <span id="minutes">{{ minutes }}</span>
+      <span id="middle">:</span>
+      <span id="seconds">{{ seconds }}</span>
+
+      <!-- program the seconds to the bar -->
+      <v-progress-linear height="20" color="indigo darken-2" class="timerWidth" v-model="valueDeterminate"></v-progress-linear> 
+
     </div>
 </template>
 
@@ -14,7 +18,9 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 10
+      totalTime: 15,
+      valueDeterminate: 20,
+      noAnswerObject: {'startValue':'','endValue':''}
     }
   },
 
@@ -29,7 +35,7 @@ export default {
     },
 
     refreshTimer() {
-      this.totalTime = 10;
+      this.totalTime = 5;
     },
 
     countdown() 
@@ -42,7 +48,7 @@ export default {
       else
       {
         this.totalTime = 0;
-        this.$parent.checkAnswer();
+        this.$parent.checkAnswer(this.noAnswerObject);
       }
      
     },
@@ -71,3 +77,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .timerWidth{
+    width: 642px;
+  }
+</style>
+

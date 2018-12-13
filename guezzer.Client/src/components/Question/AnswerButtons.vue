@@ -1,6 +1,6 @@
 <template>
      <div class="AnswerButtons">
-         <button class="btn btn-primary" v-for="(answer,index) in answers" :key="index" @click="$emit('answerButtonClicked')">{{ answer }}</button>
+         <v-btn class="red darken-3 white--text btn-primary btn-1 mt-4" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="$emit('answerButtonClicked', objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</v-btn>
     </div>
 </template>
 
@@ -8,24 +8,25 @@
 
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
     data() {
         return  {
-             answers: ['0-1000', '1001-10000','10001-100000', 'More than 100000']
+             objectAnswers: [{'startValue':'0','endValue':'1000'},
+             {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
+             {'startValue':'More than','endValue':'1000 000 '}]
         }
     }
 };
 </script>
 
 <style scoped>
-
 .btn-primary {
-    width: 30%;
-    margin: 15px 30px;
-    
+    width: 305px;
 }
-
+@media screen and (max-width: 788px) {
+  .btn-primary {
+    width: 620px;
+  }
+}
 </style>

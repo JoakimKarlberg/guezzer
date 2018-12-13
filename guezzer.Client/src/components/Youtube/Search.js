@@ -12,6 +12,8 @@ module.exports = function(options, callback) {
         throw new Error('Youtube search would require a key');
     }
 
+    let test = null;
+
     let params = {
         part: 'snippet',
         key: options.apiKey,
@@ -23,11 +25,11 @@ module.exports = function(options, callback) {
 
     axios.get(Base_URL, {params})
         .then(response => {
-            if(callback) { callback(GetRandomVideo(response.data.items)) }
+            if(callback) { callback(GetRandomVideoId(response.data.items)) }
         })
         .catch(error => console.error(error));
 }
 
-function GetRandomVideo(array){
+function GetRandomVideoId(array){
     return array[Math.floor(Math.random() * array.length)]
 }
