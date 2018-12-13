@@ -1,8 +1,12 @@
 <template>
     <div class="CountDownTimer">
-        <span id="minutes">{{ minutes }}</span>
-        <span id="middle">:</span>
-        <span id="seconds">{{ seconds }}</span>
+      <span id="minutes">{{ minutes }}</span>
+      <span id="middle">:</span>
+      <span id="seconds">{{ seconds }}</span>
+
+      <!-- program the seconds to the bar -->
+      <v-progress-linear height="20" color="indigo darken-2" class="timerWidth" v-model="valueDeterminate"></v-progress-linear> 
+
     </div>
 </template>
 
@@ -12,7 +16,8 @@ export default {
   data() {
     return {
       timer: null,
-      totalTime: 100
+      totalTime: 100,
+      valueDeterminate: 20
     }
   },
 
@@ -66,3 +71,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .timerWidth{
+    width: 642px;
+  }
+</style>
+

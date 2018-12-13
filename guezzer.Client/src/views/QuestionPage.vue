@@ -6,11 +6,15 @@
                     
                     <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title>
                     <video-item class="videoItem" ref="video" :category="category"></video-item>
+
+                    <v-layout justify-center>
+                        <v-flex> 
+                            <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
+                        </v-flex>
+                    </v-layout>
+
                     <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>  
                     
-                    <v-layout>
-                        <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
-                    </v-layout>
 
                 </v-flex>
             </v-layout>            
