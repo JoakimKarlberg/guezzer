@@ -4,7 +4,8 @@
         x-large
         router-link :to="{name: 'QuestionPage', 
         params: {category: this.selectedCategory}}" 
-        tag="button">
+        tag="button"
+        disabled="disabled">
         <span>begin</span>
         <v-icon x-large>forward</v-icon>
      </v-btn>

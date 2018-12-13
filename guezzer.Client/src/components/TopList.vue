@@ -1,7 +1,7 @@
 <template>
     <div class="TopList">
-        <h3>{{ header }}</h3>
-     <table class="table table-striped">
+        <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }}</h3>
+     <table>
       <thead>
         <tr>
           <th>Name</th>
@@ -51,7 +51,9 @@ export default {
 </script>
 
 <style scoped>
-
+  th{
+    margin-right: 20px;
+  }
 </style>
 
 
