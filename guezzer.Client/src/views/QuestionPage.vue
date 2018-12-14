@@ -59,11 +59,12 @@ export default {
 
         checkAnswer(answer){
 
+            this.$refs.timer.stopTimer();
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
-            this.$refs.timer.stopTimer();
+            EventBus.$off('playVideo');   
             this.$router.push({ name: 'ResultPage' });
             }
 

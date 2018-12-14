@@ -1,7 +1,7 @@
 <template>
     <div class="VideoItem">
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
-        <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing"></youtube>
+        <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing" :player-vars="{autoplay: 1}"></youtube>
     </div>
 </template>
 
