@@ -33,7 +33,7 @@ export default {
     },
 
     refreshTimer() {
-      this.totalTime = 10;
+      this.totalTime = 15;
     },
 
     countdown() 
