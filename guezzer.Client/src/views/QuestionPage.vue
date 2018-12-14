@@ -57,15 +57,20 @@ export default {
     },
     methods: {
 
+        getViewCounts(viewCount) {
+            this.viewCount = viewCount;
+        },
+
         checkAnswer(answer){
 
             this.$refs.timer.stopTimer();
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
+            console.log(this.score);
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
             EventBus.$off('playVideo');   
-            this.$router.push({ name: 'ResultPage' });
+            this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
             else
