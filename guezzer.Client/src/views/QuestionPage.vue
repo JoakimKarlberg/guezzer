@@ -5,7 +5,10 @@
                 <v-flex xs12 md12 lg8 xl6> 
                     
                     <question-title class="mb-2 mt-4" :questionIndex="questionIndex"></question-title> 
-                    <h1>{{category}}</h1>
+                    <v-layout>
+                        <h4 class="mb-2 text-lg-right"> Category: {{category}}</h4>
+                    </v-layout>
+
                     <video-item class="videoItem" ref="video" :category="category" @passViewCount="getViewCounts"></video-item>
 
                     <v-layout justify-center>
@@ -14,8 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>  
-                    
+                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
