@@ -64,6 +64,7 @@ namespace guezzer.Api
             app.UseMvc();
         }
 
+        // This method initializes the DB and populates it with data if the tables are empty
         public async void Initialize(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
