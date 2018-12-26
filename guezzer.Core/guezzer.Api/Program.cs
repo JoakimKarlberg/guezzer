@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using Serilog.Formatting.Compact;
 
 namespace guezzer.Api
 {
@@ -16,12 +17,13 @@ namespace guezzer.Api
     {
         public static int Main(string[] args)
         {
+            var configuration = new ConfigurationBuilder()
+
+                .AddJsonFile("appsettings.json")
+                .Build();
+
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.File("GuezzerLog.txt", rollingInterval: RollingInterval.Day)
+                .ReadFrom.Configuration(configuration)
                 .CreateLogger();
 
             try
