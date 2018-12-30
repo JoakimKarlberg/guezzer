@@ -31,7 +31,7 @@ export default {
 
     stopTimer() {
       clearInterval(this.timer);
-      this.timer = null;
+      console.log("stoppar timer");
     },
 
     refreshTimer() {
@@ -47,7 +47,6 @@ export default {
 
       else
       {
-        this.totalTime = 0;
         this.$parent.checkAnswer(this.noAnswerObject);
       }
      
@@ -72,6 +71,7 @@ export default {
   created () {
     let self = this;
     EventBus.$on('playVideo', function () {
+      console.log("startar timer");
       self.startTimer();
     })
   }

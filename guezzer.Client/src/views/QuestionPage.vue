@@ -17,7 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :isViewCountFetched="isViewCountFetched" @answerButtonClicked="checkAnswer"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
@@ -49,7 +49,8 @@ export default {
             numberOfQuestions: 10,
             category: ' ',
             viewCount: '',
-            score: 0
+            score: 0,
+            isViewCountFetched: false,
         }
     },
     created(){
@@ -59,13 +60,15 @@ export default {
 
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
+            this.isViewCountFetched = true;
         },
 
         checkAnswer(answer){
 
             this.$refs.timer.stopTimer();
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
-            console.log(this.score);
+            this.isViewCountFetched = false;
+
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
