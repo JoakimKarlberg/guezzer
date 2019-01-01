@@ -24,6 +24,7 @@ export default {
 
   methods: {
     startTimer() {
+      this.totalTime = 10;
       this.timerId = setInterval(() => this.countdown(), 1000);
     },
 
@@ -31,11 +32,7 @@ export default {
       clearInterval(this.timerId);
       this.timerId = null;
     },
-
-    refreshTimer() {
-      this.totalTime = 10;
-    },
-
+    
     countdown() 
     { 
       if (this.totalTime == 0) 
