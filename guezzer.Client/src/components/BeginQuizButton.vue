@@ -18,7 +18,7 @@ import { EventBus } from "./Youtube/event-bus.js";
 export default {
   data(){
     return {
-      selectedCategory: ''
+      selectedCategory: ' '
     }
   },
   name: 'BeginQuizButton',
@@ -35,7 +35,7 @@ export default {
   },
   computed:{
     radioButtonValue: function(){
-      if(this.selectedCategory === '')
+      if(this.selectedCategory === ' ')
         return true;
       else
         return false;

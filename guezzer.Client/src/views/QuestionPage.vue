@@ -83,7 +83,6 @@ export default {
             else
             {
             this.$refs.video.getVideo();
-            this.$refs.timer.refreshTimer();
             this.questionIndex++
             }
         }
