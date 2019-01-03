@@ -24,13 +24,16 @@ export default {
 
   methods: {
     startTimer() {
-      this.totalTime = 10;
       this.timerId = setInterval(() => this.countdown(), 1000);
     },
 
     stopTimer() {
       clearInterval(this.timerId);
       this.timerId = null;
+    },
+    
+    refreshTimer() {
+      this.totalTime = 10;
     },
     
     countdown() 
