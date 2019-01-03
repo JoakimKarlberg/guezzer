@@ -17,7 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :isVideoPlaying='isVideoPlaying' @answerButtonClicked="checkAnswer"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
@@ -49,11 +49,17 @@ export default {
             numberOfQuestions: 10,
             category: ' ',
             viewCount: '',
-            score: 0
+            score: 0,
+            isVideoPlaying: false,
         }
     },
-    created(){
+    created() {
         this.category = this.$route.params.category;
+        let self = this;
+        EventBus.$on('playVideo', function () {
+            self.isVideoPlaying = true;
+            self.$refs.timer.startTimer();
+        })
     },
     methods: {
 
@@ -61,11 +67,12 @@ export default {
             this.viewCount = viewCount;
         },
 
-        checkAnswer(answer){
+        checkAnswer(answer) {
 
             this.$refs.timer.stopTimer();
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
-            console.log(this.score);
+            this.isVideoPlaying = false;
+
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
@@ -75,7 +82,6 @@ export default {
 
             else
             {
-
             this.$refs.video.getVideo();
             this.$refs.timer.refreshTimer();
             this.questionIndex++
