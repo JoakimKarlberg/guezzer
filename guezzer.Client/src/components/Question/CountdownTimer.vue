@@ -15,8 +15,8 @@
 export default {
   data() {
     return {
-      timer: null,
-      totalTime: 15,
+      timerId: null,
+      totalTime: 10,
       valueDeterminate: 20,
       noAnswerObject: {'startValue':'','endValue':''}
     }
@@ -24,31 +24,29 @@ export default {
 
   methods: {
     startTimer() {
-      this.timer = setInterval(() => this.countdown(), 1000);
+      this.timerId = setInterval(() => this.countdown(), 1000);
     },
 
     stopTimer() {
-      clearInterval(this.timer);
-      this.timer = null;
+      clearInterval(this.timerId);
+      this.timerId = null;
     },
-
+    
     refreshTimer() {
-      this.totalTime = 15;
+      this.totalTime = 10;
     },
-
+    
     countdown() 
-    {
-      if(this.totalTime >= 1)
+    { 
+      if (this.totalTime == 0) 
+      {
+         this.$parent.checkAnswer(this.noAnswerObject);
+      }
+  
+      else
       {
         this.totalTime--;
       }
-
-      else
-      {
-        this.totalTime = 0;
-        this.$parent.checkAnswer(this.noAnswerObject);
-      }
-     
     },
 
     formatTime(time) {
@@ -66,10 +64,7 @@ export default {
       return this.formatTime(seconds);
     }
   },
-
-  created () {
-      this.startTimer();
-  }
+  
 }
 </script>
 

@@ -17,7 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :isVideoPlaying='isVideoPlaying' @answerButtonClicked="checkAnswer"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
@@ -33,6 +33,7 @@ import VideoItem from '@/components/Youtube/VideoItem.vue'
 import CountdownTimer from '@/components/Question/CountdownTimer.vue';
 import HandleAnswer from '@/components/HandleAnswer.js'
 import router from '../router'
+import { EventBus } from '@/components/Youtube/event-bus.js';
 
 export default {
     components: {
@@ -48,24 +49,34 @@ export default {
             numberOfQuestions: 10,
             category: ' ',
             viewCount: '',
-            score: 0
+            score: 0,
+            isVideoPlaying: false,
         }
     },
-    created(){
+    created() {
         this.category = this.$route.params.category;
+        let self = this;
+        EventBus.$on('playVideo', function () {
+            self.isVideoPlaying = true;
+            self.$refs.timer.startTimer();
+        })
     },
     methods: {
+
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },
 
-        checkAnswer(answer){
+        checkAnswer(answer) {
 
+            this.$refs.timer.stopTimer();
             this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
+            this.isVideoPlaying = false;
+
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
-            this.$refs.timer.stopTimer();
+            EventBus.$off('playVideo');   
             this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
