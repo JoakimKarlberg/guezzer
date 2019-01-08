@@ -1,5 +1,6 @@
 ﻿using guezzer.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Threading.Tasks;
 
 namespace guezzer.Api.Controllers
@@ -18,8 +19,9 @@ namespace guezzer.Api.Controllers
         // GET: api/Categories/
         public async Task<IActionResult> GetAll()
         {
+            Log.Logger.Information("Requesting GetAll from Categories");
+            
             var result = await _repository.GetAll();
-
             if (result == null)
             {
                 return NotFound();
@@ -32,6 +34,7 @@ namespace guezzer.Api.Controllers
         [HttpGet("{type}")]
         public async Task<IActionResult> Get(string type)
         {
+            Log.Logger.Information($"Requesting {type} from Categories");
             var result = await _repository.Get(type);
 
             if (result == null)

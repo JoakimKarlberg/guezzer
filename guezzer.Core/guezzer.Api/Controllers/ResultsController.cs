@@ -4,6 +4,7 @@ using guezzer.Api.Helpers;
 using guezzer.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
+using Serilog;
 
 namespace guezzer.Api.Controllers
 {
@@ -22,6 +23,8 @@ namespace guezzer.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            Log.Logger.Information($"Requesting GetAll from Results");
+
             var results = await _repository.GetAll();
 
             if(results == null)
@@ -36,6 +39,8 @@ namespace guezzer.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetResultById(string id)
         {
+            Log.Logger.Information($"Requesting {id} from Results");
+
             if (id == null)
             {
                 return BadRequest();
@@ -55,7 +60,9 @@ namespace guezzer.Api.Controllers
         [HttpGet("player/{name}")]
         public async Task<IActionResult> GetPlayerResults(string name)
         {
-            if(name == null)
+            Log.Logger.Information($"Requesting {name} from Results");
+
+            if (name == null)
             {
                 return BadRequest();
             }
@@ -74,6 +81,9 @@ namespace guezzer.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateResultDto resultDto)
         {
+
+            Log.Logger.Information($"Updating {resultDto.Name} in Results");
+
             if (resultDto == null)
             {
                 return BadRequest();
