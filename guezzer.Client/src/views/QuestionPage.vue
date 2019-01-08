@@ -89,7 +89,6 @@ export default {
             }
             }
 
-            console.log(this.score)
         }
     }
 };
