@@ -2,7 +2,7 @@
     <div class="VideoItem">
         <div class="YouTubeCover">
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
-        <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing" @error="error"  :player-vars="playerVars"></youtube>
+        <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing" @error="handleError"  :player-vars="playerVars"></youtube>
     </div>
     </div>
 </template>
@@ -38,7 +38,7 @@ export default {
         EventBus.$emit("playVideo"); 
       },
 
-      error(){
+      handleError(){
           this.getVideo();
       }, 
       
