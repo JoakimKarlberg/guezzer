@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       timerId: null,
-      totalTime: 15,
+      totalTime: 20,
       valueDeterminate: 100,
       noAnswerObject: {'startValue':'','endValue':''}
     }
@@ -29,7 +29,7 @@ export default {
     },
     
     refreshTimer() {
-      this.totalTime = 15;
+      this.totalTime = 20;
       this.valueDeterminate = 100;
     },
     
@@ -39,7 +39,9 @@ export default {
       {
          this.$parent.checkAnswer(this.noAnswerObject);
       }
-  
+      if(this.totalTime == 15){
+          this.$emit('alertQuestionPage')
+      }
       else
       {
         this.totalTime--;
