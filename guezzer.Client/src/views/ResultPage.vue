@@ -41,7 +41,6 @@
     import HomeButton from '@/components/HomeButton.vue'
     import TopList from '@/components/TopList.vue'
     import router from '../router'
-
     export default {
     components: {
         DisplayResult,
@@ -60,6 +59,5 @@
         this.score = this.$route.params.score;
         this.category = this.$route.params.category;
     },
-
     }
 </script>

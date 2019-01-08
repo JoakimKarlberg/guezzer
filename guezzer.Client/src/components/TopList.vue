@@ -6,14 +6,12 @@
         <tr>
           <th>Name</th>
           <th>Score</th>
-          <th>Category</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="result in topTenResults" :key="result.id">
+        <tr v-for="result in getTopTenResults" :key="result.id">
           <td>{{ result.name }}</td>
           <td>{{ result.score }}</td>
-          <td>{{ result.category }}</td>
         </tr>
       </tbody>
     </table>
@@ -27,10 +25,11 @@ const url = 'http://localhost:5000/api/Results';
 
 export default {
   name: 'TopList',
+  props:['category'],
   data () {
     return {
-      results: {},
-      header: 'Toplist'
+      results: null,
+      header: 'Toplist for category: '
     }
   },
   created () {
@@ -43,8 +42,15 @@ export default {
       })
   },
   computed: {
-  topTenResults: function () {
-    return _.orderBy(this.results, 'score', 'desc').slice(0, 10)
+    getTopTenResults: function () {
+      if(!this.results) 
+      {
+        return [];
+      } 
+      else 
+      {
+        return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
+      }
     }
   }
 }
