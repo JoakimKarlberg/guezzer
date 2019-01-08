@@ -70,7 +70,6 @@ export default {
         checkAnswer(answer) {
 
             this.$refs.timer.stopTimer();
-            this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
             this.isVideoPlaying = false;
 
 
@@ -85,7 +84,11 @@ export default {
             this.$refs.video.getVideo();
             this.$refs.timer.refreshTimer();
             this.questionIndex++
+            if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
+            this.score++
             }
+            }
+
         }
     }
 };

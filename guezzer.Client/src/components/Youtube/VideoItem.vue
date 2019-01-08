@@ -37,9 +37,9 @@ export default {
       playing(){
         EventBus.$emit("playVideo"); 
       },
-
-    getVideo() {
-      this.checkIfVideoAlreadyPlayed();
+      
+      getVideo() {
+      
       // Here the Search.js-function is called when the component is created.
       // This is a request to the youtube-API and basically gets the youtube ID that is used in the ':video-id="fetchedVideoId"' binding in the HTML.
       Search({
