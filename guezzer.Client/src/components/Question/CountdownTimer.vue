@@ -38,7 +38,12 @@ export default {
     
         this.totalTime--;
 
-        if(this.totalTime == 15)
+        if (this.totalTime == 0) 
+        {
+         this.$parent.checkAnswer(this.noAnswerObject);
+        }
+
+        if (this.totalTime == 15)
         {
           this.$emit('alertQuestionPage')
    
@@ -48,10 +53,7 @@ export default {
         this.valueDeterminate -= 6.666;
         }
 
-        if (this.totalTime == 0) 
-        {
-         this.$parent.checkAnswer(this.noAnswerObject);
-        }
+        
       
     },
 
