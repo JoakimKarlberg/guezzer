@@ -1,6 +1,6 @@
 <template>
     <div class="VideoItem">
-        <div class="YouTubeCover">
+        <div class="YoutubeCover">
         <!-- This is the vue-youtube dudeman. All it needs to play a video is the ID of the youtube video-->
         <youtube :video-id="fetchedVideoId" ref="youtube" @playing="playing" @error="handleError"  :player-vars="playerVars"></youtube>
     </div>
