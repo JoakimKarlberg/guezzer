@@ -35,15 +35,9 @@ export default {
     
     countdown() 
     { 
-      if (this.totalTime == 0) 
-      {
-         this.$parent.checkAnswer(this.noAnswerObject);
-      }
-
     
-      else
-      {
         this.totalTime--;
+
         if(this.totalTime == 15)
         {
           this.$emit('alertQuestionPage')
@@ -53,7 +47,12 @@ export default {
         if (this.totalTime <= 15) {
         this.valueDeterminate -= 6.666;
         }
-      }
+
+        if (this.totalTime == 0) 
+        {
+         this.$parent.checkAnswer(this.noAnswerObject);
+        }
+      
     },
 
     formatTime(time) {
