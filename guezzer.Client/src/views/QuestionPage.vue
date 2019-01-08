@@ -67,8 +67,6 @@ export default {
         },
         onQuestionStarted(){
             this.startQuestion = true;
-            let self = this;
-            self.$refs.timer.countdown();
         },
 
         checkAnswer(answer) {
