@@ -2,19 +2,19 @@
   <div class="SelectCategory"> 
 
       <label class="container">Music
-        <input type="radio" id="categoryMusic" name="customRadioButton" v-on:change="emitToParent" value="music">
+        <input type="radio" id="categoryMusic" name="customRadioButton" v-on:change="emitToParent" value="Music">
         <span class="checkmark"></span>
       </label>
     
     <label class="container">Funny
       <input type="radio" id="categoryFunny" name="customRadioButton"
-      v-on:change="emitToParent" value="funny">
+      v-on:change="emitToParent" value="Funny">
       <span class="checkmark"></span>
     </label>
 
     <label class="container">Random
       <input type="radio" id="categoryAll" name="customRadioButton"
-      v-on:change="emitToParent" value="random">
+      v-on:change="emitToParent" value="Random">
       <span class="checkmark"></span>
     </label>
 
@@ -27,7 +27,7 @@ export default {
   name: "SelectCategory",
   data() {
     return {
-      childMessage : ''
+      childMessage : ' '
     }
   }
   ,
