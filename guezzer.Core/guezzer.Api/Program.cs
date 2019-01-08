@@ -24,7 +24,7 @@ namespace guezzer.Api
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.SizeRollingFile(@"C:\temp\GuezzerLogs\guezzerLog-{Date}.txt",
+                .WriteTo.SizeRollingFile(@"C:\guezzerTemp\GuezzerLogs\guezzerLog-{Date}.txt",
                     retainedFileDurationLimit: TimeSpan.FromDays(2),
                     fileSizeLimitBytes: 1024 * 1024 * 10) // 10MB
                 .CreateLogger();
