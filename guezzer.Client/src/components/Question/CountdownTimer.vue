@@ -35,13 +35,17 @@ export default {
     
     countdown() 
     { 
+      console.log(this.totalTime);
       if (this.totalTime == 0) 
       {
          this.$parent.checkAnswer(this.noAnswerObject);
       }
+
       if(this.totalTime == 15){
+        this.totalTime--;
           this.$emit('alertQuestionPage')
       }
+
       else
       {
         this.totalTime--;

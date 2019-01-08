@@ -50,7 +50,6 @@ export default {
             category: ' ',
             viewCount: '',
             score: 0,
-            isVideoPlaying: false,
             startQuestion: false
         }
     },
@@ -58,7 +57,6 @@ export default {
         this.category = this.$route.params.category;
         let self = this;
         EventBus.$on('playVideo', function () {
-            self.isVideoPlaying = true;
             self.$refs.timer.startTimer();
         })
     },
@@ -69,12 +67,14 @@ export default {
         },
         onQuestionStarted(){
             this.startQuestion = true;
+            let self = this;
+            self.$refs.timer.countdown();
         },
 
         checkAnswer(answer) {
 
             this.$refs.timer.stopTimer();
-            this.isVideoPlaying = false;
+            this.startQuestion = false;
 
 
             if (this.questionIndex >= this.numberOfQuestions)
