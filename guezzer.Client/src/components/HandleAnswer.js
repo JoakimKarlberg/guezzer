@@ -1,5 +1,4 @@
 let maxValue = 1000000;
-let scoreCounter = 0;
 
 export default {
 
@@ -13,12 +12,12 @@ export default {
 
             if(trimmedStartValue <=rightAnswer &&
              trimmedEndValue >= rightAnswer || (answer.startValue == "More than" && rightAnswer > maxValue)) {
-                scoreCounter++; 
-                return scoreCounter;
+ 
+                return true;
             }
             else
             {
-              return scoreCounter;
+              return false;
             }
          }      
     }
