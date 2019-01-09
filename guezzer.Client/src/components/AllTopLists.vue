@@ -2,6 +2,7 @@
   <div>
     <li v-for="category in groupedCategories" :key="category.id">
       <h3 class="blue darken-2 white--text pl-3 py-1">{{header}} {{category[0].category}}</h3>
+      <h4>{{name}}{{score}}</h4>
       <ul>
         <li v-for="item of category" :key="item.id">
           {{item.name}}
@@ -22,7 +23,9 @@ export default {
   data () {
     return {
       results: null,
-      header: 'Toplist for category '
+      header: 'Toplist for category ',
+      name: 'Name ',
+      score: ' Score'
     }
   },
   created () {
@@ -42,11 +45,8 @@ export default {
       } 
       else 
       {
-        var grouped = _.groupBy(this.results, 'category');
-        console.log(grouped);
-        // var ordered = _.orderBy(grouped, 'score', 'asc').slice(0, 10);
-        // console.log(ordered);
-        return grouped;
+        var ordered = _.orderBy(this.results, 'score', 'desc').slice(0, 10); 
+        return _.groupBy(ordered, 'category');
       }
     }
   }
