@@ -5,12 +5,14 @@
     <table>
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Rank</th>
+          <th>Player</th>
           <th>Score</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item of category" :key="item.id">
+        <tr v-for="(item, index) of category" :key="item.id">
+          <td>{{ startIndexAtOne(index) }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.score }}</td>
         </tr>
@@ -30,9 +32,7 @@ export default {
   data () {
     return {
       results: null,
-      header: 'Toplist for category ',
-      name: 'Player name ',
-      score: ' Score'
+      header: 'Toplist for category '
     }
   },
   created () {
@@ -43,6 +43,11 @@ export default {
       .catch(err => {
         console.log(err)
       })
+  },
+  methods: {
+    startIndexAtOne: function (index) {
+      return index+1
+    }
   },
   computed: {
     groupedCategories: function () {
