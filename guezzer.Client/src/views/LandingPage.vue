@@ -12,11 +12,19 @@
             <start-button class="mt-5"/>
           </v-layout>
 
-          <v-layout justify-center>
+          <!-- <v-layout justify-center>
             <div class="container">
                 <top-list class="mx-5 mb-3"/>
                 <top-list class="mx-5 mb-3"/>
                 <top-list class="mx-5 mb-3"/>
+            </div>
+          </v-layout> -->
+
+          <v-layout justify-center>
+            <div class="container">
+                  <all-top-lists class="mx-5 mb-3" v-for="result in results" :key="result.id">
+                    {{ result.type }} 
+                  </all-top-lists>
             </div>
           </v-layout>
 
@@ -29,17 +37,29 @@
 
 <script>
   import StartButton from '@/components/StartButton.vue'
-  import TopList from '@/components/TopList.vue'
+  import AllTopLists from '@/components/AllTopLists.vue'
+  import axios from 'axios'
+  const url = 'http://localhost:5000/api/Categories';
 
   export default {
     components: {
         StartButton,
-        TopList
+        AllTopLists
       },
     name: 'LandingPage',
     data() {
       return {
+        results: null
       }
+    },
+    created () {
+    axios.get(url)
+      .then(response => {
+        this.results = response.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   };
 </script>

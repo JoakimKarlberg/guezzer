@@ -1,5 +1,5 @@
 <template>
-    <div class="TopList">
+    <div class="AllTopLists">
         <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
      <table>
       <thead>
@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="result in topTenResults" :key="result.id">
+        <tr v-for="result in results" :key="result.id">
           <td>{{ result.name }}</td>
           <td>{{ result.score }}</td>
         </tr>
@@ -24,7 +24,7 @@ import axios from 'axios'
 const url = 'http://localhost:5000/api/Results';
 
 export default {
-  name: 'TopList',
+  name: 'AllTopLists',
   props:['category'],
   data () {
     return {
@@ -43,13 +43,15 @@ export default {
   },
   computed: {
     topTenResults: function () {
-      if(!this.results) 
+        console.log(this.results_request)
+      if(!this.results_request) 
       {
         return [];
       } 
       else 
       {
-        return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
+          
+        return _.orderBy(this.results_request.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
       }
     }
   }
