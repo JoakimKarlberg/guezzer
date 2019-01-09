@@ -44,11 +44,11 @@ export default {
       } 
       else 
       {
-        var grouped = _.groupBy(this.results, 'category')
+        var grouped = _.groupBy(this.results, 'category');
         console.log(grouped);
-        return grouped;
-        
-        //_.orderBy(this.grouped.filter(score => score.category === 'Funny'), 'score', 'desc').slice(0, 10);
+        var ordered = _.orderBy(grouped, 'score', 'asc').slice(0, 10);
+        console.log(ordered);
+        return ordered;
       }
     }
   }
