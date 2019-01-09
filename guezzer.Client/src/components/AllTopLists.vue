@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) of category" :key="item.id">
+        <tr v-for="(item, index) of category.slice(0, 10)" :key="item.id">
           <td>{{ startIndexAtOne(index) }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.score }}</td>
@@ -39,6 +39,7 @@ export default {
     axios.get(url)
       .then(response => {
         this.results = response.data
+        console.log(this.results)
       })
       .catch(err => {
         console.log(err)
@@ -57,7 +58,7 @@ export default {
       } 
       else 
       {
-        var ordered = _.orderBy(this.results, 'score', 'desc').slice(0, 10); 
+        var ordered = _.orderBy(this.results, 'score', 'desc');
         return _.groupBy(ordered, 'category');
       }
     }

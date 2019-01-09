@@ -4,12 +4,14 @@
      <table>
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Rank</th>
+          <th>Player</th>
           <th>Score</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="result in topTenResults" :key="result.id">
+        <tr v-for="(result, index) in topTenResults" :key="result.id">
+          <td>{{ startIndexAtOne(index) }}</td>
           <td>{{ result.name }}</td>
           <td>{{ result.score }}</td>
         </tr>
@@ -40,6 +42,11 @@ export default {
       .catch(err => {
         console.log(err)
       })
+  },
+  methods: {
+    startIndexAtOne: function (index) {
+      return index+1
+    }
   },
   computed: {
     topTenResults: function () {
