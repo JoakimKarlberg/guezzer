@@ -2,8 +2,7 @@ let maxValue = 1000000;
 
 export default {
 
-    methods:{
-        
+    methods:{       
          
          CheckAnswer: function(rightAnswer,answer){
 
@@ -17,6 +16,7 @@ export default {
             }
             else
             {
+                console.log("wrong");
               return false;
             }
          }      

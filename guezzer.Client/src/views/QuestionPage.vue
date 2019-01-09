@@ -77,20 +77,20 @@ export default {
 
             if (this.questionIndex >= this.numberOfQuestions)
             {
-            EventBus.$off('playVideo');   
-            this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
+                EventBus.$off('playVideo');   
+                this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
             else
             {
-            this.$refs.video.getVideo();
-            this.$refs.timer.refreshTimer();
-            this.questionIndex++
-            if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
-            this.score++
+                this.$refs.video.getVideo();
+                this.$refs.timer.refreshTimer();
+                this.questionIndex++
+                
+                if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
+                    this.$refs.timer.generateCorrectScore();
+                }
             }
-            }
-
         }
     }
 };

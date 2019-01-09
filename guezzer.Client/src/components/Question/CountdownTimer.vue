@@ -32,10 +32,27 @@ export default {
       this.totalTime = 20;
       this.valueDeterminate = 100;
     },
-    
+
+// valueDeterminate skickas fel. Borde spara i variabel
+    generateCorrectScore(){
+      console.log("right");
+      if(this.valueDeterminate >= 66.666){
+          this.$parent.score+=15;
+          console.log("15");
+          console.log(this.valueDeterminate);
+      }
+      else if(this.valueDeterminate >= 33.333 && this.woohoo <= 66.665){
+        this.$parent.score+=10;
+        console.log("10");
+      }
+      else if(this.woohoo > 0 && this.woohoo <= 33.332){
+        this.$parent.score+=5;
+        console.log("5");
+      }
+  },
+   
     countdown() 
-    { 
-    
+    {     
         this.totalTime--;
 
         if (this.totalTime == 0) 
@@ -46,15 +63,11 @@ export default {
         if (this.totalTime == 15)
         {
           this.$emit('alertQuestionPage')
-   
         }
 
         if (this.totalTime <= 15) {
-        this.valueDeterminate -= 6.666;
+          this.valueDeterminate -= 6.666;
         }
-
-        
-      
     },
 
     formatTime(time) {
