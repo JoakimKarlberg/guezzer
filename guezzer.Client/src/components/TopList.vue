@@ -1,6 +1,6 @@
 <template>
-    <div class="TopList">
-        <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
+  <div class="TopList">
+    <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
      <table>
       <thead>
         <tr>
@@ -15,7 +15,7 @@
         </tr>
       </tbody>
     </table>
-    </div>
+  </div>
 </template>
 
 <script>

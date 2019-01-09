@@ -1,16 +1,23 @@
 <template>
-  <div>
-    <li v-for="category in groupedCategories" :key="category.id">
-      <h3 class="blue darken-2 white--text pl-3 py-1">{{header}} {{category[0].category}}</h3>
-      <h4>{{name}}{{score}}</h4>
-      <ul>
-        <li v-for="item of category" :key="item.id">
-          {{item.name}}
-          {{item.score}}
-        </li>
-      </ul>
-    </li>
+<div>
+  <div class="tabless" v-for="category in groupedCategories" :key="category.id">
+	<h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ category[0].category }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item of category" :key="item.id">
+          <td>{{ item.name }}</td>
+          <td>{{ item.score }}</td>
+        </tr>
+      </tbody>
+    </table> 
   </div>
+</div>
 </template>
 
 <script>
@@ -24,7 +31,7 @@ export default {
     return {
       results: null,
       header: 'Toplist for category ',
-      name: 'Name ',
+      name: 'Player name ',
       score: ' Score'
     }
   },
@@ -54,17 +61,8 @@ export default {
 </script>
 
 <style scoped>
-  div{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 50px;
-  }
-  li{
-    list-style-type: none;
-  }
-  ul{
-    padding: 5px;
+  th{
+    margin-right: 20px;
   }
 </style>
 
