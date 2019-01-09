@@ -1,21 +1,16 @@
 <template>
     <div class="AllTopLists">
-        <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
-     <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="result in results" :key="result.id">
-          <td>{{ result.name }}</td>
-          <td>{{ result.score }}</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
+    <li v-for="category in groupedCategories" :key="category.id">
+      <h3 class="blue darken-2 white--text pl-3 py-1">{{header}} {{category.category}}</h3>
+      <ul>
+        <li v-for="item of category" :key="item.id">
+          {{item.name}}
+          {{item.score}}
+          {{item.category}}
+        </li>
+      </ul>
+    </li>
+  </div>
 </template>
 
 <script>
@@ -25,7 +20,6 @@ const url = 'http://localhost:5000/api/Results';
 
 export default {
   name: 'AllTopLists',
-  props:['category'],
   data () {
     return {
       results: null,
@@ -36,22 +30,25 @@ export default {
     axios.get(url)
       .then(response => {
         this.results = response.data
+        console.log(this.results)
       })
       .catch(err => {
         console.log(err)
       })
   },
   computed: {
-    topTenResults: function () {
-        console.log(this.results_request)
-      if(!this.results_request) 
+    groupedCategories: function () {
+      if(!this.results) 
       {
         return [];
       } 
       else 
       {
-          
-        return _.orderBy(this.results_request.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
+        var grouped = _.groupBy(this.results, 'category')
+        console.log(grouped);
+        return grouped;
+        
+        //_.orderBy(this.grouped.filter(score => score.category === 'Funny'), 'score', 'desc').slice(0, 10);
       }
     }
   }
@@ -61,6 +58,9 @@ export default {
 <style scoped>
   th{
     margin-right: 20px;
+  }
+  li{
+    list-style-type: none;
   }
 </style>
 
