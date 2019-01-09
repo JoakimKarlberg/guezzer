@@ -76,8 +76,7 @@ export default {
 
 
             if (this.questionIndex >= this.numberOfQuestions)
-            {
-            EventBus.$off('playVideo');   
+            {  
             this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
@@ -92,6 +91,14 @@ export default {
             }
 
         }
+    },
+    
+    beforeRouteLeave (to, from, next) {
+        this.$refs.timer.stopTimer();
+        EventBus.$off('playVideo');
+        next();
+        
+        
     }
 };
 </script>
