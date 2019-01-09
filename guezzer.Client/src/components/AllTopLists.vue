@@ -39,7 +39,6 @@ export default {
     axios.get(url)
       .then(response => {
         this.results = response.data
-        console.log(this.results)
       })
       .catch(err => {
         console.log(err)
