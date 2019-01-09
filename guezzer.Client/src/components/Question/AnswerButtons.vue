@@ -1,6 +1,6 @@
 <template>
      <div class="AnswerButtons">
-         <v-btn class="red darken-3 white--text btn-primary btn-1 mt-4" :disabled="checkIfQuestionStarted" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="$emit('answerButtonClicked', objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</v-btn>
+         <v-btn class="deep-purple darken-2 white--text btn-primary btn-1 mt-4" :disabled="checkIfQuestionStarted" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="$emit('answerButtonClicked', objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</v-btn>
     </div>
 </template>
 

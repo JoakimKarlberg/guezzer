@@ -1,7 +1,7 @@
 <template>
 
     <div class="CountDownTimer">
-      <v-progress-linear height="20" color="indigo darken-2" class="timerWidth" v-model.number="valueDeterminate"></v-progress-linear> 
+      <v-progress-linear height="20" color="blue darken-1" class="timerWidth" v-model.number="valueDeterminate"></v-progress-linear> 
     </div>
 
 </template>
