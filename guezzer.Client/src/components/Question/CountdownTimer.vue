@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       timerId: null,
-      totalTime: 15,
+      totalTime: 20,
       valueDeterminate: 100,
       noAnswerObject: {'startValue':'','endValue':''}
     }
@@ -29,22 +29,32 @@ export default {
     },
     
     refreshTimer() {
-      this.totalTime = 15;
+      this.totalTime = 20;
       this.valueDeterminate = 100;
     },
     
     countdown() 
     { 
-      if (this.totalTime == 0) 
-      {
-         this.$parent.checkAnswer(this.noAnswerObject);
-      }
-  
-      else
-      {
+    
         this.totalTime--;
+
+        if (this.totalTime == 0) 
+        {
+         this.$parent.checkAnswer(this.noAnswerObject);
+        }
+
+        if (this.totalTime == 15)
+        {
+          this.$emit('alertQuestionPage')
+   
+        }
+
+        if (this.totalTime <= 15) {
         this.valueDeterminate -= 6.666;
-      }
+        }
+
+        
+      
     },
 
     formatTime(time) {
