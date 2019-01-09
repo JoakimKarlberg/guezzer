@@ -54,8 +54,11 @@ export default {
 </script>
 
 <style scoped>
-  th{
-    margin-right: 20px;
+  div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
   }
   li{
     list-style-type: none;
