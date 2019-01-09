@@ -1,12 +1,11 @@
 <template>
-    <div class="AllTopLists">
+  <div>
     <li v-for="category in groupedCategories" :key="category.id">
-      <h3 class="blue darken-2 white--text pl-3 py-1">{{header}} {{category.category}}</h3>
+      <h3 class="blue darken-2 white--text pl-3 py-1">{{header}} {{category[0].category}}</h3>
       <ul>
         <li v-for="item of category" :key="item.id">
           {{item.name}}
           {{item.score}}
-          {{item.category}}
         </li>
       </ul>
     </li>
@@ -30,7 +29,6 @@ export default {
     axios.get(url)
       .then(response => {
         this.results = response.data
-        console.log(this.results)
       })
       .catch(err => {
         console.log(err)
@@ -46,9 +44,9 @@ export default {
       {
         var grouped = _.groupBy(this.results, 'category');
         console.log(grouped);
-        var ordered = _.orderBy(grouped, 'score', 'asc').slice(0, 10);
-        console.log(ordered);
-        return ordered;
+        // var ordered = _.orderBy(grouped, 'score', 'asc').slice(0, 10);
+        // console.log(ordered);
+        return grouped;
       }
     }
   }
@@ -61,6 +59,9 @@ export default {
   }
   li{
     list-style-type: none;
+  }
+  ul{
+    padding: 5px;
   }
 </style>
 
