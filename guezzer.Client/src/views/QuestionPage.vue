@@ -17,7 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' :rightAnswer='rightAnswer' @answerButtonClicked="checkAnswer"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
@@ -50,7 +50,8 @@ export default {
             category: ' ',
             viewCount: '',
             score: 0,
-            startQuestion: false
+            startQuestion: false,
+            rightAnswer: false
         }
     },
     created() {
@@ -73,22 +74,27 @@ export default {
 
             this.$refs.timer.stopTimer();
             this.startQuestion = false;
+            this.rightAnswer = false;
 
 
             if (this.questionIndex >= this.numberOfQuestions)
             {  
-            this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
+                this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
             else
             {
-            this.$refs.video.getVideo();
-            this.$refs.timer.refreshTimer();
-            this.questionIndex++
-            if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
-            this.score++
+                this.$refs.video.getVideo();
+                this.$refs.timer.refreshTimer();
+                this.questionIndex++
+                
+                if(HandleAnswer.methods.CheckAnswer(this.viewCount,answer)){
+                    this.score++;
+                    this.rightAnswer = true;
+                }
             }
-            }
+
+            console.log(this.score)
 
         }
     },
