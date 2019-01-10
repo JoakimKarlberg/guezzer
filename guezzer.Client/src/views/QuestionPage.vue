@@ -13,11 +13,11 @@
 
                     <v-layout justify-center>
                         <v-flex> 
-                            <countdown-timer class="countdownTimer" ref="timer"></countdown-timer>
+                            <countdown-timer v-on:alertQuestionPage="onQuestionStarted" class="countdownTimer" ref="timer"></countdown-timer>
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" :isVideoPlaying='isVideoPlaying' @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
@@ -50,14 +50,13 @@ export default {
             category: ' ',
             viewCount: '',
             score: 0,
-            isVideoPlaying: false,
+            startQuestion: false
         }
     },
     created() {
         this.category = this.$route.params.category;
         let self = this;
         EventBus.$on('playVideo', function () {
-            self.isVideoPlaying = true;
             self.$refs.timer.startTimer();
         })
     },
@@ -66,17 +65,18 @@ export default {
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },
+        onQuestionStarted(){
+            this.startQuestion = true;
+        },
 
         checkAnswer(answer) {
 
             this.$refs.timer.stopTimer();
-            this.score =  HandleAnswer.methods.CheckAnswer(this.viewCount, answer);
-            this.isVideoPlaying = false;
+            this.startQuestion = false;
 
 
             if (this.questionIndex >= this.numberOfQuestions)
-            {
-            EventBus.$off('playVideo');   
+            {  
             this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
@@ -85,8 +85,20 @@ export default {
             this.$refs.video.getVideo();
             this.$refs.timer.refreshTimer();
             this.questionIndex++
+            if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
+            this.score++
             }
+            }
+
         }
+    },
+    
+    beforeRouteLeave (to, from, next) {
+        this.$refs.timer.stopTimer();
+        EventBus.$off('playVideo');
+        next();
+        
+        
     }
 };
 </script>

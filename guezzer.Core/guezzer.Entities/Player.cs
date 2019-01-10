@@ -10,7 +10,7 @@ namespace guezzer.Entities
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [MaxLength(10, ErrorMessage = "The Name must be between 1-10 letters")]
         public string Name { get; set; }
 
         [Required]
