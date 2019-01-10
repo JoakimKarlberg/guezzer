@@ -68,10 +68,6 @@ export default {
     },
     methods: {
         
-        getObjectAnswers(objectAnswers) {
-            this.objectAnswers = objectAnswers;          
-        },
-
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },

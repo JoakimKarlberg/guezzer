@@ -7,12 +7,6 @@
 <script>
 
 export default {
-    data() {
-        return  {
-             objectAnswers: []
-        }
-    },
-
     props: {
       newQuestion: Boolean,
       startQuestion: Boolean,
@@ -46,10 +40,6 @@ export default {
 
       }
     },
-
-    created() {
-        this.$emit('passObjectAnswers', this.objectAnswers);
-    }
 
 }
 
