@@ -7,6 +7,11 @@
 <script>
 
 export default {
+  data() {
+        return {
+            isActive:false
+        }
+    },
     props: {
       newQuestion: Boolean,
       startQuestion: Boolean,
@@ -16,8 +21,10 @@ export default {
 
     computed: {
     checkIfQuestionStarted() {
-      if(this.startQuestion === true)
+      if(this.startQuestion === true){
+        this.isActive = false;
         return false;
+      }
       else
         return true;
     },
@@ -26,8 +33,8 @@ export default {
 
       return {
       'deep-purple darken-2': this.newQuestion,
-      'green': this.rightAnswer,
-      'red' : !this.rightAnswer
+      'green': this.rightAnswer && this.isActive,
+      'red' : !this.rightAnswer && this.isActive
     }
     }
     },
@@ -36,6 +43,7 @@ export default {
       onButtonClicked(answer){
         this.$emit('answerButtonClicked', answer);
         this.$emit('getNewQuestion');
+        this.isActive = true;
       
 
       }
