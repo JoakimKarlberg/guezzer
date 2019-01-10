@@ -13,8 +13,8 @@
           </v-layout>
 
           <v-layout justify-center>
-            <div class="container">
-                  <all-top-lists class="mx-5 mb-3"/>
+            <div>
+              <all-top-lists class="mx-5 mb-3"/>
             </div>
           </v-layout>
 
@@ -42,13 +42,6 @@
 </script>
 
 <style scoped>
-  .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 50px;
-  }
-
   @media screen and (max-width: 720px) {
   .container{
     flex-direction: column;

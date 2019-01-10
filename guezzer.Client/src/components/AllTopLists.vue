@@ -1,7 +1,7 @@
 <template>
-<div>
-  <div class="tabless" v-for="category in groupedCategories" :key="category.id">
-	<h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ category[0].category }}</h3>
+<div class="AllTopLists">
+  <div class="TopList" v-for="category in groupedCategories" :key="category.id">
+	<h3 class="blue darken-2 white--text py-1">{{ header }} {{ category[0].category }}</h3>
     <table>
       <thead>
         <tr>
@@ -52,9 +52,7 @@ export default {
   computed: {
     groupedCategories: function () {
       if(!this.results) 
-      {
         return [];
-      } 
       else 
       {
         var ordered = _.orderBy(this.results, 'score', 'desc');
@@ -66,8 +64,21 @@ export default {
 </script>
 
 <style scoped>
-  th{
-    margin-right: 20px;
+  table{ 
+    text-align: center; 
+    vertical-align: middle;
+    margin: auto; 
+  }
+  .AllTopLists{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .TopList{
+    padding: 15px;
+    text-align: center; 
+    vertical-align: middle;
   }
 </style>
 

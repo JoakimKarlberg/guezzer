@@ -51,9 +51,7 @@ export default {
   computed: {
     topTenResults: function () {
       if(!this.results) 
-      {
         return [];
-      } 
       else 
       {
         return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
@@ -64,8 +62,15 @@ export default {
 </script>
 
 <style scoped>
-  th{
-    margin-right: 20px;
+   table{ 
+    text-align: center; 
+    vertical-align: middle;
+    margin: auto; 
+  }
+  .TopList{
+    padding: 15px;
+    text-align: center; 
+    vertical-align: middle;
   }
 </style>
 
