@@ -15,6 +15,7 @@ export default {
       totalTime: 20,
       timeRemaining: 0,
       valueDeterminate: 100,
+      functionCallTracker: 0,
       noAnswerObject: {'startValue':'','endValue':''}
     }
   },
@@ -36,6 +37,7 @@ export default {
 
     generateCorrectScore(){
       console.log("right answer");
+      this.functionCallTracker++;
 
       if(this.timeRemaining >= 10){
         this.$parent.score+=15;
@@ -66,7 +68,8 @@ export default {
           this.$emit('alertQuestionPage')
         }
 
-        if (this.totalTime <= 15) {
+        if (this.totalTime <= 15) 
+        {
           this.valueDeterminate -= 6.666;
         }
     },
@@ -85,8 +88,7 @@ export default {
       let seconds = this.totalTime - (this.minutes * 60);
       return this.formatTime(seconds);
     }
-  },
-  
+  },  
 }
 </script>
 

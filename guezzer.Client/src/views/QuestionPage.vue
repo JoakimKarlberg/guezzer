@@ -17,7 +17,10 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>     
+
+
+                    <h3>{{threeInARow}}</h3>                 
 
                 </v-flex>
             </v-layout>            
@@ -48,6 +51,7 @@ export default {
             questionIndex: 1,
             numberOfQuestions: 10,
             category: ' ',
+            threeInARow: ' ', 
             viewCount: '',
             score: 0,
             startQuestion: false
@@ -88,7 +92,19 @@ export default {
                 
                 if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
                     this.$refs.timer.generateCorrectScore();
+
+                    if(this.$refs.timer.functionCallTracker >= 3){
+                        this.score+=50;
+                        this.threeInARow = "Three in a row bonus! + 50 points!";
+                        console.log("score!");
+                    }
                 }
+
+                else{
+                    this.$refs.timer.functionCallTracker = 0;
+                }
+
+                console.log(this.$refs.timer.functionCallTracker);
             }
         }
     },
@@ -96,9 +112,7 @@ export default {
     beforeRouteLeave (to, from, next) {
         this.$refs.timer.stopTimer();
         EventBus.$off('playVideo');
-        next();
-        
-        
+        next();     
     }
 };
 </script>
