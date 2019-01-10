@@ -18,14 +18,15 @@ export default {
              {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
              {'startValue':'More than','endValue':'1000 000 '}],
 
-             isCorrectColour:false,
-             isNormalColour: true,
-             isWrongColour:false,
+             isCorrectColour: false,
+             isNormalColour: false,
+             isWrongColour: false,
 
         }
     },
 
     props: {
+      newQuestion: Boolean,
       startQuestion: Boolean,
       rightAnswer: Boolean
     },
@@ -38,20 +39,25 @@ export default {
         return true;
     },
     
-    classObject: function () {
-    return {
-      'deep-purple darken-2': this.isNormalColour && !this.isCorrectColour && !this.isWrongColour,
-      'red': this.isCorrectColour
+    classObject() {
+
+      return {
+      'deep-purple darken-2': this.newQuestion,
+      'green': this.rightAnswer,
+      'red' : !this.rightAnswer
     }
     }
     },
+
     methods: {
       onButtonClicked(answer){
         this.$emit('answerButtonClicked', answer);
+        this.$emit('getNewQuestion');
       
 
       }
     }
+
 }
 
 </script>

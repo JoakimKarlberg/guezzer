@@ -17,7 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' :rightAnswer='rightAnswer' @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' :rightAnswer='rightAnswer' :newQuestion='newQuestion' @answerButtonClicked="checkAnswer" @getNewQuestion="getNewQuestion"></answer-buttons>                      
 
                 </v-flex>
             </v-layout>            
@@ -51,7 +51,8 @@ export default {
             viewCount: '',
             score: 0,
             startQuestion: false,
-            rightAnswer: false
+            rightAnswer: false,
+            newQuestion: false
         }
     },
     created() {
@@ -59,6 +60,7 @@ export default {
         let self = this;
         EventBus.$on('playVideo', function () {
             self.$refs.timer.startTimer();
+            self.newQuestion = true;
         })
     },
     methods: {
@@ -71,32 +73,38 @@ export default {
         },
 
         checkAnswer(answer) {
-
+            this.newQuestion = false;
             this.$refs.timer.stopTimer();
-            this.startQuestion = false;
-            this.rightAnswer = false;
-
-
-            if (this.questionIndex >= this.numberOfQuestions)
-            {  
-                this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
-            }
-
-            else
+            
+            
+            if (HandleAnswer.methods.CheckAnswer(this.viewCount,answer))
             {
-                this.$refs.video.getVideo();
-                this.$refs.timer.refreshTimer();
-                this.questionIndex++
-                
-                if(HandleAnswer.methods.CheckAnswer(this.viewCount,answer)){
-                    this.score++;
-                    this.rightAnswer = true;
-                }
+                this.score++;
+                this.rightAnswer = true;
             }
 
             console.log(this.score)
 
+        },
+
+        getNewQuestion() {
+            setTimeout (( ) => 
+            {
+                this.startQuestion = false;
+
+                if (this.questionIndex >= this.numberOfQuestions)
+                {  
+                    this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
+                }
+            
+                this.$refs.video.getVideo();
+                this.$refs.timer.refreshTimer();
+                this.questionIndex++;
+                this.rightAnswer = false;
+                this.newQuestion = true;
+            }, 1000);
         }
+
     },
     
     beforeRouteLeave (to, from, next) {

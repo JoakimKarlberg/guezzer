@@ -41,6 +41,7 @@ export default {
         if (this.totalTime == 0) 
         {
          this.$parent.checkAnswer(this.noAnswerObject);
+         this.$parent.getNewQuestion();
         }
 
         if (this.totalTime == 15)
