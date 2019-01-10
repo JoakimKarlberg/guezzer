@@ -1,6 +1,6 @@
 <template>
   <div class="TopList">
-    <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
+    <h3 class="blue darken-2 white--text pl-3 py-1">{{ this.category }} </h3>
      <table>
       <thead>
         <tr>
@@ -30,8 +30,7 @@ export default {
   props:['category'],
   data () {
     return {
-      results: null,
-      header: 'Toplist for category '
+      results: null
     }
   },
   created () {

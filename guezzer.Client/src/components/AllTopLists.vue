@@ -1,7 +1,7 @@
 <template>
 <div class="AllTopLists">
   <div class="TopList" v-for="category in groupedCategories" :key="category.id">
-	<h3 class="blue darken-2 white--text py-1">{{ header }} {{ category[0].category }}</h3>
+	<h3 class="blue darken-2 white--text py-1">{{ category[0].category }}</h3>
     <table>
       <thead>
         <tr>
@@ -31,8 +31,7 @@ export default {
   name: 'AllTopLists',
   data () {
     return {
-      results: null,
-      header: 'Toplist for category '
+      results: null
     }
   },
   created () {

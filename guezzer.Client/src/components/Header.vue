@@ -7,7 +7,7 @@
       </router-link>
     </v-toolbar-title>
     
-    <v-btn flat color="white">
+    <v-btn flat color="white"  router-link to="/TopListPage">
       <v-icon left>format_list_numbered</v-icon>
       <span>Top lists</span>
     </v-btn>

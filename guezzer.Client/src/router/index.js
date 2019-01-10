@@ -15,6 +15,7 @@ import YoutubePage from '@/views/YoutubePage'
 import ResultPage from '@/views/ResultPage'
 import CategoryPage from '@/views/CategoryPage'
 import QuestionPage from '@/views/QuestionPage'
+import TopListPage from '@/views/TopListPage'
 
 // Here we create the routes
 // First you need to import the component, then specify the name of the route and which component to bind it to
@@ -45,6 +46,10 @@ export default new Router({
       name: 'QuestionPage',
       component: QuestionPage
     },
-
+    {
+      path: '/TopListPage/',
+      name: 'TopListPage',
+      component: TopListPage
+    }
   ]
 })
