@@ -1,7 +1,8 @@
 <template>
-  <div class="TopList">
-    <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
-     <table>
+<div class="AllTopLists">
+  <div class="TopList" v-for="category in groupedCategories" :key="category.id">
+	<h3 class="blue darken-2 white--text py-1">{{ header }} {{ category[0].category }}</h3>
+    <table>
       <thead>
         <tr>
           <th>Rank</th>
@@ -10,14 +11,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(result, index) in topTenResults" :key="result.id">
+        <tr v-for="(item, index) of category.slice(0, 10)" :key="item.id">
           <td>{{ startIndexAtOne(index) }}</td>
-          <td>{{ result.name }}</td>
-          <td>{{ result.score }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.score }}</td>
         </tr>
       </tbody>
-    </table>
+    </table> 
   </div>
+</div>
 </template>
 
 <script>
@@ -26,8 +28,7 @@ import axios from 'axios'
 const url = 'http://localhost:5000/api/Results';
 
 export default {
-  name: 'TopList',
-  props:['category'],
+  name: 'AllTopLists',
   data () {
     return {
       results: null,
@@ -49,12 +50,13 @@ export default {
     }
   },
   computed: {
-    topTenResults: function () {
+    groupedCategories: function () {
       if(!this.results) 
         return [];
       else 
       {
-        return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
+        var ordered = _.orderBy(this.results, 'score', 'desc');
+        return _.groupBy(ordered, 'category');
       }
     }
   }
@@ -62,10 +64,16 @@ export default {
 </script>
 
 <style scoped>
-   table{ 
+  table{ 
     text-align: center; 
     vertical-align: middle;
     margin: auto; 
+  }
+  .AllTopLists{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
   }
   .TopList{
     padding: 15px;

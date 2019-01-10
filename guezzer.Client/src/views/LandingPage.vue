@@ -13,10 +13,8 @@
           </v-layout>
 
           <v-layout justify-center>
-            <div class="container">
-                <top-list class="mx-5 mb-3"/>
-                <top-list class="mx-5 mb-3"/>
-                <top-list class="mx-5 mb-3"/>
+            <div>
+              <all-top-lists class="mx-5 mb-3"/>
             </div>
           </v-layout>
 
@@ -26,15 +24,14 @@
   </div>
 </template>
 
-
 <script>
   import StartButton from '@/components/StartButton.vue'
-  import TopList from '@/components/TopList.vue'
+  import AllTopLists from '@/components/AllTopLists.vue'
 
   export default {
     components: {
         StartButton,
-        TopList
+        AllTopLists
       },
     name: 'LandingPage',
     data() {
@@ -45,13 +42,6 @@
 </script>
 
 <style scoped>
-  .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 50px;
-  }
-
   @media screen and (max-width: 720px) {
   .container{
     flex-direction: column;
