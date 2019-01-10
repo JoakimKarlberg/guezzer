@@ -13,6 +13,7 @@ export default {
     return {
       timerId: null,
       totalTime: 20,
+      timeRemaining: 0,
       valueDeterminate: 100,
       noAnswerObject: {'startValue':'','endValue':''}
     }
@@ -33,27 +34,27 @@ export default {
       this.valueDeterminate = 100;
     },
 
-// valueDeterminate skickas fel. Borde spara i variabel
     generateCorrectScore(){
-      console.log("right");
-      if(this.valueDeterminate >= 66.666){
-          this.$parent.score+=15;
-          console.log("15");
-          console.log(this.valueDeterminate);
+      console.log("right answer");
+
+      if(this.timeRemaining >= 10){
+        this.$parent.score+=15;
+        console.log("15, time left: " + this.timeRemaining);
       }
-      else if(this.valueDeterminate >= 33.333 && this.woohoo <= 66.665){
+      else if(this.timeRemaining >= 5 && this.timeRemaining < 10){
         this.$parent.score+=10;
-        console.log("10");
+        console.log("10, time left: " + this.timeRemaining);
       }
-      else if(this.woohoo > 0 && this.woohoo <= 33.332){
+      else if(this.timeRemaining > 0 && this.timeRemaining < 5){
         this.$parent.score+=5;
-        console.log("5");
+        console.log("5, time left: " + this.timeRemaining);
       }
   },
    
     countdown() 
     {     
         this.totalTime--;
+        this.timeRemaining = this.totalTime;
 
         if (this.totalTime == 0) 
         {

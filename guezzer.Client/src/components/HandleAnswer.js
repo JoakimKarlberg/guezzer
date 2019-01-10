@@ -16,10 +16,10 @@ export default {
             }
             else
             {
-                console.log("wrong");
-              return false;
+                console.log("wrong answer");
+                return false;
             }
-         }      
+        }      
     }
 }
 
