@@ -17,7 +17,7 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' :rightAnswer='rightAnswer' :newQuestion='newQuestion' @answerButtonClicked="checkAnswer" @getNewQuestion="getNewQuestion"></answer-buttons>                      
+                    <answer-button class="answerButton" v-for="(objectAnswer,index) in objectAnswers" :key="index" :objectAnswer='objectAnswer' :startQuestion='startQuestion' :rightAnswer='rightAnswer' :newQuestion='newQuestion' @answerButtonClicked="checkAnswer" @getNewQuestion="getNewQuestion"></answer-button>                      
 
                 </v-flex>
             </v-layout>            
@@ -28,7 +28,7 @@
 
 <script>
 import QuestionTitle from '@/components/Question/QuestionTitle.vue'
-import AnswerButtons from '@/components/Question/AnswerButtons.vue'
+import AnswerButton from '@/components/Question/AnswerButton.vue'
 import VideoItem from '@/components/Youtube/VideoItem.vue'
 import CountdownTimer from '@/components/Question/CountdownTimer.vue';
 import HandleAnswer from '@/components/HandleAnswer.js'
@@ -38,7 +38,7 @@ import { EventBus } from '@/components/Youtube/event-bus.js';
 export default {
     components: {
         QuestionTitle,
-        AnswerButtons,
+        AnswerButton,
         VideoItem,
         CountdownTimer,
     },
@@ -48,6 +48,9 @@ export default {
             questionIndex: 1,
             numberOfQuestions: 10,
             category: ' ',
+            objectAnswers: [{'startValue':'0','endValue':'1000'},
+             {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
+             {'startValue':'More than','endValue':'1000 000 '}],
             viewCount: '',
             score: 0,
             startQuestion: false,
@@ -64,11 +67,16 @@ export default {
         })
     },
     methods: {
+        
+        getObjectAnswers(objectAnswers) {
+            this.objectAnswers = objectAnswers;          
+        },
 
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },
-        onQuestionStarted(){
+
+        onQuestionStarted() {
             this.startQuestion = true;
         },
 
@@ -116,3 +124,4 @@ export default {
     }
 };
 </script>
+

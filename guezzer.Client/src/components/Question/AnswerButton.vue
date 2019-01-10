@@ -1,34 +1,23 @@
 <template>
-     <div class="AnswerButtons">
-         <v-btn class= "white--text btn-primary btn-1 mt-4" v-bind:class="classObject" :disabled="checkIfQuestionStarted" v-for="(objectAnswer,index) in objectAnswers" :key="index" @click="onButtonClicked(objectAnswer)">{{ objectAnswer.startValue+ ' - ' +objectAnswer.endValue }}</v-btn>
+     <div class="AnswerButton">
+         <v-btn class= "white--text btn-primary btn-1 mt-4" v-bind:class="classObject" :disabled="checkIfQuestionStarted" @click="onButtonClicked(objectAnswer)">{{this.objectAnswer.startValue}} - {{this.objectAnswer.endValue}}</v-btn>
     </div>
 </template>
 
-
-
-
 <script>
-
-
 
 export default {
     data() {
         return  {
-             objectAnswers: [{'startValue':'0','endValue':'1000'},
-             {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
-             {'startValue':'More than','endValue':'1000 000 '}],
-
-             isCorrectColour: false,
-             isNormalColour: false,
-             isWrongColour: false,
-
+             objectAnswers: []
         }
     },
 
     props: {
       newQuestion: Boolean,
       startQuestion: Boolean,
-      rightAnswer: Boolean
+      rightAnswer: Boolean,
+      objectAnswer: Object
     },
 
     computed: {
@@ -56,6 +45,10 @@ export default {
       
 
       }
+    },
+
+    created() {
+        this.$emit('passObjectAnswers', this.objectAnswers);
     }
 
 }
