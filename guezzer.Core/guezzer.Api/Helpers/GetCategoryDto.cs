@@ -12,7 +12,6 @@ namespace guezzer.Api.Helpers
 
         [Required]
         public string Type { get; set; }
-
-        //Implement more properties - such as Results per category maybe?
+        
     }
 }

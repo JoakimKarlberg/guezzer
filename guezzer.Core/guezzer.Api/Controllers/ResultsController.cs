@@ -12,11 +12,13 @@ namespace guezzer.Api.Controllers
     [ApiController]
     public class ResultsController : ControllerBase
     {
-        private readonly IResultRepository _repository;
+        private readonly IResultRepository _resultRepository;
+        private readonly IPlayerRepository _playerRepository;
 
-        public ResultsController(IResultRepository repository)
+        public ResultsController(IResultRepository resultRepository, IPlayerRepository playerRepository)
         {
-            _repository = repository;
+            _resultRepository = resultRepository;
+            _playerRepository = playerRepository;
         }
 
         //GET: api/Results
@@ -25,9 +27,9 @@ namespace guezzer.Api.Controllers
         {
             Log.Logger.Information($"Requesting GetAll from Results");
 
-            var results = await _repository.GetAll();
+            var results = await _resultRepository.GetAll();
 
-            if(results == null)
+            if (results == null)
             {
                 return NotFound();
             }
@@ -46,7 +48,7 @@ namespace guezzer.Api.Controllers
                 return BadRequest();
             }
 
-            var result = await _repository.Get(id);
+            var result = await _resultRepository.Get(id);
 
             if (result == null)
             {
@@ -67,9 +69,9 @@ namespace guezzer.Api.Controllers
                 return BadRequest();
             }
 
-            var result = await _repository.GetPlayerResults(name);
+            var result = await _resultRepository.GetPlayerResults(name);
 
-            if(result == null)
+            if (result == null)
             {
                 return NotFound();
             }
@@ -77,19 +79,18 @@ namespace guezzer.Api.Controllers
             return Ok(result);
         }
 
-        //PUT: api/results/{resultDto-object}
+        //PUT: api/results/{playerResultDto}
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateResultDto resultDto)
+        public async Task<IActionResult> UpdatePlayerAndResult([FromBody] UpdatePlayerResultDto updatePlayerResultDto)
         {
+            Log.Logger.Information($"Updating {updatePlayerResultDto.Name} with Result {updatePlayerResultDto.Score} in Category: {updatePlayerResultDto.Category}");
 
-            Log.Logger.Information($"Updating {resultDto.Name} in Results");
-
-            if (resultDto == null)
+            if(updatePlayerResultDto == null)
             {
                 return BadRequest();
             }
 
-            if(!(resultDto.Score >= 0))
+            if(!(updatePlayerResultDto.Score >= 0))
             {
                 ModelState.AddModelError(nameof(UpdateResultDto), "Score needs to be a number of value 0 or higher.");
             }
@@ -99,9 +100,32 @@ namespace guezzer.Api.Controllers
                 return new UnprocessableEntityObjectResult(ModelState);
             }
 
-            var result = await _repository.Update(resultDto);
+            var player = GetPlayerFromUpdatePlayerResultDto(updatePlayerResultDto);   
+            var playerUpdateResult = await _playerRepository.Update(player);
+
+            Log.Logger.Information($"{player.Name} updated");
+
+            var result = GetResultFromUpdatePlayerResultDto(updatePlayerResultDto);
+            var scoreUpdateResult = await _resultRepository.Update(result);
+
+            Log.Logger.Information($"Result with score {result.Score} updated");
+            Log.Logger.Information($"{player.Name} successfully updated with result {result.Score} in Category: {result.Category}");
 
             return NoContent();
+        }
+
+        // Returns a single playerDto from UpdatePlayerResultDto
+        private UpdatePlayerDto GetPlayerFromUpdatePlayerResultDto(UpdatePlayerResultDto player)
+        {
+            var updatePlayerDto = new UpdatePlayerDto { Name = player.Name };
+            return updatePlayerDto;
+        }
+
+        // Returns a single resultDto from UpdatePlayerResultDto
+        private UpdateResultDto GetResultFromUpdatePlayerResultDto(UpdatePlayerResultDto result)
+        {
+            var updateResultDto = new UpdateResultDto { Name = result.Name, Category = result.Category, Score = result.Score };
+            return updateResultDto;
         }
     }
 }
