@@ -79,33 +79,6 @@ namespace guezzer.Api.Controllers
             return Ok(result);
         }
 
-        //PUT: api/results/{resultDto-object}
-        //[HttpPut]
-        //public async Task<IActionResult> Update([FromBody] UpdateResultDto resultDto)
-        //{
-
-        //    Log.Logger.Information($"Updating {resultDto.Name} in Results");
-
-        //    if (resultDto == null)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    if (!(resultDto.Score >= 0))
-        //    {
-        //        ModelState.AddModelError(nameof(UpdateResultDto), "Score needs to be a number of value 0 or higher.");
-        //    }
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return new UnprocessableEntityObjectResult(ModelState);
-        //    }
-
-        //    var result = await _resultRepository.Update(resultDto);
-
-        //    return NoContent();
-        //}
-
         //PUT: api/results/{playerResultDto}
         [HttpPut]
         public async Task<IActionResult> UpdatePlayerAndResult([FromBody] UpdatePlayerResultDto updatePlayerResultDto)
