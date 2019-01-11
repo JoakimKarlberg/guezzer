@@ -13,7 +13,9 @@ export default {
     return {
       timerId: null,
       totalTime: 20,
+      timeRemaining: 0,
       valueDeterminate: 100,
+      pointStreakTracker: 0,
       noAnswerObject: {'startValue':'','endValue':''}
     }
   },
@@ -32,11 +34,29 @@ export default {
       this.totalTime = 20;
       this.valueDeterminate = 100;
     },
-    
+
+    generateCorrectScore(){
+      console.log("right answer");
+      this.pointStreakTracker++;
+
+      if(this.timeRemaining >= 10){
+        this.$parent.score+=15;
+        console.log("15, time left: " + this.timeRemaining);
+      }
+      else if(this.timeRemaining >= 5 && this.timeRemaining < 10){
+        this.$parent.score+=10;
+        console.log("10, time left: " + this.timeRemaining);
+      }
+      else if(this.timeRemaining > 0 && this.timeRemaining < 5){
+        this.$parent.score+=5;
+        console.log("5, time left: " + this.timeRemaining);
+      }
+  },
+   
     countdown() 
-    { 
-    
+    {     
         this.totalTime--;
+        this.timeRemaining = this.totalTime;
 
         if (this.totalTime == 0) 
         {
@@ -46,15 +66,12 @@ export default {
         if (this.totalTime == 15)
         {
           this.$emit('alertQuestionPage')
-   
         }
 
-        if (this.totalTime <= 15) {
-        this.valueDeterminate -= 6.666;
+        if (this.totalTime <= 15) 
+        {
+          this.valueDeterminate -= 6.666;
         }
-
-        
-      
     },
 
     formatTime(time) {
@@ -71,8 +88,7 @@ export default {
       let seconds = this.totalTime - (this.minutes * 60);
       return this.formatTime(seconds);
     }
-  },
-  
+  },  
 }
 </script>
 

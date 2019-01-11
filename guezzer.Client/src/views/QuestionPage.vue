@@ -17,7 +17,14 @@
                         </v-flex>
                     </v-layout>
 
-                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>                      
+                    <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>     
+
+                    <v-layout justify-center>
+                        <v-flex> 
+                            <v-alert :value="threeInARowAlert" type="success" class="alertWidth" transition="scale-transition">Three in a row bonus! + 50 points!</v-alert>
+                        </v-flex>
+                    </v-layout>
+                           
 
                 </v-flex>
             </v-layout>            
@@ -48,6 +55,7 @@ export default {
             questionIndex: 1,
             numberOfQuestions: 10,
             category: ' ',
+            threeInARowAlert: false,
             viewCount: '',
             score: 0,
             startQuestion: false
@@ -61,7 +69,6 @@ export default {
         })
     },
     methods: {
-
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },
@@ -70,35 +77,50 @@ export default {
         },
 
         checkAnswer(answer) {
-
             this.$refs.timer.stopTimer();
             this.startQuestion = false;
 
-
-            if (this.questionIndex >= this.numberOfQuestions)
-            {  
-            this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
+            if (this.questionIndex >= this.numberOfQuestions){  
+                this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
-            else
-            {
-            this.$refs.video.getVideo();
-            this.$refs.timer.refreshTimer();
-            this.questionIndex++
-            if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
-            this.score++
-            }
-            }
+            else{
+                this.$refs.video.getVideo();
+                this.$refs.timer.refreshTimer();
+                this.questionIndex++
+                
+                if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
+                    this.$refs.timer.generateCorrectScore();
 
+                    if(this.$refs.timer.pointStreakTracker = 3){
+                        this.score+=50;
+                        this.threeInARowAlert = true;
+                        console.log("score!");
+                        this.$refs.timer.pointStreakTracker = 0;
+                        setTimeout(() => {
+                            this.threeInARowAlert = false;
+                        }, 5000);
+                    }
+                }
+                else{
+                    this.$refs.timer.pointStreakTracker = 0;
+                }
+
+                console.log(this.$refs.timer.pointStreakTracker);
+            }
         }
     },
     
     beforeRouteLeave (to, from, next) {
         this.$refs.timer.stopTimer();
         EventBus.$off('playVideo');
-        next();
-        
-        
+        next();     
     }
 };
 </script>
+
+<style scoped>
+  .alertWidth{
+    width: 400px;
+  }
+</style>
