@@ -4,22 +4,28 @@ export default {
 
     methods:{
         
-         
-         CheckAnswer: function(rightAnswer,answer){
+         GetRightOption: function(rightAnswer,objectAnswers) {
+            
+            objectAnswers.forEach(option => {
 
-            let trimmedStartValue = Trim(answer.startValue);
-            let trimmedEndValue = Trim(answer.endValue);
+                let trimmedStartValue = Trim(option.startValue);
+                let trimmedEndValue = Trim(option.endValue);
 
-            if(trimmedStartValue <=rightAnswer &&
-             trimmedEndValue >= rightAnswer || (answer.startValue == "More than" && rightAnswer > maxValue)) {
- 
-                return true;
+                if(trimmedStartValue <=rightAnswer &&
+                trimmedEndValue >= rightAnswer || (option.startValue == "More than" && rightAnswer > maxValue)) {
+                    
+                    console.log(option);
+                    return option;
             }
-            else
-            {
-              return false;
-            }
-         }      
+
+            });
+            
+         },
+
+         CheckAnswer: function(rightOption,answer){
+
+            
+         },
     }
 }
 

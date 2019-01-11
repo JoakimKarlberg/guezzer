@@ -55,6 +55,7 @@ export default {
             score: 0,
             startQuestion: false,
             rightAnswer: false,
+            rightOption: [],
             newQuestion: false
         }
     },
@@ -67,10 +68,6 @@ export default {
         })
     },
     methods: {
-        
-        getObjectAnswers(objectAnswers) {
-            this.objectAnswers = objectAnswers;          
-        },
 
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
@@ -84,8 +81,9 @@ export default {
             this.newQuestion = false;
             this.$refs.timer.stopTimer();
             
+            this.rightOption = HandleAnswer.methods.GetRightOption(this.viewCount, this.objectAnswers);
             
-            if (HandleAnswer.methods.CheckAnswer(this.viewCount,answer))
+            if (HandleAnswer.methods.CheckAnswer(this.rightOption,answer))
             {
                 this.score++;
                 this.rightAnswer = true;
