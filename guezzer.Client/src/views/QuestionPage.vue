@@ -19,7 +19,12 @@
 
                     <answer-buttons class="answerButtons" :startQuestion='startQuestion' @answerButtonClicked="checkAnswer"></answer-buttons>     
 
-                    <v-alert :value="threeInARowAlert" type="success" class="alertWidth" transition="scale-transition">Three in a row bonus! + 50 points!</v-alert>       
+                    <v-layout justify-center>
+                        <v-flex> 
+                            <v-alert :value="threeInARowAlert" type="success" class="alertWidth" transition="scale-transition">Three in a row bonus! + 50 points!</v-alert>
+                        </v-flex>
+                    </v-layout>
+                           
 
                 </v-flex>
             </v-layout>            
@@ -64,7 +69,6 @@ export default {
         })
     },
     methods: {
-
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },
@@ -73,17 +77,14 @@ export default {
         },
 
         checkAnswer(answer) {
-
             this.$refs.timer.stopTimer();
             this.startQuestion = false;
 
-            if (this.questionIndex >= this.numberOfQuestions)
-            {  
+            if (this.questionIndex >= this.numberOfQuestions){  
                 this.$router.push({ name: 'ResultPage', params: {score: this.score, category: this.category}});
             }
 
-            else
-            {
+            else{
                 this.$refs.video.getVideo();
                 this.$refs.timer.refreshTimer();
                 this.questionIndex++
@@ -91,7 +92,7 @@ export default {
                 if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
                     this.$refs.timer.generateCorrectScore();
 
-                    if(this.$refs.timer.pointStreakTracker = 1){
+                    if(this.$refs.timer.pointStreakTracker = 3){
                         this.score+=50;
                         this.threeInARowAlert = true;
                         console.log("score!");
@@ -101,9 +102,7 @@ export default {
                         }, 5000);
                     }
                 }
-
-                else
-                {
+                else{
                     this.$refs.timer.pointStreakTracker = 0;
                 }
 
