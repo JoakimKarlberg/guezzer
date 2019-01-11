@@ -1,10 +1,12 @@
 <template>
-<div class="AllTopLists">
-  <div class="TopList" v-for="category in groupedCategories" :key="category.id">
-	<h3 class="blue darken-2 white--text py-1">{{ category[0].category }}</h3>
-    <table>
-      <thead>
-        <tr>
+<div class="header">
+<h3 class="blue darken-2 white--text py-3">{{ header }}</h3>
+  <div class="all-top-lists">
+    <div class="top-list" v-for="category in groupedCategories" :key="category.id">
+	  <h3 class="blue darken-2 white--text py-1">{{ category[0].category }}</h3>
+      <table>
+       <thead>
+         <tr>
           <th>Rank</th>
           <th>Player</th>
           <th>Score</th>
@@ -19,6 +21,7 @@
       </tbody>
     </table> 
   </div>
+ </div>
 </div>
 </template>
 
@@ -31,7 +34,8 @@ export default {
   name: 'AllTopLists',
   data () {
     return {
-      results: null
+      results: null,
+      header: 'High scores'
     }
   },
   created () {
@@ -68,16 +72,21 @@ export default {
     vertical-align: middle;
     margin: auto; 
   }
-  .AllTopLists{
+  .all-top-lists{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 50px;
+   
   }
-  .TopList{
+  .top-list{
     padding: 15px;
     text-align: center; 
     vertical-align: middle;
+  }
+  .header{
+     margin-top: 50px;
+     justify-content: center;
+     text-align: center;
   }
 </style>
 

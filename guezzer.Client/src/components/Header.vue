@@ -7,10 +7,7 @@
       </router-link>
     </v-toolbar-title>
     
-    <v-btn flat color="white"  router-link to="/TopListPage">
-      <v-icon left>format_list_numbered</v-icon>
-      <span>Top lists</span>
-    </v-btn>
+    <top-list-button/>
 
     <v-spacer></v-spacer>
 
@@ -23,15 +20,14 @@
 
 </template>
 
-  <!-- <v-header app class="grey--text" height="auto">
-    <img src="../assets/guezzerlogo.png" >
-    <v-divider>
-    </v-divider>
-  </v-header> -->
-
 <script>
+import TopListButton from '@/components/TopListButton.vue'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+        TopListButton
+    },
 };
 </script>
 
