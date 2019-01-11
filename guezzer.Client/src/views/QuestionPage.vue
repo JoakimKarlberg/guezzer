@@ -92,7 +92,7 @@ export default {
                 if(HandleAnswer.methods.CheckAnswer(this.viewCount, answer)){
                     this.$refs.timer.generateCorrectScore();
 
-                    if(this.$refs.timer.pointStreakTracker = 3){
+                    if(this.$refs.timer.pointStreakTracker == 3){
                         this.score+=50;
                         this.threeInARowAlert = true;
                         console.log("score!");
