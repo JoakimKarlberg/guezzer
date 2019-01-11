@@ -19,6 +19,13 @@
 
                     <answer-button class="answerButton" v-for="(objectAnswer,index) in objectAnswers" :key="index" :objectAnswer='objectAnswer' :startQuestion='startQuestion' :rightAnswer='rightAnswer' :newQuestion='newQuestion' @answerButtonClicked="checkAnswer" @getNewQuestion="getNewQuestion"></answer-button>                      
 
+                    <v-layout justify-center>
+                        <v-flex> 
+                            <v-alert :value="threeInARowAlert" type="success" class="alertWidth" transition="scale-transition">Three in a row bonus! + 50 points!</v-alert>
+                        </v-flex>
+                    </v-layout>
+                           
+
                 </v-flex>
             </v-layout>            
         </v-container>
@@ -51,6 +58,7 @@ export default {
             objectAnswers: [{'startValue':'0','endValue':'1000'},
              {'startValue':'1001','endValue':'100 000'},{'startValue':'100 001','endValue':'1000 000'},
              {'startValue':'More than','endValue':'1000 000 '}],
+            threeInARowAlert: false,
             viewCount: '',
             score: 0,
             startQuestion: false,
@@ -68,7 +76,6 @@ export default {
         })
     },
     methods: {
-
         getViewCounts(viewCount) {
             this.viewCount = viewCount;
         },
@@ -109,6 +116,24 @@ export default {
                 this.rightAnswer = false;
                 this.newQuestion = true;
             }, 1000);
+                    this.$refs.timer.generateCorrectScore();
+
+                    if(this.$refs.timer.pointStreakTracker == 3){
+                        this.score+=50;
+                        this.threeInARowAlert = true;
+                        console.log("score!");
+                        this.$refs.timer.pointStreakTracker = 0;
+                        setTimeout(() => {
+                            this.threeInARowAlert = false;
+                        }, 5000);
+                    }
+                }
+                else{
+                    this.$refs.timer.pointStreakTracker = 0;
+                }
+
+                console.log(this.$refs.timer.pointStreakTracker);
+            }
         }
 
     },
@@ -116,10 +141,13 @@ export default {
     beforeRouteLeave (to, from, next) {
         this.$refs.timer.stopTimer();
         EventBus.$off('playVideo');
-        next();
-        
-        
+        next();     
     }
 };
 </script>
 
+<style scoped>
+  .alertWidth{
+    width: 400px;
+  }
+</style>

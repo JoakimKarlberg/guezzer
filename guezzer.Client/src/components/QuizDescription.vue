@@ -9,7 +9,7 @@ export default {
   name: "QuizDescription",
   data (){
     return {
-      description: 'this is the quiz description. This could text could come from the api with a request to the database, or something, this is the quiz description. This could text could come from the api with a request to the database, or something'
+      description: 'You will be presented with ten youtube videos and your job is to guess how many views the video has. The videos will start automatically, but you will have five seconds to watch them before the countdown timer start. The faster you answer, the more points you will receive. If you manage to get three questions right in a row, you will be awarded with 50 bonus points. Good luck!'
     }
   }
 };

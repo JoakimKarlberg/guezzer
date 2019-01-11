@@ -28,8 +28,11 @@ export default {
             if(rightOption.endValue==answer.endValue)
                 return true;
             else
-                false      
-         },
+            {
+                console.log("wrong answer");
+                return false;
+            }
+        }      
     }
 }
 
