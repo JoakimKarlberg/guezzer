@@ -92,12 +92,34 @@ export default {
             
             if (HandleAnswer.methods.CheckAnswer(this.rightOption,answer))
             {
-                this.score++;
+                this.calculateScore();
                 this.rightAnswer = true;
+            }
+
+            else
+            {
+                    this.$refs.timer.pointStreakTracker = 0;
             }
 
             console.log(this.score)
 
+        },
+
+        calculateScore() {
+            this.$refs.timer.generateCorrectScore();
+
+            if(this.$refs.timer.pointStreakTracker == 3){
+                        this.score+=50;
+                        this.threeInARowAlert = true;
+                        console.log("score!");
+                        this.$refs.timer.pointStreakTracker = 0;
+                        setTimeout(() => {
+                            this.threeInARowAlert = false;
+                        }, 5000);
+
+            }
+                
+                console.log(this.$refs.timer.pointStreakTracker);
         },
 
         getNewQuestion() {
@@ -116,27 +138,9 @@ export default {
                 this.rightAnswer = false;
                 this.newQuestion = true;
             }, 1000);
-                    this.$refs.timer.generateCorrectScore();
 
-                    if(this.$refs.timer.pointStreakTracker == 3){
-                        this.score+=50;
-                        this.threeInARowAlert = true;
-                        console.log("score!");
-                        this.$refs.timer.pointStreakTracker = 0;
-                        setTimeout(() => {
-                            this.threeInARowAlert = false;
-                        }, 5000);
-                    }
-                }
-                else{
-                    this.$refs.timer.pointStreakTracker = 0;
-                }
-
-                console.log(this.$refs.timer.pointStreakTracker);
             }
-        }
-
-    },
+        },
     
     beforeRouteLeave (to, from, next) {
         this.$refs.timer.stopTimer();

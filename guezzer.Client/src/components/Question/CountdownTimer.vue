@@ -38,6 +38,7 @@ export default {
     generateCorrectScore(){
       console.log("right answer");
       this.pointStreakTracker++;
+      console.log(this.pointStreakTracker);
 
       if(this.timeRemaining >= 10){
         this.$parent.score+=15;
