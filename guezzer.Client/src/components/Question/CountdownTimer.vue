@@ -79,19 +79,9 @@ export default {
     formatTime(time) {
       return (time < 10 ? '0' : '') + time;
     }
-  },
-
-  computed: {
-    minutes() {
-      let minutes = Math.floor(this.totalTime / 60);
-      return this.formatTime(minutes);
-    },
-    seconds() {
-      let seconds = this.totalTime - (this.minutes * 60);
-      return this.formatTime(seconds);
-    }
   },  
 }
+
 </script>
 
 <style scoped>

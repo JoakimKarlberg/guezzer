@@ -113,10 +113,7 @@ export default {
                         this.threeInARowAlert = true;
                         console.log("score!");
                         this.$refs.timer.pointStreakTracker = 0;
-                        setTimeout(() => {
-                            this.threeInARowAlert = false;
-                        }, 5000);
-
+                        
             }
                 
                 console.log(this.$refs.timer.pointStreakTracker);
@@ -136,8 +133,9 @@ export default {
                 this.$refs.timer.refreshTimer();
                 this.questionIndex++;
                 this.rightAnswer = false;
+                this.threeInARowAlert = false;
                 this.newQuestion = true;
-            }, 1000);
+            }, 2000);
 
             }
         },
