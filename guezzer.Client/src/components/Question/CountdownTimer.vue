@@ -15,7 +15,7 @@ export default {
       totalTime: 20,
       timeRemaining: 0,
       valueDeterminate: 100,
-      functionCallTracker: 0,
+      pointStreakTracker: 0,
       noAnswerObject: {'startValue':'','endValue':''}
     }
   },
@@ -37,7 +37,7 @@ export default {
 
     generateCorrectScore(){
       console.log("right answer");
-      this.functionCallTracker++;
+      this.pointStreakTracker++;
 
       if(this.timeRemaining >= 10){
         this.$parent.score+=15;
