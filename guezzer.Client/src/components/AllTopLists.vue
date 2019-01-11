@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-<h3 class="blue darken-2 white--text py-3">{{ header }}</h3>
+<h3 class="deep-purple darken-2 white--text py-3" id="header-size">{{ header }}</h3>
   <div class="all-top-lists">
     <div class="top-list" v-for="category in groupedCategories" :key="category.id">
 	  <h3 class="blue darken-2 white--text py-1">{{ category[0].category }}</h3>
@@ -87,6 +87,9 @@ export default {
      margin-top: 50px;
      justify-content: center;
      text-align: center;
+  }
+  #header-size{
+    font-size: x-large;
   }
 </style>
 
