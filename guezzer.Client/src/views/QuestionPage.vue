@@ -55,7 +55,7 @@ export default {
             score: 0,
             startQuestion: false,
             rightAnswer: false,
-            rightOption: [],
+            rightOption: {},
             newQuestion: false
         }
     },

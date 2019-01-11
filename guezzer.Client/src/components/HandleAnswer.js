@@ -1,4 +1,5 @@
 let maxValue = 1000000;
+let rightOption = null;
 
 export default {
 
@@ -14,17 +15,20 @@ export default {
                 if(trimmedStartValue <=rightAnswer &&
                 trimmedEndValue >= rightAnswer || (option.startValue == "More than" && rightAnswer > maxValue)) {
                     
-                    console.log(option);
-                    return option;
+                    rightOption = option;           
             }
-
+            
             });
             
+            return rightOption;
          },
 
          CheckAnswer: function(rightOption,answer){
 
-            
+            if(rightOption.endValue==answer.endValue)
+                return true;
+            else
+                false      
          },
     }
 }
