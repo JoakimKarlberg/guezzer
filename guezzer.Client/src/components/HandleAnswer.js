@@ -3,39 +3,38 @@ let rightOption = null;
 
 export default {
 
-    methods:{
-        
-         GetRightOption: function(rightAnswer,objectAnswers) {
-            
+    methods: {
+
+        GetRightOption: function (rightAnswer, objectAnswers) {
+
             objectAnswers.forEach(option => {
 
                 let trimmedStartValue = Trim(option.startValue);
                 let trimmedEndValue = Trim(option.endValue);
 
-                if(trimmedStartValue <=rightAnswer &&
-                trimmedEndValue >= rightAnswer || (option.startValue == "More than" && rightAnswer > maxValue)) {
-                    
-                    rightOption = option;           
-            }
-            
+                if (trimmedStartValue <= rightAnswer &&
+                    trimmedEndValue >= rightAnswer || (option.startValue == "More than" && rightAnswer > maxValue)) {
+
+                    rightOption = option;
+                }
+
             });
-            
+
             return rightOption;
-         },
+        },
 
-         CheckAnswer: function(rightOption,answer){
+        CheckAnswer: function (rightOption, answer) {
 
-            if(rightOption.endValue==answer.endValue)
+            if (rightOption.endValue == answer.endValue)
                 return true;
-            else
-            {
+            else {
                 console.log("wrong answer");
                 return false;
             }
-        }      
+        }
     }
 }
 
-function Trim (string){
+function Trim(string) {
     return parseInt(string.replace(/\s+/g, ''));
 }
