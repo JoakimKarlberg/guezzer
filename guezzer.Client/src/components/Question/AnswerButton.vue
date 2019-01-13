@@ -32,11 +32,8 @@ export default {
         this.isCorrect = false;
 
         if (this.objectAnswer.endValue === this.rightOption.endValue) {
-          console.log("correct answer is" + this.objectAnswer.endValue);
           this.isCorrect = true;
         }
-        console.log(this.objectAnswer.endValue);
-        console.log(this.rightOption.endValue);
 
         return false;
       } else return true;
@@ -44,8 +41,8 @@ export default {
     classObject() {
       return {
         "deep-purple darken-2": this.newQuestion,
-        green: this.rightAnswer && this.isActive || this.isCorrect,
-        red: !this.rightAnswer && this.isActive
+        'green': this.rightAnswer && this.isActive || this.isCorrect && !this.newQuestion,
+        'red': !this.rightAnswer && this.isActive
       };
     }
   },

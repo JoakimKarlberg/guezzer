@@ -105,12 +105,11 @@ export default {
     },
 
     onQuestionStarted() {
-        this.rightOption = HandleAnswer.methods.GetRightOption(
+      this.rightOption = HandleAnswer.methods.GetRightOption(
         this.viewCount,
         this.objectAnswers
       );
       this.startQuestion = true;
-
     },
 
     checkAnswer(answer) {
