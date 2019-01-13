@@ -24,8 +24,8 @@
               ></countdown-timer>
             </v-flex>
           </v-layout>
-
-          <answer-button
+          <v-layout row wrap>
+            <answer-button
             class="answerButton"
             v-for="(objectAnswer,index) in objectAnswers"
             :key="index"
@@ -36,7 +36,8 @@
             :rightOption="rightOption"
             @answerButtonClicked="checkAnswer"
             @getNewQuestion="getNewQuestion"
-          ></answer-button>
+            ></answer-button>
+          </v-layout>
 
           <v-layout justify-center>
             <v-flex>
