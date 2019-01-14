@@ -23,7 +23,9 @@
 <script>
 import _ from 'lodash'
 import axios from 'axios'
+import GetScores from './PlayerApi/GetScores.js'
 const url = 'http://localhost:5000/api/Results';
+
 
 export default {
   name: 'TopList',
@@ -35,13 +37,7 @@ export default {
     }
   },
   created () {
-    axios.get(url)
-      .then(response => {
-        this.results = response.data
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    GetScores(response => this.results = response);
   },
   methods: {
     startIndexAtOne: function (index) {
