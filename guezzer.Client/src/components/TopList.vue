@@ -1,6 +1,6 @@
 <template>
   <div class="TopList">
-    <h3 class="blue darken-2 white--text pl-3 py-1">{{ this.category }} </h3>
+    <h3 class="blue darken-2 white--text pl-3 py-1">{{ this.category }} high scores </h3>
      <table>
       <thead>
         <tr>
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     topTenResults: function () {
-      return (!this.results ? [] : _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10));
+      return (!this.results ? [] : _.orderBy(this.results.filter(score => score.category === this.category), ['score', 'date'], 'desc').slice(0, 10));
     }
   }
 }

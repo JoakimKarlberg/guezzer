@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-<h3 class="deep-purple darken-2 white--text py-3" id="header-size">{{ header }}</h3>
+<h3 class="deep-purple darken-2 white--text py-3" id="header-size">High scores</h3>
   <div class="all-top-lists">
     <div class="top-list" v-for="category in groupedCategories" :key="category.id">
 	  <h3 class="blue darken-2 white--text py-1">{{ category[0].category }}</h3>
@@ -34,8 +34,7 @@ export default {
   name: 'AllTopLists',
   data () {
     return {
-      results: null,
-      header: 'High scores'
+      results: null
     }
   },
   created () {
@@ -54,7 +53,7 @@ export default {
   },
   computed: {
     groupedCategories: function () {
-      var ordered = _.orderBy(this.results, 'score', 'desc');
+      var ordered = _.orderBy(this.results, ['score', 'date'], 'desc');
       return (!this.results ? [] : _.groupBy(ordered, 'category'))
     }
   }
