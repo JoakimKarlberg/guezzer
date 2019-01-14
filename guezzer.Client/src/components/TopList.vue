@@ -49,12 +49,7 @@ export default {
   },
   computed: {
     topTenResults: function () {
-      if(!this.results) 
-        return [];
-      else 
-      {
-        return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
-      }
+      return (!this.results ? [] : _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10));
     }
   }
 }

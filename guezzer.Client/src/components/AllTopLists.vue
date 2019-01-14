@@ -54,13 +54,8 @@ export default {
   },
   computed: {
     groupedCategories: function () {
-      if(!this.results) 
-        return [];
-      else 
-      {
-        var ordered = _.orderBy(this.results, 'score', 'desc');
-        return _.groupBy(ordered, 'category');
-      }
+      var ordered = _.orderBy(this.results, 'score', 'desc');
+      return (!this.results ? [] : _.groupBy(ordered, 'category'))
     }
   }
 }
