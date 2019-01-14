@@ -3,6 +3,7 @@
     <v-btn
       class="white--text btn-primary btn-1 mt-4"
       v-bind:class="classObject"
+      v-bind:style="styleObject"
       :disabled="checkIfQuestionStarted"
       @click="onButtonClicked(objectAnswer)"
     >{{this.objectAnswer.startValue}} - {{this.objectAnswer.endValue}}</v-btn>
@@ -44,6 +45,12 @@ export default {
         'green': this.rightAnswer && this.isActive || this.isCorrect && !this.newQuestion,
         'red': !this.rightAnswer && this.isActive
       };
+    },
+    styleObject() {
+      return {
+        'pointer-events': !this.newQuestion ? 'none' : null
+      }
+      
     }
   },
 
