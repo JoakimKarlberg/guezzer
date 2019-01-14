@@ -37,19 +37,24 @@ export default {
     }
   },
   created () {
-    GetScores(response => this.results = response);
+    this.getScores();
   },
   methods: {
     startIndexAtOne: function (index) {
       return index+1
+    },
+    getScores() {
+      GetScores(response => this.results = response);
     }
+
   },
   computed: {
     topTenResults: function () {
-      if(!this.results) 
+      if(!this.results)
         return [];
+
       else 
-      {
+      { 
         return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
       }
     }

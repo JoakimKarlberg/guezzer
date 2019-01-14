@@ -13,6 +13,7 @@
 <script>
 // import SavePlayer from './PlayerApi/SavePlayer.js'
 import SaveResult from './ResultApi/SaveResult.js'
+import GetScores from './PlayerApi/GetScores.js'
 export default {
   name: "SubmitScore",
   data() {
@@ -26,7 +27,8 @@ export default {
   methods: {
     submitResult: function() {
       // SavePlayer(this.nameInput)
-      SaveResult(this.nameInput, this.category, this.score)
+      SaveResult(this.nameInput, this.category, this.score);
+      this.$emit("submitButtonClicked");
     }
   },
   computed:{
