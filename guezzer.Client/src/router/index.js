@@ -11,7 +11,6 @@ Vue.use(Vuetify)
 
 // Import pages
 import LandingPage from '@/views/LandingPage'
-import YoutubePage from '@/views/YoutubePage'
 import ResultPage from '@/views/ResultPage'
 import CategoryPage from '@/views/CategoryPage'
 import QuestionPage from '@/views/QuestionPage'
@@ -20,6 +19,7 @@ import TopListPage from '@/views/TopListPage'
 // Here we create the routes
 // First you need to import the component, then specify the name of the route and which component to bind it to
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -27,12 +27,7 @@ export default new Router({
       component: LandingPage
     },
     {
-      path: '/YoutubePage',
-      name: 'YoutubePage',
-      component: YoutubePage
-    },
-    {
-      path: '/ResultPage',
+      path: '/ResultPage/:category',
       name: 'ResultPage',
       component: ResultPage
     },
@@ -47,7 +42,7 @@ export default new Router({
       component: QuestionPage
     },
     {
-      path: '/TopListPage/',
+      path: '/all-toplists/',
       name: 'TopListPage',
       component: TopListPage
     }

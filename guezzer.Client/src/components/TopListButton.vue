@@ -1,5 +1,5 @@
 <template>
-    <v-btn flat color="white"  router-link to="/TopListPage">
+    <v-btn flat color="white"  router-link to="/all-toplists">
       <v-icon left>format_list_numbered</v-icon>
       <span>Top lists</span>
     </v-btn>
