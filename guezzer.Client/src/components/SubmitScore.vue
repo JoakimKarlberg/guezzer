@@ -1,7 +1,7 @@
 <template>
   <v-flex xs12 md12 lg8 xl6>
     <form>
-      <v-text-field required v-model="nameInput" :counter="10" label="Enter your name:"></v-text-field>
+      <v-text-field required v-model="nameInput" :disabled="checkIfScoreIsSubmitted" :counter="10" label="Enter your name:"></v-text-field>
       <v-btn class="red darken-3 white--text" depressed v-on:click="submitResult" :disabled="checkTextLength">
         <span>Submit Result</span>
         <v-icon right>send</v-icon>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-// import SavePlayer from './PlayerApi/SavePlayer.js'
+
 import SaveResult from './ResultApi/SaveResult.js'
 import GetScores from './PlayerApi/GetScores.js'
 export default {
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       nameInput: "",
-      data: ''
+      scoreIsSubmitted: false
     };
   },
   
@@ -27,8 +27,10 @@ export default {
   
   methods: {
     submitResult: async function() {
-      // SavePlayer(this.nameInput)
-    return await SaveResult({nameInput: this.nameInput, category: this.category, score:this.score}, response => this.$emit("submitButtonClicked"));
+      
+    await SaveResult({nameInput: this.nameInput, category: this.category, score:this.score}, response => this.$emit("submitButtonClicked"));
+    this.scoreIsSubmitted = true;
+    this.nameInput = "";
 
     }
   },
@@ -38,7 +40,13 @@ export default {
           return true;
         else
           return false;
-    }
+    },
+      checkIfScoreIsSubmitted() {
+        if (this.scoreIsSubmitted === true)
+          return true;
+        else
+          return false;
+      }
   }
 };
 </script>
