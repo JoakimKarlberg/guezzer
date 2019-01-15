@@ -121,9 +121,8 @@ namespace guezzer.Api.Repositories
                 if (resultDto.Score > result.Score)
                 {
                     result.Score = resultDto.Score;
+                    result.Updated = DateTime.Now;
                 }
-
-                result.Updated = DateTime.Now;
 
                 _context.Results.Update(result);
             }

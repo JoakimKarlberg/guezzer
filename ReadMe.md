@@ -27,7 +27,11 @@
 Web API written in ASP.NET Core 2.1.
 This project contains all backend stuff.
 
-Uses `EntityFrameWork Core` for database stuff.
+## Database
+
+Uses `EntityFrameWork Core`.
+The Database is initialized the first time the API is running with data seeded to simulate a pre-existing playerbase.
+No migrations are needed.   
 
 ## API Requests
 
@@ -37,7 +41,7 @@ Uses `EntityFrameWork Core` for database stuff.
 
 * **GET**: `https://url.com/api/players/{playerName}` - fetches a specific player
 
-* **PUT**: `https://url.com/api/Players/{playerDto-object}` - updates or create a *Player* if it doesn't exist in the db based on the *Body* of the PUT request. Must match the structure of a *PlayerDto*-object.
+* **PUT**: `https://url.com/api/Players/{playerDto}` - updates or create a *Player* if it doesn't exist in the db based on the *Body* of the PUT request. Must match the structure of a *PlayerDto*-object.
 
 	* Request body example: `{"Name": "Stefan" }`
 
@@ -55,6 +59,6 @@ Uses `EntityFrameWork Core` for database stuff.
 
 * **GET**: `https://url.com/api/results/player/{name}` - fetch all results for a specific player
 
-* **PUT**: `https://url.com/api/Results/{ResultDto-object}` - updates or create a *Result* if it doesn't exist in the db based on the *Body* of the PUT request. Input must match the structure of a *ResultDto*-object.
+* **PUT**: `https://url.com/api/Results/{updatePlayerResultDto}` - updates or create a *Result* with a *Player* based on the *Body* of the PUT request. Input must match the structure of an *UpdatePlayerResultDto*-object.
 
 	* Request body example: `{"Name": "Stefan", "Category": "Random", "Score": 666 }`

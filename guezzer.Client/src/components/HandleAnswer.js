@@ -1,28 +1,40 @@
 let maxValue = 1000000;
+let rightOption = null;
 
 export default {
 
-    methods:{
-        
-         
-         CheckAnswer: function(rightAnswer,answer){
+    methods: {
 
-            let trimmedStartValue = Trim(answer.startValue);
-            let trimmedEndValue = Trim(answer.endValue);
+        GetRightOption: function (rightAnswer, objectAnswers) {
 
-            if(trimmedStartValue <=rightAnswer &&
-             trimmedEndValue >= rightAnswer || (answer.startValue == "More than" && rightAnswer > maxValue)) {
- 
+            objectAnswers.forEach(option => {
+
+                let trimmedStartValue = Trim(option.startValue);
+                let trimmedEndValue = Trim(option.endValue);
+
+                if (trimmedStartValue <= rightAnswer &&
+                    trimmedEndValue >= rightAnswer || (option.startValue == "More than" && rightAnswer > maxValue)) {
+
+                    rightOption = option;
+                }
+
+            });
+
+            return rightOption;
+        },
+
+        CheckAnswer: function (rightOption, answer) {
+
+            if (rightOption.endValue == answer.endValue)
                 return true;
+            else {
+                console.log("wrong answer");
+                return false;
             }
-            else
-            {
-              return false;
-            }
-         }      
+        }
     }
 }
 
-function Trim (string){
+function Trim(string) {
     return parseInt(string.replace(/\s+/g, ''));
 }

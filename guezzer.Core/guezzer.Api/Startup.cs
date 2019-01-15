@@ -101,52 +101,62 @@ namespace guezzer.Api
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Joakim"
+                        Name = "Joakim",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Simone"
+                        Name = "Simone",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Molyn"
+                        Name = "Molyn",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Camilla"
+                        Name = "Camilla",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Johanna"
+                        Name = "Johanna",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Pontus"
+                        Name = "Pontus",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "Gandalf"
+                        Name = "Gandalf",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "AAA"
+                        Name = "AAA",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "BBB"
+                        Name = "BBB",
+                        TimesPlayed = 1
                     });
                     players.Add(new Player
                     {
                         Id = Guid.NewGuid(),
-                        Name = "CCC"
+                        Name = "CCC",
+                        TimesPlayed = 1
                     });
                 }
 
