@@ -17,7 +17,7 @@
           </v-layout>
 
           <v-layout justify-center class="mt-3">
-            <submit-score :score="score" :category="category"/>
+            <submit-score :score="score" :category="category" @submitButtonClicked="updateToplist"/>
           </v-layout>
 
           <v-layout justify-center class="mt-5">
@@ -25,7 +25,7 @@
             <home-button/>
           </v-layout>          
 
-          <top-list :category="category"/>
+          <top-list ref="toplist" :category="category"/>
 
         </v-flex>
       </v-layout>
@@ -40,6 +40,7 @@
     import PlayAgainButton from '@/components/PlayAgainButton.vue'
     import HomeButton from '@/components/HomeButton.vue'
     import TopList from '@/components/TopList.vue'
+    import GetScores from '@/components/PlayerApi/GetScores.js'
     import router from '../router'
     export default {
     components: {
@@ -53,6 +54,11 @@
       return {
         category: ' ',
         score: 0
+      }
+    },
+    methods: {
+      updateToplist() {
+        this.$refs.toplist.getScores();
       }
     },
     created(){
