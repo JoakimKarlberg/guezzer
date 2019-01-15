@@ -1,10 +1,12 @@
 <template>
-<div class="AllTopLists">
-  <div class="TopList" v-for="category in groupedCategories" :key="category.id">
-	<h3 class="blue darken-2 white--text py-1">{{ header }} {{ category[0].category }}</h3>
-    <table>
-      <thead>
-        <tr>
+<div class="header">
+<h3 class="deep-purple darken-2 white--text py-3" id="header-size">High scores</h3>
+  <div class="all-top-lists">
+    <div class="top-list" v-for="category in groupedCategories" :key="category.id">
+	  <h3 class="blue darken-2 white--text py-1">{{ category[0].category }}</h3>
+      <table>
+       <thead>
+         <tr>
           <th>Rank</th>
           <th>Player</th>
           <th>Score</th>
@@ -19,6 +21,7 @@
       </tbody>
     </table> 
   </div>
+ </div>
 </div>
 </template>
 
@@ -31,8 +34,7 @@ export default {
   name: 'AllTopLists',
   data () {
     return {
-      results: null,
-      header: 'Toplist for category '
+      results: null
     }
   },
   created () {
@@ -51,13 +53,8 @@ export default {
   },
   computed: {
     groupedCategories: function () {
-      if(!this.results) 
-        return [];
-      else 
-      {
-        var ordered = _.orderBy(this.results, 'score', 'desc');
-        return _.groupBy(ordered, 'category');
-      }
+      var ordered = _.orderBy(this.results, ['score', 'date'], 'desc');
+      return (!this.results ? [] : _.groupBy(ordered, 'category'))
     }
   }
 }
@@ -69,16 +66,24 @@ export default {
     vertical-align: middle;
     margin: auto; 
   }
-  .AllTopLists{
+  .all-top-lists{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 50px;
+   
   }
-  .TopList{
+  .top-list{
     padding: 15px;
     text-align: center; 
     vertical-align: middle;
+  }
+  .header{
+     margin-top: 50px;
+     justify-content: center;
+     text-align: center;
+  }
+  #header-size{
+    font-size: x-large;
   }
 </style>
 

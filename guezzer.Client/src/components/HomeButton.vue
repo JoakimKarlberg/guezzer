@@ -1,5 +1,5 @@
 <template>
-  <v-btn depressed class="primary white--text" large tag="button" router-link to="/">
+  <v-btn depressed class="primary white--text" large tag="button" router-link :to="{name: 'LandingPage'}">
     <v-icon left large>home</v-icon>
     <span>Home page</span>
   </v-btn>  

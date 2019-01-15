@@ -1,6 +1,6 @@
 <template>
   <div class="TopList">
-    <h3 class="blue darken-2 white--text pl-3 py-1">{{ header }} {{ this.category }} </h3>
+    <h3 class="blue darken-2 white--text py-1" id="header-size">{{ this.category }} high scores </h3>
      <table>
       <thead>
         <tr>
@@ -30,8 +30,7 @@ export default {
   props:['category'],
   data () {
     return {
-      results: null,
-      header: 'Toplist for category '
+      results: null
     }
   },
   created () {
@@ -50,12 +49,7 @@ export default {
   },
   computed: {
     topTenResults: function () {
-      if(!this.results) 
-        return [];
-      else 
-      {
-        return _.orderBy(this.results.filter(score => score.category === this.category), 'score', 'desc').slice(0, 10);
-      }
+      return (!this.results ? [] : _.orderBy(this.results.filter(score => score.category === this.category), ['score', 'date'], 'desc').slice(0, 10));
     }
   }
 }
@@ -72,6 +66,13 @@ export default {
     text-align: center; 
     vertical-align: middle;
   }
+  #header-size{
+    font-size: large;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+  }
+  
 </style>
 
 
