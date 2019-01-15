@@ -37,12 +37,12 @@ export default new Router({
       component: QuestionPage
     },
     {
-      path: '/result-for-category/:category/',
+      path: '/result/:category/',
       name: 'ResultPage',
       component: ResultPage
     },
     {
-      path: '/highscores-for-all-categories/',
+      path: '/highscores/',
       name: 'TopListPage',
       component: TopListPage
     }

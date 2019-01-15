@@ -1,6 +1,6 @@
 <template>
   <div class="TopList">
-    <h3 class="blue darken-2 white--text pl-3 py-1">{{ this.category }} high scores </h3>
+    <h3 class="blue darken-2 white--text py-1" id="header-size">{{ this.category }} high scores </h3>
      <table>
       <thead>
         <tr>
@@ -66,6 +66,13 @@ export default {
     text-align: center; 
     vertical-align: middle;
   }
+  #header-size{
+    font-size: large;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+  }
+  
 </style>
 
 
