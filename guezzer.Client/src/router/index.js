@@ -27,22 +27,22 @@ export default new Router({
       component: LandingPage
     },
     {
-      path: '/ResultPage/:category',
-      name: 'ResultPage',
-      component: ResultPage
-    },
-    {
-      path: '/CategoryPage',
+      path: '/begin-quiz/',
       name: 'CategoryPage',
       component: CategoryPage
     },
     {
-      path: '/QuestionPage/:category',
+      path: '/question-for-category/:category/',
       name: 'QuestionPage',
       component: QuestionPage
     },
     {
-      path: '/all-toplists/',
+      path: '/result-for-category/:category/',
+      name: 'ResultPage',
+      component: ResultPage
+    },
+    {
+      path: '/highscores-for-all-categories/',
       name: 'TopListPage',
       component: TopListPage
     }
