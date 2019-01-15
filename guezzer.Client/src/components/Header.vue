@@ -11,7 +11,7 @@
 
     <v-spacer></v-spacer>
 
-      <v-btn flat color="white">
+      <v-btn active-class flat color="white" router-link :to="{name: 'LandingPage'}">
         <span>Exit</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
