@@ -28,9 +28,8 @@ export default {
   methods: {
     submitResult: async function() {
       // SavePlayer(this.nameInput)
-     this.data = await SaveResult(this.nameInput, this.category, this.score);
-     console.log(this.data)
-      this.$emit("submitButtonClicked");
+    return await SaveResult({nameInput: this.nameInput, category: this.category, score:this.score}, response => this.$emit("submitButtonClicked"));
+
     }
   },
   computed:{
