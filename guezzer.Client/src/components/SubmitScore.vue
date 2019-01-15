@@ -18,16 +18,18 @@ export default {
   name: "SubmitScore",
   data() {
     return {
-      nameInput: ""
+      nameInput: "",
+      data: ''
     };
   },
   
   props:['category','score'],
   
   methods: {
-    submitResult: function() {
+    submitResult: async function() {
       // SavePlayer(this.nameInput)
-      SaveResult(this.nameInput, this.category, this.score);
+     this.data = await SaveResult(this.nameInput, this.category, this.score);
+     console.log(this.data)
       this.$emit("submitButtonClicked");
     }
   },

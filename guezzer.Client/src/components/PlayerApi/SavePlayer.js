@@ -10,5 +10,5 @@ module.exports = function(playerName){
            Name: playerName
          }
        })
-       .then(results => console.log(results));
+       .then(results => {return results} );
 }
