@@ -1,22 +1,22 @@
 <template>
-  <div id="app">
-    <router-view/> 
-  </div>
+<v-app class="white font">
+  <Header/>
+    <v-container pa-5>
+      <router-view/>
+    </v-container>
+  <Footer/>
+</v-app>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
-</script>
+import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+export default {
+  components: {
+        Footer,
+        Header
+        },
+  name: "App"
+};
+</script>
