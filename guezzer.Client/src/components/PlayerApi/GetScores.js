@@ -7,7 +7,6 @@ module.exports = function (callback) {
         .then(response => {
             if(callback)
             callback(response.data)
-            console.log(response.data);
         })
         .catch(err => {
             console.log(err)

@@ -124,7 +124,6 @@ export default {
         this.$refs.timer.pointStreakTracker = 0;
       }
 
-      console.log(this.score);
     },
 
     calculateScore() {
@@ -133,11 +132,8 @@ export default {
       if (this.$refs.timer.pointStreakTracker == 3) {
         this.score += 50;
         this.threeInARowAlert = true;
-        console.log("score!");
         this.$refs.timer.pointStreakTracker = 0;
       }
-
-      console.log(this.$refs.timer.pointStreakTracker);
     },
 
     getNewQuestion() {

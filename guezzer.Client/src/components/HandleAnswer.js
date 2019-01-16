@@ -28,7 +28,6 @@ export default {
             if (rightOption.endValue == answer.endValue)
                 return true;
             else {
-                console.log("wrong answer");
                 return false;
             }
         }

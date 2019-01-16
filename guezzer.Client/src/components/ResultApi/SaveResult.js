@@ -15,7 +15,6 @@ module.exports = function(options,callback){
        .then(response => {
             if(callback)
             callback(response)
-            console.log(response);
         })
         .catch(err => {
             console.log(err)

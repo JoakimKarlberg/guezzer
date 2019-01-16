@@ -36,21 +36,16 @@ export default {
     },
 
     generateCorrectScore(){
-      console.log("right answer");
       this.pointStreakTracker++;
-      console.log(this.pointStreakTracker);
 
       if(this.timeRemaining >= 10){
         this.$parent.score+=15;
-        console.log("15, time left: " + this.timeRemaining);
       }
       else if(this.timeRemaining >= 5 && this.timeRemaining < 10){
         this.$parent.score+=10;
-        console.log("10, time left: " + this.timeRemaining);
       }
       else if(this.timeRemaining > 0 && this.timeRemaining < 5){
         this.$parent.score+=5;
-        console.log("5, time left: " + this.timeRemaining);
       }
   },
    
